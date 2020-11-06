@@ -23,13 +23,21 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:text="Transactions"
+                android:textSize="38sp" />
 
+            <TextView
+                android:id="@+id/budgetTextView"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_gravity="bottom"
+                android:text="Budget:"
+                android:textSize="28sp" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
