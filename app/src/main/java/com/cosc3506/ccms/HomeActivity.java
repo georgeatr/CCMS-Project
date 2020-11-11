@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,5 +28,9 @@ public class HomeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void onClickSettings(View view) {
+        startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
     }
 }
