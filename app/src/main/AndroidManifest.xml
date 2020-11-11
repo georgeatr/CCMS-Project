@@ -33,11 +33,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity><![CDATA[
 =======
-        <activity android:name=".SettingsActivity"></activity><![CDATA[
+
 
         >>>>>>> Stashed changes
+
 
     ]]>
     </application>
