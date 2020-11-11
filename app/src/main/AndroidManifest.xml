@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateEventActivity"></activity>
-        <activity android:name=".SettingsActivity" />
+<<<<<<< Updated upstream
         <activity
             android:name=".TransactionActivity"
             android:label="@string/title_activity_transaction"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -35,6 +34,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+=======
+        <activity android:name=".SettingsActivity"></activity><![CDATA[
+
+        >>>>>>> Stashed changes
+
+    ]]>
     </application>
 
 </manifest>
