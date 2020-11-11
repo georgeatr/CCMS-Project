@@ -12,10 +12,11 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/settingsButton"
             android:layout_width="69dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:onClick="onClickSettings"
             android:src="@drawable/ic_baseline_settings_24" />
 
     </com.google.android.material.appbar.AppBarLayout>
