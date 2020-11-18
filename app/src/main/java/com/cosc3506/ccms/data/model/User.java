@@ -10,7 +10,7 @@ class User {
     Array enrolledClubs;
     String password;
 
-    public User(int studentNumber, String name, String phone, String email, Array enrolledClubs, String password) {
+    public User(int studentNumber, String name, String phone, String email, Array enrolledClubs, Array password) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
