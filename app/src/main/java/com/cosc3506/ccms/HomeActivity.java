@@ -39,9 +39,9 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ///---For Testing
-        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        /*
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Clubs");
         int ID = 123;
         double budget = 1.23;
