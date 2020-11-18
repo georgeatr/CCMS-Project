@@ -1,21 +1,31 @@
 package com.cosc3506.ccms.data.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Club {
         int ID;
-        int Budget;
-        int remainingFunds;
+        double budget;
+        double remainingFunds;
         String room;
         String name;
         ArrayList<Event> events;
         String description;
-        ArrayList<ClubManager> managers;
+        ArrayList<User> managers;
 
-    public Club(int ID, int budget, int remainingFunds, String room, String name, String description, ArrayList<ClubManager> managers) {
+    public Club(int ID, double budget, double remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
         this.ID = ID;
-        Budget = budget;
+        this.budget = budget;
+        this.remainingFunds = remainingFunds;
+        this.room = room;
+        this.name = name;
+        this.events = events;
+        this.description = description;
+        this.managers = managers;
+    }
+
+    public Club(int ID, double budget, String room, String name, String description) {
+        this.ID = ID;
+        this.budget = budget;
         this.remainingFunds = remainingFunds;
         this.room = room;
         this.name = name;
@@ -33,15 +43,15 @@ public class Club {
         this.ID = ID;
     }
 
-    public int getBudget() {
-        return Budget;
+    public double getBudget() {
+        return budget;
     }
 
     public void setBudget(int budget) {
-        Budget = budget;
+        this.budget = budget;
     }
 
-    public int getRemainingFunds() {
+    public double getRemainingFunds() {
         return remainingFunds;
     }
 
@@ -81,11 +91,11 @@ public class Club {
         this.description = description;
     }
 
-    public ArrayList<ClubManager> getManagers() {
+    public ArrayList<User> getManagers() {
         return managers;
     }
 
-    public void setManagers(ArrayList<ClubManager> managers) {
+    public void setManagers(ArrayList<User> managers) {
         this.managers = managers;
     }
 }
