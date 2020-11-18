@@ -27,7 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+
+        ///---For Testing
+        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Clubs");
         int ID = 123;
         double budget = 1.23;
@@ -40,10 +42,12 @@ public class HomeActivity extends AppCompatActivity {
 
         Club club = new Club(ID, budget, remainingFunds, room, name, events, description, managers);
 
-        //Event event = new Event(3, "name", club, "ree", "uno", "dos", "cuatro", 50, 4);
-        //events.add(event);
-        //club.setEvents(events);
+        Event event = new Event(3, "name", club, "ree", "uno", "dos", "cuatro", 50, 4);
+        events.add(event);
+        club.setEvents(events);
         reference.child(String.valueOf(ID)).setValue(club);
+
+         */
 
 
         //TODO have the logged in User object
