@@ -100,7 +100,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickSettings(View view) {
-        startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
+        startActivity(new Intent(HomeActivity.this,ClubActivity.class));
     }
 
 }
