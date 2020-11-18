@@ -1,14 +1,21 @@
 package com.cosc3506.ccms.data.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
-class User {
+public class User {
     int studentNumber;
     String name;
     String phone;
     String email;
     ArrayList<Club> enrolledClubs;
     String password;
+    ArrayList<Club> managedClubs;
+
+    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+    DatabaseReference reference = rootNode.getReference("Clubs");
 
     public User(int studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password) {
         this.studentNumber = studentNumber;
@@ -27,11 +34,37 @@ class User {
         enrolledClubs.add(club);
     }
 
-    public void createClub(int ID, int budget, int remainingFunds, String room, String name, String description, ClubManager manager){
-        ArrayList<ClubManager> managers = null;
+    public void createClub(Club club, User manager){
+        ArrayList<User> managers = null;
         managers.add(manager);
-        Club club = new Club(ID, budget, remainingFunds, room, name, description, managers);
         joinClub(club);
+        reference.child(String.valueOf(club.ID)).setValue(club);
+    }
+
+    public void newEvent(int ID, String name, Club club, String text, String address, String startDate, String endDate, int cost, int capacity){
+        Event event = new Event(ID, name, club, text, address, startDate, endDate, cost, capacity);
+        ArrayList<Event> events = club.getEvents();
+        events.add(event);
+        club.setEvents(events);
+    }
+
+    public void deleteEvent(Event event, Club club){
+        ArrayList<Event> events = club.getEvents();
+        events.remove(event);
+        club.setEvents(events);
+    }
+
+    public void dropFromManager(Club club, User manager){
+        //if there are other managers: TODO
+        ArrayList<User> managers = club.getManagers();
+        managers.remove(manager);
+        club.setManagers(managers);
+    }
+
+    public void promoteToManager(Club club, User user){
+        ArrayList<User> managers = club.getManagers();
+        managers.add(user);
+        club.setManagers(managers);
     }
 
     //------------getters and setters
@@ -82,5 +115,13 @@ class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ArrayList<Club> getManagedClubs() {
+        return managedClubs;
+    }
+
+    public void setManagedClubs(ArrayList<Club> managedClubs) {
+        this.managedClubs = managedClubs;
     }
 }
