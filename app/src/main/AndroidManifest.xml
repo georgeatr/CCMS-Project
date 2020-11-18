@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CreateEventActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity
             android:name=".TransactionActivity"
             android:label="@string/title_activity_transaction"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -32,7 +34,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity><![CDATA[]]>
+        </activity>
     </application>
 
 </manifest>
