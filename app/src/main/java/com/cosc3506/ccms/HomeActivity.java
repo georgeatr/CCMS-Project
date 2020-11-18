@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         //club.setEvents(events);
         reference.child(String.valueOf(ID)).setValue(club);
 
+
         //TODO have the logged in User object
 
         //--PUT THIS IN CREATE CLUB
