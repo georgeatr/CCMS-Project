@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 public class LogInActivity extends AppCompatActivity {
 
     Button login = findViewById(R.id.login);
@@ -21,33 +25,12 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
-    private Boolean validateUsername() {
-        String val = username.getText().toString();
-        if (val.isEmpty()) {
-            username.setError("Field cannot be empty");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private Boolean validatePassword() {
-        String val = password.getText().toString();
-        if (val.isEmpty()) {
-            password.setError("Field cannot be empty");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public void loginUser(View view) {
         //Validate Login Info
-        if (!validateUsername() | !validatePassword()) {
-            return;
-        } else {
-            //TODO go to HOME;
-        }
+        final String userEnteredUsername = username.getText().toString().trim();
+        final String userEnteredPassword = password.getText().toString().trim();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
     }
 
 
