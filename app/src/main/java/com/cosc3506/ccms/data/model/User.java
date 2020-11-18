@@ -17,7 +17,17 @@ public class User {
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference = rootNode.getReference("Clubs");
 
-    public User(int studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password) {
+    public User(int studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password, ArrayList<Club> managedClubs) {
+        this.studentNumber = studentNumber;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.enrolledClubs = enrolledClubs;
+        this.password = password;
+        this.managedClubs = managedClubs;
+    }
+
+    public User(int studentNumber, String name, String phone, String email, String password) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
