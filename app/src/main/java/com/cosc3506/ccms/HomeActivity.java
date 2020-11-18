@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String[] clubList = new String[]{"Club1","Club2","Club3"};
+    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(this,SettingsActivity.class),clubList);
+        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(this,ClubActivity.class),clubList);
         clubsView.setAdapter(customAdapter);
 
     }
