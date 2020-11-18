@@ -1,10 +1,6 @@
 package com.cosc3506.ccms;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.view.View;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +11,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        /*
         Button toLoginActivityBtn = (Button)findViewById(R.id.logOutButton);
         toLoginActivityBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -23,6 +20,6 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent startIntent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(startIntent);
             }
-        });
+        }); */
     }
 }
