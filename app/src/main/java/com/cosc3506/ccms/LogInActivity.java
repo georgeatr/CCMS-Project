@@ -30,7 +30,21 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginUser();
+        //Testing
+        /*
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        DatabaseReference reference = rootNode.getReference("Users");
 
+        int studentNumber = 90;
+        String name = "no";
+        String phone = "no";
+        String email = "no";
+        String password = "no";
+
+        User user = new User(studentNumber, name, phone, email, password);
+
+        reference.child(String.valueOf(studentNumber)).setValue(user);
+        */
     }
 
     public void loginUser() {

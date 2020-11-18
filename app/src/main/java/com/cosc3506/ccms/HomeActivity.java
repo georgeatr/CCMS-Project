@@ -39,20 +39,6 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Testing
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("Users");
-
-        int studentNumber = 90;
-        String name = "no";
-        String phone = "no";
-        String email = "no";
-        String password = "no";
-
-        User user = new User(studentNumber, name, phone, email, password);
-
-        reference.child(String.valueOf(studentNumber)).setValue(user);
-
         ///---For Testing
         /*
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
