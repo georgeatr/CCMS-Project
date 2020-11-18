@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< Updated upstream
         <activity
             android:name=".TransactionActivity"
             android:label="@string/title_activity_transaction"
@@ -33,14 +32,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity><![CDATA[
-=======
-
-
-        >>>>>>> Stashed changes
-
-
-    ]]>
+        </activity><![CDATA[]]>
     </application>
 
 </manifest>
