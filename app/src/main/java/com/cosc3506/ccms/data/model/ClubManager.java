@@ -26,8 +26,16 @@ class ClubManager extends User {
     }
 
     public void dropFromManager(Club club, ClubManager manager){
+        //if there are other managers: TODO
         ArrayList<ClubManager> managers = club.getManagers();
         managers.remove(manager);
+        club.setManagers(managers);
+    }
+
+    public void promoteToManager(Club club, ClubManager clubManager){
+        ArrayList<ClubManager> managers = club.getManagers();
+        managers.add(clubManager);
+        club.setManagers(managers);
     }
 
 
