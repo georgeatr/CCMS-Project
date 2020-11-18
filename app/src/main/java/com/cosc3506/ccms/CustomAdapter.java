@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private String[] localDataSet;
+    private ArrayList localDataSet;
     Context context;
     Intent nextActivity;
 
@@ -34,7 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
     }
 
-    public CustomAdapter(Context context,Intent intent,String[] dataSet) {
+    public CustomAdapter(Context context,Intent intent,ArrayList dataSet) {
         this.context = context;
         localDataSet = dataSet;
         nextActivity = intent;
@@ -56,7 +56,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText((String)localDataSet.get(position));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return localDataSet.size();
     }
 }
