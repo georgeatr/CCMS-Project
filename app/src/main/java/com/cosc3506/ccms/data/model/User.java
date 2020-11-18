@@ -15,7 +15,7 @@ public class User {
     ArrayList<Club> managedClubs;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-    DatabaseReference reference = rootNode.getReference("Clubs");
+    DatabaseReference reference;
 
     public User(int studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password, ArrayList<Club> managedClubs) {
         this.studentNumber = studentNumber;
@@ -38,31 +38,24 @@ public class User {
 
     public void leaveClub(Club club){
         enrolledClubs.remove(club);
+        reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
+
     }
 
-    public void joinClub(Club club){
+    public void joinClub(Club club, User user){
         enrolledClubs.add(club);
+        reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
+        reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
     }
 
-    public void createClub(Club club, User manager){
+    public void createClub(Club club, User user){
         ArrayList<User> managers = null;
-        managers.add(manager);
-        joinClub(club);
+        managers.add(user);
+        joinClub(club, user);
+        reference = rootNode.getReference("Clubs");
         reference.child(String.valueOf(club.ID)).setValue(club);
     }
 
-    public void newEvent(int ID, String name, Club club, String text, String address, String startDate, String endDate, int cost, int capacity){
-        Event event = new Event(ID, name, club, text, address, startDate, endDate, cost, capacity);
-        ArrayList<Event> events = club.getEvents();
-        events.add(event);
-        club.setEvents(events);
-    }
-
-    public void deleteEvent(Event event, Club club){
-        ArrayList<Event> events = club.getEvents();
-        events.remove(event);
-        club.setEvents(events);
-    }
 
     public void dropFromManager(Club club, User manager){
         //if there are other managers: TODO

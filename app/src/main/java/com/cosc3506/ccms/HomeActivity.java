@@ -40,26 +40,30 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ///---For Testing
-        /*
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("Clubs");
-        int ID = 123;
-        double budget = 1.23;
-        double remainingFunds = .69;
-        String room = "4h";
-        String name = "FloorGang";
-        ArrayList<Event> events = new ArrayList<>();
-        String description = "19 year olds";
-        ArrayList<User> managers = new ArrayList<>();
 
-        Club club = new Club(ID, budget, remainingFunds, room, name, events, description, managers);
+//        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+//        DatabaseReference reference = rootNode.getReference("Clubs");
+//        int ID = 123;
+//        double budget = 1.23;
+//        double remainingFunds = .69;
+//        String room = "4h";
+//        String name = "FloorGang";
+//        ArrayList<Event> events = new ArrayList<>();
+//        String description = "19 year olds";
+//        ArrayList<User> managers = new ArrayList<>();
+////
+//        Club club = new Club(ID, budget, remainingFunds, room, name, events, description, managers);
+////
+//        Event event = new Event(3, "name", "ree", "uno", "dos", "cuatro", 50, 4);
+//        event.newEvent(event, club);
+//        event.deleteEvent(event,club);
+//
+// events.add(event);
+////        club.setEvents(events);
+//        reference.child(String.valueOf(ID)).setValue(club);
+//        reference = rootNode.getReference("Clubs/123/Events");
+//        reference.child(String.valueOf(event.getID())).setValue(event);
 
-        Event event = new Event(3, "name", club, "ree", "uno", "dos", "cuatro", 50, 4);
-        events.add(event);
-        club.setEvents(events);
-        reference.child(String.valueOf(ID)).setValue(club);
-
-         */
 
 
         //TODO have the logged in User object
