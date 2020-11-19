@@ -6,7 +6,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Event{
-        int ID;
+        String ID;
         String name;
         String description;
         String address;
@@ -18,7 +18,7 @@ public class Event{
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(int ID, String name,  String description, String address, String startDate,
+    public Event(String ID, String name,  String description, String address, String startDate,
                  String endDate, int cost, int capacity) {
         this.ID = ID;
         this.name = name;
@@ -48,11 +48,11 @@ public class Event{
 
     //----------getters and setters
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
