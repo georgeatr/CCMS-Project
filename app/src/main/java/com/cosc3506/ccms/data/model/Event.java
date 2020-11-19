@@ -6,28 +6,31 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Event{
-        int ID;
-        String name;
         Club club;
+        String name;
         String description;
-        String address;
-        String startDate;
-        String endDate;
-        int cost;
+        int ID;
         int capacity;
+        String startTime;
+        String endTime;
+        String Location;
+        String date;
+        int cost;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(int ID, String name,  String description, String address, String startDate, String endDate, int cost, int capacity) {
-        this.ID = ID;
+    public Event(String name,  String description, int ID, int capacity, String startTime, String endTime, String Location, String date, int cost) {
+
         this.name = name;
         this.description = description;
-        this.address = address;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.cost = cost;
+        this.ID = ID;
         this.capacity = capacity;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.Location = Location;
+        this.date = date;
+        this.cost = cost;
     }
 
     public void newEvent(Event event, Club club){
@@ -47,6 +50,10 @@ public class Event{
     }
 
     //----------getters and setters
+
+    public String getDate() {return date; }
+
+    public void setDate(String date) {this.date = date;}
 
     public int getID() {
         return ID;
@@ -80,28 +87,28 @@ public class Event{
         this.description = description;
     }
 
-    public String getAddress() {
-        return address;
+    public String getLocation() {
+        return Location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(String location) {
+        this.Location = location;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public int getCost() {
