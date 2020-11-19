@@ -2,31 +2,18 @@ package com.cosc3506.ccms;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.cosc3506.ccms.data.model.Club;
-import com.cosc3506.ccms.data.model.Event;
-import com.cosc3506.ccms.data.model.User;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.view.View;
-import android.widget.LinearLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -98,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickSettings(View view) {
-        startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
+        startActivity(new Intent(HomeActivity.this,LoginActivity.class));
     }
 
     public void onClickAddClub(View view) {

@@ -10,12 +10,11 @@
         android:id="@+id/createNewEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:text="Create New Event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/newEventNameEditText"
@@ -32,8 +31,8 @@
 
     <EditText
         android:id="@+id/newEventDescriptionEditText"
-        android:layout_width="307dp"
-        android:layout_height="145dp"
+        android:layout_width="310dp"
+        android:layout_height="150dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
@@ -48,53 +47,111 @@
         android:id="@+id/newEventBudgetEditTextDec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Event Budget"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/createNewEventButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventLocationEditText" />
 
     <EditText
-        android:id="@+id/newEventTimeEditText"
+        android:id="@+id/newEventStartTimeEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Event Time"
+        android:hint="Event Start"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEventDescriptionEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/newEventIDEditText" />
+
+    <EditText
+        android:id="@+id/newEventEndTimeEditText"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:ems="10"
+        android:hint="Event End"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventStartTimeEditText" />
 
     <EditText
         android:id="@+id/newEventDateEditText"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Event Date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toEndOf="@+id/newEventTimeEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventTimeEditText" />
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toEndOf="@+id/newEventLocationEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventLocationEditText" />
 
     <EditText
         android:id="@+id/newEventLocationEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Event Location"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEventDateEditText"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toBottomOf="@+id/newEventStartTimeEditText" />
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="!!Please Fill in All the Fields!!"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/createNewEventButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newEventBudgetEditTextDec" />
+
+    <EditText
+        android:id="@+id/newEventIDEditText"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Event ID"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newEventDescriptionEditText" />
+
+    <EditText
+        android:id="@+id/newEventCapacityEditText"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="Event Capacity"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toEndOf="@+id/newEventIDEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventIDEditText" />
+
+    <TextView
+        android:id="@+id/toTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/newEventEndTimeEditText"
+        app:layout_constraintEnd_toStartOf="@+id/newEventEndTimeEditText"
+        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventEndTimeEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
