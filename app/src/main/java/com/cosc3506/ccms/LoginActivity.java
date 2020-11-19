@@ -1,8 +1,11 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText studentNumber = findViewById(R.id.studentNumber);
-    EditText password = findViewById(R.id.password);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void loginUser() {
+    public void login(View view) {
         //Validate Login Info
-
+        final EditText studentNumber = findViewById(R.id.studentNumber);
+        final EditText password = findViewById(R.id.password);
         final String userEnteredStudentNumber = studentNumber.getText().toString().trim();
         final String userEnteredPassword = password.getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -56,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     String passwordFromDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
                         //TODO login and go to Home
+                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                     }
                 }
             }

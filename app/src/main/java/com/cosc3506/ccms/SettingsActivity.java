@@ -1,6 +1,8 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,5 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         }); */
+    }
+    public void logout(View view){
+        startActivity(new Intent(SettingsActivity.this,LoginActivity.class));
     }
 }
