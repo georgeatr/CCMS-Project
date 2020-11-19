@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    studentNumber.setError(null);
                     String passwordFromDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
                         //TODO login and go to Home
