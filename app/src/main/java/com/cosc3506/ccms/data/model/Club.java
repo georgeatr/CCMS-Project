@@ -3,7 +3,7 @@ package com.cosc3506.ccms.data.model;
 import java.util.ArrayList;
 
 public class Club {
-        int ID;
+        String ID;
         double budget;
         double remainingFunds;
         String room;
@@ -12,7 +12,7 @@ public class Club {
         String description;
         ArrayList<User> managers;
 
-    public Club(int ID, double budget, double remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
+    public Club(String ID, double budget, double remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;
@@ -23,7 +23,7 @@ public class Club {
         this.managers = managers;
     }
 
-    public Club(int ID, double budget, String room, String name, String description) {
+    public Club(String ID, double budget, String room, String name, String description) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;
@@ -33,13 +33,13 @@ public class Club {
         this.managers = managers;
     }
 
-    //-----------getters and setters
+    //-----------getters and sette
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

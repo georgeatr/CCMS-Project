@@ -39,27 +39,33 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ///---For Testing
-        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("Clubs");
-        int ID = 123;
-        double budget = 1.23;
-        double remainingFunds = .69;
-        String room = "4h";
-        String name = "FloorGang";
-        ArrayList<Event> events = new ArrayList<>();
-        String description = "19 year olds";
-        ArrayList<User> managers = new ArrayList<>();
 
-        Club club = new Club(ID, budget, remainingFunds, room, name, events, description, managers);
+//        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+//        DatabaseReference reference = rootNode.getReference("Clubs");
+//        String ID = "123";
+//        double budget = 1.23;
+//        double remainingFunds = .69;
+//        String room = "4h";
+//        String name = "FloorGang";
+//        ArrayList<Event> events = new ArrayList<>();
+//        String description = "19 year olds";
+//        ArrayList<User> managers = new ArrayList<>();
+////
+//        Club club = new Club(ID, budget, room, name, events, description);
+////
+//        Event event = new Event(3, "name", "ree", "uno", "dos", "cuatro", 50, 4);
 
-        Event event = new Event(3, "name", club, "ree", "uno", "dos", "cuatro", 50, 4);
-        events.add(event);
-        club.setEvents(events);
-        reference.child(String.valueOf(ID)).setValue(club);
 
-         */
+//        event.newEvent(event, club);
+//        event.deleteEvent(event,club);
+//
+// events.add(event);
+////        club.setEvents(events);
+//        reference.child(ID).setValue(club);
+//        reference = rootNode.getReference("Clubs/123/Events");
+//        reference.child(String.valueOf(event.getID())).setValue(event);
+
 
 
         //TODO have the logged in User object
@@ -85,7 +91,8 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(this,ClubActivity.class),clubList);
+        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(
+                this,ClubActivity.class),clubList);
         clubsView.setAdapter(customAdapter);
 
     }
