@@ -2,7 +2,9 @@ package com.cosc3506.ccms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class ClubActivity extends AppCompatActivity {
 
@@ -10,5 +12,9 @@ public class ClubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
+    }
+
+    public void onClickAddEvent(View view) {
+        startActivity(new Intent(ClubActivity.this,CreateEventActivity.class));
     }
 }
