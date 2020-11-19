@@ -70,15 +70,6 @@ public class HomeActivity extends AppCompatActivity {
         user.createClub(club, user);
         */
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
 
@@ -97,4 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(HomeActivity.this,LoginActivity.class));
     }
 
+    public void onClickAddClub(View view) {
+        startActivity(new Intent(HomeActivity.this,JoinCreateClubActivity.class));
+    }
 }
