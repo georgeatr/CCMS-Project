@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public class Event{
         int ID;
         String name;
-        Club club;
         String description;
         String address;
         String startDate;
         String endDate;
-        int cost;
+        double cost;
         int capacity;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(int ID, String name,  String description, String address, String startDate, String endDate, int cost, int capacity) {
+    public Event(int ID, String name,  String description, String address, String startDate,
+                 String endDate, int cost, int capacity) {
         this.ID = ID;
         this.name = name;
         this.description = description;
@@ -64,14 +64,6 @@ public class Event{
         this.name = name;
     }
 
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -104,11 +96,11 @@ public class Event{
         this.endDate = endDate;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
