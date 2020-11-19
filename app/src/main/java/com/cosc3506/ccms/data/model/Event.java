@@ -11,25 +11,23 @@ public class Event{
         String description;
         int ID;
         int capacity;
-        String startTime;
-        String endTime;
+        String startDate;
+        String endDate;
         String Location;
-        String date;
         int cost;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(String name,  String description, int ID, int capacity, String startTime, String endTime, String Location, String date, int cost) {
+    public Event(String name,  String description, int ID, int capacity, String startDate, String endDate, String Location, int cost) {
 
         this.name = name;
         this.description = description;
         this.ID = ID;
         this.capacity = capacity;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.Location = Location;
-        this.date = date;
         this.cost = cost;
     }
 
@@ -50,10 +48,6 @@ public class Event{
     }
 
     //----------getters and setters
-
-    public String getDate() {return date; }
-
-    public void setDate(String date) {this.date = date;}
 
     public int getID() {
         return ID;
@@ -95,20 +89,20 @@ public class Event{
         this.Location = location;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public int getCost() {

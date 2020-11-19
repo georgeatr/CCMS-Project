@@ -21,10 +21,9 @@ public class CreateEventActivity extends AppCompatActivity {
         final EditText newEventDescription = findViewById(R.id.newEventDescriptionEditText);
         final EditText newEventID = findViewById(R.id.newEventIDEditText);
         final EditText newEventCapacity = findViewById(R.id.newEventCapacityEditText);
-        final EditText newEventStartTime = findViewById(R.id.newEventStartTimeEditText);
-        final EditText newEventEndTime = findViewById(R.id.newEventEndTimeEditText);
+        final EditText newEventStartDate = findViewById(R.id.newEventStartDateEditText);
+        final EditText newEventEndDate = findViewById(R.id.newEventEndDateEditText);
         final EditText newEventLocation = findViewById(R.id.newEventLocationEditText);
-        final EditText newEventDate = findViewById(R.id.newEventDateEditText);
         final EditText newEventBudget = findViewById(R.id.newEventBudgetEditTextDec);
         final TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
         fieldsNotFilledError.setVisibility(View.INVISIBLE);
@@ -40,10 +39,9 @@ public class CreateEventActivity extends AppCompatActivity {
                 newEventDescription.getText().toString().isEmpty() ||
                 newEventID.getText().toString().isEmpty() ||
                 newEventCapacity.getText().toString().isEmpty() ||
-                newEventStartTime.getText().toString().isEmpty() ||
-                newEventEndTime.getText().toString().isEmpty() ||
+                newEventStartDate.getText().toString().isEmpty() ||
+                newEventEndDate.getText().toString().isEmpty() ||
                 newEventLocation.getText().toString().isEmpty() ||
-                newEventDate.getText().toString().isEmpty() ||
                 newEventBudget.getText().toString().isEmpty()) {
 
                     fieldsNotFilledError.setVisibility(View.VISIBLE);
@@ -52,8 +50,8 @@ public class CreateEventActivity extends AppCompatActivity {
                 else {
 
                     Event event = new Event(newEventName.getText().toString(), newEventDescription.getText().toString(), Integer.getInteger(newEventID.getText().toString()),
-                            Integer.getInteger(newEventCapacity.getText().toString()), newEventStartTime.getText().toString(), newEventEndTime.getText().toString(), newEventLocation.getText().toString(),
-                            newEventDate.getText().toString(), Integer.getInteger(newEventBudget.getText().toString()));
+                            Integer.getInteger(newEventCapacity.getText().toString()), newEventStartDate.getText().toString(), newEventEndDate.getText().toString(),
+                            newEventLocation.getText().toString(), Integer.getInteger(newEventBudget.getText().toString()));
 
 
                 }
