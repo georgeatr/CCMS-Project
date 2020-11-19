@@ -1,12 +1,15 @@
 package com.cosc3506.ccms.data.model;
 
+import android.widget.Toast;
+
+import com.cosc3506.ccms.ClubActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class User {
-    int studentNumber;
+    String studentNumber;
     String name;
     String phone;
     String email;
@@ -17,7 +20,7 @@ public class User {
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public User(int studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password, ArrayList<Club> managedClubs) {
+    public User(String studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password, ArrayList<Club> managedClubs) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
@@ -27,7 +30,7 @@ public class User {
         this.managedClubs = managedClubs;
     }
 
-    public User(int studentNumber, String name, String phone, String email, String password) {
+    public User(String studentNumber, String name, String phone, String email, String password) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
@@ -36,35 +39,43 @@ public class User {
         this.password = password;
     }
 
-    public void leaveClub(Club club){
+    public void leaveClub(Club club, User user){
         enrolledClubs.remove(club);
-        reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
-
+        reference = rootNode.getReference("Users/Enrolled/" + club.getID());
+        reference.removeValue();
     }
 
     public void joinClub(Club club, User user){
         enrolledClubs.add(club);
-        reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
-        reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
+        reference = rootNode.getReference("Users/Enrolled");
+        reference.child(club.getID()).setValue(club.getID());
     }
 
     public void createClub(Club club, User user){
-        ArrayList<User> managers = null;
-        managers.add(user);
         joinClub(club, user);
         reference = rootNode.getReference("Clubs");
-        reference.child(String.valueOf(club.ID)).setValue(club);
+        reference.child(String.valueOf(club.getID())).setValue(club);
+        //Make the creator a manager
+        promoteToManager(club,user);
     }
 
 
-    public void dropFromManager(Club club, User manager){
-        //if there are other managers: TODO
+    public boolean dropFromManager(Club club, User manager){
         ArrayList<User> managers = club.getManagers();
-        managers.remove(manager);
-        club.setManagers(managers);
+        if (managers.size()>1) { //check if there are other managers for that club
+            managers.remove(manager);
+            club.setManagers(managers);
+            reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers/" + manager.getStudentNumber());
+            reference.removeValue();
+            return true;
+        }
+        return false;
+
     }
 
     public void promoteToManager(Club club, User user){
+        reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
+        reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
         ArrayList<User> managers = club.getManagers();
         managers.add(user);
         club.setManagers(managers);
@@ -72,11 +83,11 @@ public class User {
 
     //------------getters and setters
 
-    public int getStudentNumber() {
+    public String getStudentNumber() {
         return studentNumber;
     }
 
-    public void setStudentNumber(int studentNumber) {
+    public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
     }
 
