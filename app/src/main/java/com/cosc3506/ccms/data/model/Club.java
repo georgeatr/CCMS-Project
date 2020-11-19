@@ -33,7 +33,7 @@ public class Club {
         this.managers = managers;
     }
 
-    //-----------getters and sette
+    //-----------getters and setters
 
     public String getID() {
         return ID;

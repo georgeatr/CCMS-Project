@@ -53,7 +53,7 @@ public class CreateEventActivity extends AppCompatActivity {
                             Integer.getInteger(newEventCapacity.getText().toString()), newEventStartDate.getText().toString(), newEventEndDate.getText().toString(),
                             newEventLocation.getText().toString(), Integer.getInteger(newEventBudget.getText().toString()));
 
-
+                    finish();
                 }
             }
         });
