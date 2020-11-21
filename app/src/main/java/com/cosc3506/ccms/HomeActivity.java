@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        User user = (User) getIntent().getExtras().getSerializable("user");
+        user = (User) getIntent().getExtras().getSerializable("user");
 
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
@@ -53,7 +53,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickAddClub(View view) {
-        startActivity(new Intent(HomeActivity.this,JoinCreateClubActivity.class));
+        Intent intent = new Intent(HomeActivity.this, JoinCreateClubActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
 }
