@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cosc3506.ccms.data.model.Event;
+
 public class CreateEventActivity extends AppCompatActivity {
 
     EditText nEN;
@@ -16,7 +18,6 @@ public class CreateEventActivity extends AppCompatActivity {
     EditText nEST;
     EditText nEET;
     EditText nEL;
-    EditText nEDate;
     EditText nEB;
 
     @Override
@@ -28,10 +29,9 @@ public class CreateEventActivity extends AppCompatActivity {
         nEDesc = findViewById(R.id.newEventDescriptionEditText);
         nEID = findViewById(R.id.newEventIDEditText);
         nEC = findViewById(R.id.newEventCapacityEditText);
-        nEST = findViewById(R.id.newEventStartTimeEditText);
-        nEET = findViewById(R.id.newEventEndTimeEditText);
+        nEST = findViewById(R.id.newEventStartDateTimeEditText);
+        nEET = findViewById(R.id.newEventEndDateTimeEditText);
         nEL = findViewById(R.id.newEventLocationEditText);
-        nEDate = findViewById(R.id.newEventDateEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
 
         //Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();
@@ -45,20 +45,18 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventDescription = nEDesc.getText().toString();
         String newEventID = nEID.getText().toString();
         String newEventCapacity = nEC.getText().toString();
-        String newEventStartTime = nEST.getText().toString();
-        String newEventEndTime = nEET.getText().toString();
+        String newEventStartDateTime = nEST.getText().toString();
+        String newEventEndDateTime = nEET.getText().toString();
         String newEventLocation = nEL.getText().toString();
-        String newEventDate = nEDate.getText().toString();
         String newEventBudget = nEB.getText().toString();
 
         if(     newEventName.isEmpty() ||
                 newEventDescription.isEmpty() ||
                 newEventID.isEmpty() ||
                 newEventCapacity.isEmpty() ||
-                newEventStartTime.isEmpty() ||
-                newEventEndTime.isEmpty() ||
+                newEventStartDateTime.isEmpty() ||
+                newEventEndDateTime.isEmpty() ||
                 newEventLocation.isEmpty() ||
-                newEventDate.isEmpty() ||
                 newEventBudget.isEmpty()){
 
             TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
@@ -67,14 +65,22 @@ public class CreateEventActivity extends AppCompatActivity {
         }
         else {
 
+            Event e = new Event(newEventID,
+                                newEventName,
+                                newEventDescription,
+                                newEventLocation,
+                                newEventStartDateTime,
+                                newEventEndDateTime,
+                                newEventBudget,
+                                newEventCapacity);
 
+            //Do something with the new Event
+
+            finish();
 
         }
 
 
-
-
     }
-
 
 }
