@@ -6,29 +6,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Event{
-        Club club;
+        String ID;
         String name;
         String description;
-        int ID;
-        int capacity;
+        String address;
         String startDate;
         String endDate;
-        String Location;
-        int cost;
+        double cost;
+        int capacity;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(String name,  String description, int ID, int capacity, String startDate, String endDate, String Location, int cost) {
-
+    public Event(String ID, String name,  String description, String address, String startDate,
+                 String endDate, int cost, int capacity) {
+        this.ID = ID;
         this.name = name;
         this.description = description;
-        this.ID = ID;
-        this.capacity = capacity;
+        this.address = address;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.Location = Location;
         this.cost = cost;
+        this.capacity = capacity;
     }
 
     public void newEvent(Event event, Club club){
@@ -49,11 +48,11 @@ public class Event{
 
     //----------getters and setters
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -65,14 +64,6 @@ public class Event{
         this.name = name;
     }
 
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -81,12 +72,12 @@ public class Event{
         this.description = description;
     }
 
-    public String getLocation() {
-        return Location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.Location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getStartDate() {
@@ -105,11 +96,11 @@ public class Event{
         this.endDate = endDate;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 

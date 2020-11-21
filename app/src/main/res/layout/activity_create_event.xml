@@ -45,8 +45,8 @@
 
     <EditText
         android:id="@+id/newEventBudgetEditTextDec"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Event Budget"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/newEventLocationEditText" />
 
     <EditText
-        android:id="@+id/newEventStartDateEditText"
+        android:id="@+id/newEventStartTimeEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="52dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/newEventIDEditText" />
 
     <EditText
-        android:id="@+id/newEventEndDateEditText"
+        android:id="@+id/newEventEndTimeEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="68dp"
@@ -78,20 +78,33 @@
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/newEventStartDateEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventStartDateEditText" />
+        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventStartTimeEditText" />
+
+    <EditText
+        android:id="@+id/newEventDateEditText"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Event Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toEndOf="@+id/newEventLocationEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventLocationEditText" />
 
     <EditText
         android:id="@+id/newEventLocationEditText"
-        android:layout_width="200dp"
+        android:layout_width="170dp"
         android:layout_height="40dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Event Location"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEventStartDateEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/newEventStartTimeEditText" />
 
     <TextView
         android:id="@+id/errorTextView"
@@ -136,9 +149,9 @@
         android:layout_height="wrap_content"
         android:text="To"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/newEventEndDateEditText"
-        app:layout_constraintEnd_toStartOf="@+id/newEventEndDateEditText"
-        app:layout_constraintStart_toEndOf="@+id/newEventStartDateEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventEndDateEditText" />
+        app:layout_constraintBottom_toBottomOf="@+id/newEventEndTimeEditText"
+        app:layout_constraintEnd_toStartOf="@+id/newEventEndTimeEditText"
+        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventEndTimeEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
