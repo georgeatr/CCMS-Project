@@ -41,13 +41,13 @@ public class User {
 
     public void leaveClub(Club club, User user){
         enrolledClubs.remove(club);
-        reference = rootNode.getReference("Users/Enrolled/" + club.getID());
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled" + club.getID());
         reference.removeValue();
     }
 
     public void joinClub(Club club, User user){
         enrolledClubs.add(club);
-        reference = rootNode.getReference("Users/Enrolled");
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled");
         reference.child(club.getID()).setValue(club.getID());
     }
 

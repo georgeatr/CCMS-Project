@@ -84,8 +84,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void onClickSettings(View view) {
+    public void onClickLogout(View view) {
         startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+        finish();
     }
 
     public void onClickAddClub(View view) {
