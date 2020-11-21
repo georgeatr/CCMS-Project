@@ -28,12 +28,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText newPhoneNumber;
     EditText newPassword;
     Button register;
+    TextView clickme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        clickme = findViewById(R.id.clickme);
         createAccount = findViewById(R.id.createNewAccountButton);
         newStudentNumber = findViewById(R.id.newStudentNumberEditText);
         newName = findViewById(R.id.newNameEditText);
@@ -55,7 +57,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        clickme.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                goHome("","","","","");
+            }
+        });
+
     }
+
 
     public void createUser(View view){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
