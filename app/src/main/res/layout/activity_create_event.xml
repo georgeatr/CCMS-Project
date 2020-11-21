@@ -65,7 +65,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Event Start"
-        android:inputType="datetime"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventIDEditText" />
 
@@ -76,7 +76,7 @@
         android:layout_marginStart="68dp"
         android:ems="10"
         android:hint="Event End"
-        android:inputType="datetime"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/newEventStartDateTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

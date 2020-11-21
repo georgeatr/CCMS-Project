@@ -76,6 +76,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
             //Do something with the new Event
 
+            finish();
 
         }
 
