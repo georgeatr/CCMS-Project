@@ -11,4 +11,16 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_create_club);
     }
+
+    /*
+        int ID = XtextField.getText();
+        float budget = XtextField.getText();
+        String room = XtextField.getText();
+        String name = XtextField.getText();
+        ArrayList<Event> events = XtextField.getText();
+        String description = XtextField.getText();
+
+        Club club = new Club(ID, budget, room, name, description);
+        user.createClub(club, user);
+        */
 }

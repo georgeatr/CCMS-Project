@@ -57,11 +57,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String passwordFromDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
-                    if (passwordFromDB.equals(userEnteredPassword)) {
+                    String passwordDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
+                    if (passwordDB.equals(userEnteredPassword)) {
                         //TODO login and go to Home
-
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
+                        String nameDB = snapshot.child(userEnteredStudentNumber).child("phoneNo").getValue(String.class);
+                        String phoneDB = snapshot.child(userEnteredStudentNumber).child("username").getValue(String.class);
+                        String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
+                        intent.putExtra("userObject", user);
                         finish();
                     }
                 }
