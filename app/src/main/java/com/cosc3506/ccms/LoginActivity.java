@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        //TODO change the Strings to getting text from the EditTexts
         String studentNumber = newStudentNumber.getText().toString();
         String name = newName.getText().toString();
         String phone = newPhoneNumber.getText().toString();
@@ -69,6 +68,16 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(studentNumber, name, phone, email, password);
 
         reference.child(studentNumber).setValue(user);
+
+        goHome(studentNumber,name,phone,email,password);
+    }
+
+    public void goHome(String studentNumber,String name, String phone,String email, String password){
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        User user = new User(studentNumber,name,phone,email,password);
+        intent.putExtra("user", user);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -86,16 +95,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String passwordDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
                     if (passwordDB.equals(userEnteredPassword)) {
-                        //TODO login and go to Home
                         String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
                         String nameDB = snapshot.child(userEnteredStudentNumber).child("phoneNo").getValue(String.class);
                         String phoneDB = snapshot.child(userEnteredStudentNumber).child("username").getValue(String.class);
                         String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
-                        intent.putExtra("user", user);
-                        startActivity(intent);
-                        finish();
+                        goHome(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
                     }
                 }
             }
