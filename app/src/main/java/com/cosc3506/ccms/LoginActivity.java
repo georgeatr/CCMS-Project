@@ -3,9 +3,8 @@ package com.cosc3506.ccms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +39,21 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(studentNumber, name, phone, email, password);
 
         reference.child(studentNumber).setValue(user);
+
+        Button createAccount = findViewById(R.id.createNewAccountButton);
+        EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
+        EditText newName = findViewById(R.id.newNameEditText);
+        EditText newEmail = findViewById(R.id.newEmailEditText);
+        EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
+        EditText newPassword = findViewById(R.id.newPasswordEditText);
+        Button register = findViewById(R.id.registerButton);
+        //Register Fields are invisible
+        newStudentNumber.setVisibility(View.INVISIBLE);
+        newName.setVisibility(View.INVISIBLE);
+        newEmail.setVisibility(View.INVISIBLE);
+        newPhoneNumber.setVisibility(View.INVISIBLE);
+        newPassword.setVisibility(View.INVISIBLE);
+        register.setVisibility(View.INVISIBLE);
 
     }
 
