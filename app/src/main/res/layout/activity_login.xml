@@ -175,14 +175,12 @@
 
     <TextView
         android:id="@+id/clickme"
-        android:layout_width="81dp"
-        android:layout_height="17dp"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
         android:text="dontClick ME"
         app:layout_constraintBottom_toTopOf="@+id/studentNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
