@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
 
         user = (User) getIntent().getExtras().getSerializable("user");
 
+        TextView welcomeText = findViewById(R.id.welcome_view);
+        welcomeText.setText("Welcome " + user.getName());
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
 
