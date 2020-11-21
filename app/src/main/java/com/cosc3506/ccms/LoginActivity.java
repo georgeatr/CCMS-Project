@@ -64,9 +64,10 @@ public class LoginActivity extends AppCompatActivity {
                         String nameDB = snapshot.child(userEnteredStudentNumber).child("phoneNo").getValue(String.class);
                         String phoneDB = snapshot.child(userEnteredStudentNumber).child("username").getValue(String.class);
                         String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
-                        intent.putExtra("userObject", user);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
                         finish();
                     }
                 }

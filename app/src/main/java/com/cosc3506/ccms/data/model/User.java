@@ -19,7 +19,6 @@ public class User implements Serializable {
     ArrayList<Club> enrolledClubs;
     ArrayList<Club> managedClubs;
 
-    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
 
@@ -43,18 +42,21 @@ public class User implements Serializable {
     }
 
     public void leaveClub(Club club, User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.remove(club);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled" + club.getID());
         reference.removeValue();
     }
 
     public void joinClub(Club club, User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.add(club);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled");
         reference.child(club.getID()).setValue(club.getID());
     }
 
     public void createClub(Club club, User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         joinClub(club, user);
         reference = rootNode.getReference("Clubs");
         reference.child(String.valueOf(club.getID())).setValue(club);
@@ -64,6 +66,7 @@ public class User implements Serializable {
 
 
     public boolean dropFromManager(Club club, User manager){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         ArrayList<User> managers = club.getManagers();
         if (managers.size()>1) { //check if there are other managers for that club
             managers.remove(manager);
@@ -77,6 +80,7 @@ public class User implements Serializable {
     }
 
     public void promoteToManager(Club club, User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
         reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
         ArrayList<User> managers = club.getManagers();
