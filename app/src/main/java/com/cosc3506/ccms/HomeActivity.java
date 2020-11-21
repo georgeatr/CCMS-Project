@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
+
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
 
