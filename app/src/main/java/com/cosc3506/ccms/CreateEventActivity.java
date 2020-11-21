@@ -38,25 +38,37 @@ public class CreateEventActivity extends AppCompatActivity {
         nEDate = findViewById(R.id.newEventDateEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
 
-        String newEventName = nEN.getText().toString();
-        String newEventDescription = nEDesc.getText().toString();
-        String newEventID = nEID.getText().toString();
-        String newEventCapacity = nEC.getText().toString();
-        String newEventStartTime = nEST.getText().toString();
-        String newEventEndTime = nEET.getText().toString();
-        String newEventLocation = nEL.getText().toString();
-        String newEventDate = nEDate.getText().toString();
-        String newEventBudget = nEB.getText().toString();
-
-        TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
+        final TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
         fieldsNotFilledError.setVisibility(View.INVISIBLE);
-
 
         createEvent = findViewById(R.id.createNewEventButton);
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                String newEventName = nEN.getText().toString();
+                String newEventDescription = nEDesc.getText().toString();
+                String newEventID = nEID.getText().toString();
+                String newEventCapacity = nEC.getText().toString();
+                String newEventStartTime = nEST.getText().toString();
+                String newEventEndTime = nEET.getText().toString();
+                String newEventLocation = nEL.getText().toString();
+                String newEventDate = nEDate.getText().toString();
+                String newEventBudget = nEB.getText().toString();
+
+                if( newEventName.isEmpty() ||
+                    newEventDescription.isEmpty() ||
+                    newEventID.isEmpty() ||
+                    newEventCapacity.isEmpty() ||
+                    newEventStartTime.isEmpty() ||
+                    newEventEndTime.isEmpty() ||
+                    newEventLocation.isEmpty() ||
+                    newEventDate.isEmpty() ||
+                    newEventBudget.isEmpty()){
+
+                    fieldsNotFilledError.setVisibility(View.VISIBLE);
+
+                }
             }
         });
 

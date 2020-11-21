@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPassword"
+        android:inputType="textPersonName"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/newStudentNumberEditText"
         app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText"
