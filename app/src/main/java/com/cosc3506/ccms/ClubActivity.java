@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class ClubActivity extends AppCompatActivity {
 
     String clubName;
+    String test;
     String clubDescription = "But Can you do this??????";
     ArrayList eventList = new ArrayList(Arrays.asList("Event1","Event2","Event3","Event4","Event5","Event6","Event7"));
     ArrayList memberList = new ArrayList(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
