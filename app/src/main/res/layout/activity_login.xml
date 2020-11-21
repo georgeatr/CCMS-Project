@@ -73,7 +73,9 @@
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="createUser"
         android:text="Register"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +89,8 @@
         android:hint="Name"
         android:inputType="textPassword"
         app:layout_constraintStart_toEndOf="@+id/newStudentNumberEditText"
-        app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText" />
+        app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText"
+        tools:visibility="invisible" />
 
     <EditText
         android:id="@+id/newPasswordEditText"
@@ -97,6 +100,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +116,8 @@
         android:hint="Student Number"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        tools:visibility="invisible" />
 
     <EditText
         android:id="@+id/newEmailEditText"
@@ -124,7 +129,8 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newStudentNumberEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/newStudentNumberEditText"
+        tools:visibility="invisible" />
 
     <EditText
         android:id="@+id/newPhoneNumberEditText"
@@ -134,6 +140,7 @@
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
