@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
+import java.net.UnknownServiceException;
 import java.util.ArrayList;
 
 public class User implements Serializable {
@@ -67,7 +68,7 @@ public class User implements Serializable {
 
     public boolean dropFromManager(Club club, User manager){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        ArrayList<String> managers = club.getManagers();
+        ArrayList<User> managers = club.getManagers();
         if (managers.size()>1) { //check if there are other managers for that club
             managers.remove(manager);
             club.setManagers(managers);
@@ -83,7 +84,7 @@ public class User implements Serializable {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
         reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
-        ArrayList<String> managers = club.getManagers();
+        ArrayList<User> managers = club.getManagers();
         managers.add(user.getStudentNumber());
         club.setManagers(managers);
     }
