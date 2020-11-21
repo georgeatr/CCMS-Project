@@ -9,15 +9,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3"));
+    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3","Club4","Club5","Club6","Club7"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +75,9 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(
+        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,new Intent(
                 this,ClubActivity.class),clubList);
-        clubsView.setAdapter(customAdapter);
+        clubsView.setAdapter(clubCustomAdapter);
 
     }
 
