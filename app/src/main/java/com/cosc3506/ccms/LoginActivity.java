@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,28 +21,19 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-
+    Button createAccount = findViewById(R.id.createNewAccountButton);
+    final EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
+    final EditText newName = findViewById(R.id.newNameEditText);
+    final EditText newEmail = findViewById(R.id.newEmailEditText);
+    final EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
+    final EditText newPassword = findViewById(R.id.newPasswordEditText);
+    final Button register = findViewById(R.id.registerButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        Button createAccount = findViewById(R.id.createNewAccountButton);
-        final EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
-        final EditText newName = findViewById(R.id.newNameEditText);
-        final EditText newEmail = findViewById(R.id.newEmailEditText);
-        final EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
-        final EditText newPassword = findViewById(R.id.newPasswordEditText);
-        final Button register = findViewById(R.id.registerButton);
-        //Register Fields are invisible
-        newStudentNumber.setVisibility(View.INVISIBLE);
-        newName.setVisibility(View.INVISIBLE);
-        newEmail.setVisibility(View.INVISIBLE);
-        newPhoneNumber.setVisibility(View.INVISIBLE);
-        newPassword.setVisibility(View.INVISIBLE);
-        register.setVisibility(View.INVISIBLE);
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,19 +47,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User u = new User(  newStudentNumber.getText().toString(),
-                        newName.getText().toString(),
-                        newPhoneNumber.getText().toString(),
-                        newEmail.getText().toString(),
-                        newPassword.getText().toString());
-
-                //Do something with the new User
-            }
-        });
-
     }
 
     public void createUser(View view){
@@ -74,11 +54,11 @@ public class LoginActivity extends AppCompatActivity {
         DatabaseReference reference = rootNode.getReference("Users");
 
         //TODO change the Strings to getting text from the EditTexts
-        String studentNumber = "90";
-        String name = "no";
-        String phone = "no";
-        String email = "no";
-        String password = "no";
+        String studentNumber = newStudentNumber.getText().toString();
+        String name = newName.getText().toString();
+        String phone = newPhoneNumber.getText().toString();
+        String email = newEmail.getText().toString();
+        String password = newPassword.getText().toString();
 
         User user = new User(studentNumber, name, phone, email, password);
 
