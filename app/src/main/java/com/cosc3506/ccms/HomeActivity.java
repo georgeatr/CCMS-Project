@@ -3,6 +3,7 @@ package com.cosc3506.ccms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,8 @@ public class HomeActivity extends AppCompatActivity {
 
         user = (User) getIntent().getExtras().getSerializable("user");
 
+        TextView welcomeText = findViewById(R.id.welcome_view);
+        welcomeText.setText("Welcome " + user.getName());
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
 
