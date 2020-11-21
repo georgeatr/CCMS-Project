@@ -18,13 +18,13 @@ public class TransactionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
 
-    }
-
-    public void signChange(View view){
-
         sign = findViewById(R.id.signSwitch);
         plus = findViewById(R.id.plusTextView);
         minus = findViewById(R.id.minusTextView);
+
+    }
+
+    public void signChange(View view){
 
         if(sign.isChecked()){
             plus.setVisibility(View.INVISIBLE);
