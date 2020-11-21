@@ -41,16 +41,18 @@ public class HomeActivity extends AppCompatActivity {
         user = (User) getIntent().getExtras().getSerializable("user");
 
         ArrayList<Club> clubs = new ArrayList<>();
+
         /*
         for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
-
+            clubs.add(getClub(user.getEnrolledClubs().get(i)));
         }
-        */
-        /*
+
+         */
+
         for(int i = 0; i < clubs.size();i++){
             clubList.add(clubs.get(i).getName());
         }
-        */
+
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
 
