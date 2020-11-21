@@ -11,6 +11,7 @@
         android:id="@+id/joinClubButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
+        android:onClick="joinClub"
         android:text="Join Club"
         app:layout_constraintStart_toEndOf="@+id/joinClubEditText"
         app:layout_constraintTop_toTopOf="@+id/joinClubEditText" />
