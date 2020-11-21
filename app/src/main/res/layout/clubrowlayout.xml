@@ -5,9 +5,11 @@
     android:id="@+id/rowLayout_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignWithParentIfMissing="false"
     android:layout_marginBottom="50dp"
-    android:orientation="vertical"
-    android:background="@drawable/customborder">
+    android:background="@drawable/customborder"
+    android:gravity="center"
+    android:orientation="vertical">
     <!--
     items for a single row of RecyclerView
     -->
@@ -18,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:shadowColor="@color/Black"
+        android:textAlignment="center"
         android:textColor="#333"
         android:textSize="20sp" />
 

@@ -70,7 +70,7 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791"
+        app:layout_constraintVertical_bias="0.813"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <androidx.recyclerview.widget.RecyclerView

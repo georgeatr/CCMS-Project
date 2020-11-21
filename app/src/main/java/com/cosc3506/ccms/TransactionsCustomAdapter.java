@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapter.ViewHolder> {
+public class TransactionsCustomAdapter extends RecyclerView.Adapter<TransactionsCustomAdapter.ViewHolder> {
 
     private ArrayList localDataSet;
     Context context;
@@ -36,7 +36,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
     }
 
-    public MemberCustomAdapter(Context context, ArrayList dataSet) {
+    public TransactionsCustomAdapter(Context context, ArrayList dataSet) {
         this.context = context;
         localDataSet = dataSet;
     }
