@@ -15,7 +15,7 @@ public class TransactionActivity extends AppCompatActivity {
         Switch sign = findViewById(R.id.signSwitch);
 
 
-        
+
 
 
     }
