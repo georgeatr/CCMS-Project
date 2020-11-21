@@ -2,11 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:onClick="submitChanges"
     tools:context=".TransactionActivity">
 
     <Switch
@@ -19,6 +16,38 @@
         app:layout_constraintEnd_toStartOf="@+id/amountEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
+    <Button
+        android:id="@+id/submitChangesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:text="Submit Changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
+
+    <TextView
+        android:id="@+id/editFundsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Edit Funds"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
 
     <EditText
         android:id="@+id/amountEditText"
@@ -33,29 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editFundsTextView" />
 
     <TextView
-        android:id="@+id/editFundsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Edit Funds"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/plusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
-        app:layout_constraintEnd_toStartOf="@+id/moneyTextView"
-        app:layout_constraintStart_toEndOf="@+id/signSwitch"
-        app:layout_constraintTop_toTopOf="@+id/amountEditText" />
-
-    <TextView
         android:id="@+id/minusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,6 +71,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintEnd_toStartOf="@+id/moneyTextView"
         app:layout_constraintStart_toEndOf="@+id/signSwitch"
+        app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
+    <TextView
+        android:id="@+id/moneyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+        app:layout_constraintEnd_toStartOf="@+id/amountEditText"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
 
     <TextView
@@ -80,32 +96,13 @@
         app:layout_constraintTop_toBottomOf="@+id/submitChangesButton" />
 
     <TextView
-        android:id="@+id/moneyTextView"
+        android:id="@+id/plusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
+        android:text="+"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
-        app:layout_constraintEnd_toStartOf="@+id/amountEditText"
+        app:layout_constraintEnd_toStartOf="@+id/moneyTextView"
+        app:layout_constraintStart_toEndOf="@+id/signSwitch"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
-
-    <Button
-        android:id="@+id/submitChangesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:text="Submit Changes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
