@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".TransactionActivity" >
+    android:onClick="submitChanges"
+    tools:context=".TransactionActivity">
 
     <Switch
         android:id="@+id/signSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="signChange"
         android:text="+/-"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintEnd_toStartOf="@+id/amountEditText"
@@ -74,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/submitChangesButton" />
 
     <TextView
         android:id="@+id/moneyTextView"
@@ -85,4 +87,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintEnd_toStartOf="@+id/amountEditText"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
+    <Button
+        android:id="@+id/submitChangesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:text="Submit Changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
