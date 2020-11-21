@@ -2,14 +2,11 @@ package com.cosc3506.ccms;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.cosc3506.ccms.data.model.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
 
@@ -18,16 +15,25 @@ public class CreateEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-        final EditText newEventName = findViewById(R.id.newEventNameEditText);
-        final EditText newEventDescription = findViewById(R.id.newEventDescriptionEditText);
-        final EditText newEventID = findViewById(R.id.newEventIDEditText);
-        final EditText newEventCapacity = findViewById(R.id.newEventCapacityEditText);
-        final EditText newEventStartTime = findViewById(R.id.newEventStartTimeEditText);
-        final EditText newEventEndTime = findViewById(R.id.newEventEndTimeEditText);
-        final EditText newEventLocation = findViewById(R.id.newEventLocationEditText);
-        final EditText newEventDate = findViewById(R.id.newEventDateEditText);
-        final EditText newEventBudget = findViewById(R.id.newEventBudgetEditTextDec);
-        final TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
+        EditText nEN = findViewById(R.id.newEventNameEditText);
+        EditText nEDesc = findViewById(R.id.newEventDescriptionEditText);
+        EditText nEID = findViewById(R.id.newEventIDEditText);
+        EditText nEC = findViewById(R.id.newEventCapacityEditText);
+        EditText nEST = findViewById(R.id.newEventStartTimeEditText);
+        EditText nEET = findViewById(R.id.newEventEndTimeEditText);
+        EditText nEL = findViewById(R.id.newEventLocationEditText);
+        EditText nEDate = findViewById(R.id.newEventDateEditText);
+        EditText nEB = findViewById(R.id.newEventBudgetEditTextDec);
+
+        String newEventName = nEN.getText().toString();
+        String newEventDescription = nEDesc.getText().toString();
+        String newEventID = nEID.getText().toString();
+        String newEventCapacity = nEC.getText().toString();
+        String newEventStartTime = nEST.getText().toString();
+        String newEventEndTime = nEET.getText().toString();
+
+
+        TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
         fieldsNotFilledError.setVisibility(View.INVISIBLE);
 
         Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();

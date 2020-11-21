@@ -40,13 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 
         reference.child(studentNumber).setValue(user);
 
+
         Button createAccount = findViewById(R.id.createNewAccountButton);
-        EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
-        EditText newName = findViewById(R.id.newNameEditText);
-        EditText newEmail = findViewById(R.id.newEmailEditText);
-        EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
-        EditText newPassword = findViewById(R.id.newPasswordEditText);
-        Button register = findViewById(R.id.registerButton);
+        final EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
+        final EditText newName = findViewById(R.id.newNameEditText);
+        final EditText newEmail = findViewById(R.id.newEmailEditText);
+        final EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
+        final EditText newPassword = findViewById(R.id.newPasswordEditText);
+        final Button register = findViewById(R.id.registerButton);
         //Register Fields are invisible
         newStudentNumber.setVisibility(View.INVISIBLE);
         newName.setVisibility(View.INVISIBLE);
@@ -54,6 +55,32 @@ public class LoginActivity extends AppCompatActivity {
         newPhoneNumber.setVisibility(View.INVISIBLE);
         newPassword.setVisibility(View.INVISIBLE);
         register.setVisibility(View.INVISIBLE);
+
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newStudentNumber.setVisibility(View.VISIBLE);
+                newName.setVisibility(View.VISIBLE);
+                newEmail.setVisibility(View.VISIBLE);
+                newPhoneNumber.setVisibility(View.VISIBLE);
+                newPassword.setVisibility(View.VISIBLE);
+                register.setVisibility(View.VISIBLE);
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                User u = new User(  newStudentNumber.getText().toString(),
+                                    newName.getText().toString(),
+                                    newPhoneNumber.getText().toString(),
+                                    newEmail.getText().toString(),
+                                    newPassword.getText().toString());
+
+                //Do something with the new User
+            }
+        });
+
 
     }
 
