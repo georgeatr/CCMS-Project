@@ -59,4 +59,8 @@ public class ClubActivity extends AppCompatActivity {
     public void onClickAddEvent(View view) {
         startActivity(new Intent(ClubActivity.this,CreateEventActivity.class));
     }
+
+    public void onClickCheckTransactions(View view) {
+        startActivity(new Intent(ClubActivity.this,TransactionActivity.class));
+    }
 }
