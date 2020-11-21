@@ -26,11 +26,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Testing
+    }
 
+    public void createUser(View view){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
+        //TODO change the Strings to getting text from the EditTexts
         String studentNumber = "90";
         String name = "no";
         String phone = "no";
@@ -40,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(studentNumber, name, phone, email, password);
 
         reference.child(studentNumber).setValue(user);
-
     }
+
 
     public void login(View view) {
         //Validate Login Info
@@ -51,14 +53,16 @@ public class LoginActivity extends AppCompatActivity {
         final String userEnteredPassword = password.getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        checkUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String passwordFromDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
                         //TODO login and go to Home
+
                         startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        finish();
                     }
                 }
             }
