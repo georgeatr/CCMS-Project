@@ -20,12 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
 
     Button createAccount = findViewById(R.id.createNewAccountButton);
-    final EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
-    final EditText newName = findViewById(R.id.newNameEditText);
-    final EditText newEmail = findViewById(R.id.newEmailEditText);
-    final EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
-    final EditText newPassword = findViewById(R.id.newPasswordEditText);
-    final Button register = findViewById(R.id.registerButton);
+    EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
+    EditText newName = findViewById(R.id.newNameEditText);
+    EditText newEmail = findViewById(R.id.newEmailEditText);
+    EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
+    EditText newPassword = findViewById(R.id.newPasswordEditText);
+    Button register = findViewById(R.id.registerButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
