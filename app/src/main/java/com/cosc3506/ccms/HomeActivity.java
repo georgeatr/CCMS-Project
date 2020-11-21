@@ -11,16 +11,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.cosc3506.ccms.data.model.User;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity {
 
     User user;
-    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3","Club4","Club5","Club6","Club7"));
-
+    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +36,12 @@ public class HomeActivity extends AppCompatActivity {
         //Create the linear layout manager
         LinearLayoutManager manager = new LinearLayoutManager(clubsView.getContext());
         clubsView.setLayoutManager(manager);
+        clubList.add(user.getStudentNumber());
 
         //Create and apply Adapter
-        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,new Intent(
+        CustomAdapter customAdapter = new CustomAdapter(this,new Intent(
                 this,ClubActivity.class),clubList);
-        clubsView.setAdapter(clubCustomAdapter);
+        clubsView.setAdapter(customAdapter);
 
 
 

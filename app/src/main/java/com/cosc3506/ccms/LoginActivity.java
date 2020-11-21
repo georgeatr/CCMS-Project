@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,18 +21,26 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button createAccount = findViewById(R.id.createNewAccountButton);
-    EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
-    EditText newName = findViewById(R.id.newNameEditText);
-    EditText newEmail = findViewById(R.id.newEmailEditText);
-    EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
-    EditText newPassword = findViewById(R.id.newPasswordEditText);
-    Button register = findViewById(R.id.registerButton);
+    Button createAccount;
+    EditText newStudentNumber;
+    EditText newName;
+    EditText newEmail ;
+    EditText newPhoneNumber;
+    EditText newPassword;
+    Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        createAccount = findViewById(R.id.createNewAccountButton);
+        newStudentNumber = findViewById(R.id.newStudentNumberEditText);
+        newName = findViewById(R.id.newNameEditText);
+        newEmail = findViewById(R.id.newEmailEditText);
+        newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
+        newPassword = findViewById(R.id.newPasswordEditText);
+        register = findViewById(R.id.registerButton);
 
 
         createAccount.setOnClickListener(new View.OnClickListener() {
