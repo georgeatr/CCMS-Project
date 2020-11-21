@@ -33,9 +33,7 @@ public class CreateEventActivity extends AppCompatActivity {
         nEET = findViewById(R.id.newEventEndDateTimeEditText);
         nEL = findViewById(R.id.newEventLocationEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
-
-        //Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();
-
+        
     }
 
 
