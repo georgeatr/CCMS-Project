@@ -46,8 +46,8 @@
 
     <EditText
         android:id="@+id/newEventBudgetEditTextDec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Event Budget"
@@ -58,56 +58,42 @@
         app:layout_constraintTop_toBottomOf="@+id/newEventLocationEditText" />
 
     <EditText
-        android:id="@+id/newEventStartTimeEditText"
+        android:id="@+id/newEventStartDateTimeEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Event Start"
-        android:inputType="time"
+        android:inputType="datetime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventIDEditText" />
 
     <EditText
-        android:id="@+id/newEventEndTimeEditText"
+        android:id="@+id/newEventEndDateTimeEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="68dp"
         android:ems="10"
         android:hint="Event End"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/newEventStartTimeEditText"
+        android:inputType="datetime"
+        app:layout_constraintBottom_toBottomOf="@+id/newEventStartDateTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventStartTimeEditText" />
-
-    <EditText
-        android:id="@+id/newEventDateEditText"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Event Date"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="@+id/newEventLocationEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
-        app:layout_constraintStart_toEndOf="@+id/newEventLocationEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventLocationEditText" />
+        app:layout_constraintStart_toEndOf="@+id/newEventStartDateTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventStartDateTimeEditText" />
 
     <EditText
         android:id="@+id/newEventLocationEditText"
-        android:layout_width="170dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginStart="52dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Event Location"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEventStartTimeEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/newEventStartDateTimeEditText" />
 
     <TextView
         android:id="@+id/errorTextView"
@@ -153,9 +139,9 @@
         android:layout_height="wrap_content"
         android:text="To"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/newEventStartTimeEditText"
-        app:layout_constraintEnd_toStartOf="@+id/newEventEndTimeEditText"
-        app:layout_constraintStart_toEndOf="@+id/newEventStartTimeEditText"
-        app:layout_constraintTop_toTopOf="@+id/newEventStartTimeEditText" />
+        app:layout_constraintBottom_toBottomOf="@+id/newEventStartDateTimeEditText"
+        app:layout_constraintEnd_toStartOf="@+id/newEventEndDateTimeEditText"
+        app:layout_constraintStart_toEndOf="@+id/newEventStartDateTimeEditText"
+        app:layout_constraintTop_toTopOf="@+id/newEventStartDateTimeEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

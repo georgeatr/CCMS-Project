@@ -12,14 +12,14 @@ public class Event{
         String address;
         String startDate;
         String endDate;
-        double cost;
-        int capacity;
+        String cost;
+        String capacity;
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
     public Event(String ID, String name,  String description, String address, String startDate,
-                 String endDate, int cost, int capacity) {
+                 String endDate, String cost, String capacity) {
         this.ID = ID;
         this.name = name;
         this.description = description;
@@ -96,19 +96,19 @@ public class Event{
         this.endDate = endDate;
     }
 
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 }
