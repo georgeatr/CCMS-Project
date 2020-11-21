@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button createAccount;
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //FOR TESTING
         clickme.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -85,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goHome(String studentNumber,String name, String phone,String email, String password){
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        User user = new User(studentNumber,name,phone,email,password);
+        User user = new User(studentNumber,name,phone,email,new ArrayList<String>(), password, new ArrayList<String>());
         intent.putExtra("user", user);
         startActivity(intent);
         finish();
@@ -106,9 +109,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String passwordDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
                     if (passwordDB.equals(userEnteredPassword)) {
-                        String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
-                        String nameDB = snapshot.child(userEnteredStudentNumber).child("phoneNo").getValue(String.class);
-                        String phoneDB = snapshot.child(userEnteredStudentNumber).child("username").getValue(String.class);
+                        String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("studentNumber").getValue(String.class);
+                        String nameDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
+                        String phoneDB = snapshot.child(userEnteredStudentNumber).child("phone").getValue(String.class);
                         String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
                         goHome(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
                     }

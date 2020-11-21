@@ -16,13 +16,13 @@ public class User implements Serializable {
     String phone;
     String email;
     String password;
-    ArrayList<Club> enrolledClubs;
-    ArrayList<Club> managedClubs;
+    ArrayList<String> enrolledClubs;
+    ArrayList<String> managedClubs;
 
     DatabaseReference reference;
 
 
-    public User(String studentNumber, String name, String phone, String email, ArrayList<Club> enrolledClubs, String password, ArrayList<Club> managedClubs) {
+    public User(String studentNumber, String name, String phone, String email, ArrayList<String> enrolledClubs, String password, ArrayList<String> managedClubs) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
@@ -41,23 +41,23 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void leaveClub(Club club, User user){
+    public void leaveClub(String clubID, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        enrolledClubs.remove(club);
-        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled" + club.getID());
+        enrolledClubs.remove(clubID);
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled" + clubID);
         reference.removeValue();
     }
 
-    public void joinClub(Club club, User user){
+    public void joinClub(String clubID, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        enrolledClubs.add(club);
+        enrolledClubs.add(clubID);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled");
-        reference.child(club.getID()).setValue(club.getID());
+        reference.child(clubID).setValue(clubID);
     }
 
     public void createClub(Club club, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        joinClub(club, user);
+        joinClub(club.getID(), user);
         reference = rootNode.getReference("Clubs");
         reference.child(String.valueOf(club.getID())).setValue(club);
         //Make the creator a manager
@@ -122,11 +122,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public ArrayList<Club> getEnrolledClubs() {
+    public ArrayList<String> getEnrolledClubs() {
         return enrolledClubs;
     }
 
-    public void setEnrolledClubs(ArrayList<Club> enrolledClubs) {
+    public void setEnrolledClubs(ArrayList<String> enrolledClubs) {
         this.enrolledClubs = enrolledClubs;
     }
 
@@ -138,11 +138,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public ArrayList<Club> getManagedClubs() {
+    public ArrayList<String> getManagedClubs() {
         return managedClubs;
     }
 
-    public void setManagedClubs(ArrayList<Club> managedClubs) {
+    public void setManagedClubs(ArrayList<String> managedClubs) {
         this.managedClubs = managedClubs;
     }
 }
