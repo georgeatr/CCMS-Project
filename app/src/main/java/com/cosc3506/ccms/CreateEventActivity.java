@@ -72,7 +72,7 @@ public class CreateEventActivity extends AppCompatActivity {
         }
         else {
 
-            
+
 
         }
     }
