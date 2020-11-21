@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/newStudentNumberEditText"
         app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText"
@@ -175,12 +175,13 @@
 
     <TextView
         android:id="@+id/clickme"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
+        android:layout_width="81dp"
+        android:layout_height="17dp"
         android:text="dontClick ME"
-        app:layout_constraintBottom_toTopOf="@+id/studentNumber"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.039" />
 </androidx.constraintlayout.widget.ConstraintLayout>
