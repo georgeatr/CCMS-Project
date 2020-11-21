@@ -67,7 +67,7 @@ public class User implements Serializable {
 
     public boolean dropFromManager(Club club, User manager){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        ArrayList<User> managers = club.getManagers();
+        ArrayList<String> managers = club.getManagers();
         if (managers.size()>1) { //check if there are other managers for that club
             managers.remove(manager);
             club.setManagers(managers);
@@ -83,8 +83,8 @@ public class User implements Serializable {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
         reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
-        ArrayList<User> managers = club.getManagers();
-        managers.add(user);
+        ArrayList<String> managers = club.getManagers();
+        managers.add(user.getStudentNumber());
         club.setManagers(managers);
     }
 

@@ -6,12 +6,18 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TransactionActivity extends AppCompatActivity {
 
     Switch sign;
     TextView plus;
     TextView minus;
+    ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,16 @@ public class TransactionActivity extends AppCompatActivity {
         sign = findViewById(R.id.signSwitch);
         plus = findViewById(R.id.plusTextView);
         minus = findViewById(R.id.minusTextView);
+
+        RecyclerView transactionsRV = findViewById(R.id.transactions_RV);
+
+        LinearLayoutManager transactionsLayoutManager = new LinearLayoutManager(transactionsRV.getContext());
+
+        transactionsRV.setLayoutManager(transactionsLayoutManager);
+
+        TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
+
+        transactionsRV.setAdapter(transactionsAdapter);
 
     }
 

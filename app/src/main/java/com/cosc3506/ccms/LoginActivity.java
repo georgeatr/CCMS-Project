@@ -19,6 +19,10 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText newPassword;
     Button register;
     TextView clickme;
+
+    private static final String TAG = "Login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         clickme.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                goHome("","","","","");
+                goHome(new User("","","","",""));
             }
         });
 
@@ -78,17 +84,18 @@ public class LoginActivity extends AppCompatActivity {
         String phone = newPhoneNumber.getText().toString();
         String email = newEmail.getText().toString();
         String password = newPassword.getText().toString();
+        ArrayList<String> clubs = new ArrayList<String>();
+        ArrayList<String> events = new ArrayList<String>();
 
-        User user = new User(studentNumber, name, phone, email, password);
+        User user = new User(studentNumber, name, phone, email, clubs, password, events);
 
         reference.child(studentNumber).setValue(user);
 
-        goHome(studentNumber,name,phone,email,password);
+        goHome(user);
     }
 
-    public void goHome(String studentNumber,String name, String phone,String email, String password){
+    public void goHome(User user){
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        User user = new User(studentNumber,name,phone,email,new ArrayList<String>(), password, new ArrayList<String>());
         intent.putExtra("user", user);
         startActivity(intent);
         finish();
@@ -101,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText password = findViewById(R.id.password);
         final String userEnteredStudentNumber = studentNumber.getText().toString().trim();
         final String userEnteredPassword = password.getText().toString().trim();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
         checkUser.addValueEventListener(new ValueEventListener() {
             @Override
@@ -113,7 +120,20 @@ public class LoginActivity extends AppCompatActivity {
                         String nameDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
                         String phoneDB = snapshot.child(userEnteredStudentNumber).child("phone").getValue(String.class);
                         String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
-                        goHome(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
+                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child(userEnteredStudentNumber).child("Enrolled").getValue();
+                        Collection clubsColl = clubsMap.values();
+                        ArrayList<String> clubs = new ArrayList<String>();
+                        for (Object value : clubsColl){
+                            clubs.add(value.toString());
+                        }
+//                        Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child(userEnteredStudentNumber).child("Managed").getValue();
+//                        Collection managedColl = managedMap.values();
+                        ArrayList<String> managed = new ArrayList<String>();
+//                        for (Object value : managedColl){
+//                            managed.add(value.toString());
+//                        }
+                        User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,clubs,passwordDB,managed);
+                        goHome(user);
                     }
                 }
             }
