@@ -7,25 +7,42 @@
     android:background="@drawable/gradient_color"
     tools:context=".HomeActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="417dp"
+        android:layout_height="65dp"
+        android:background="@color/black"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/welcome_view"
+            android:layout_width="328dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="4dp"
+            android:text="TextView"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
         <ImageButton
             android:id="@+id/logout"
             android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/log_out"
             android:onClick="onClickLogout"
             android:src="@drawable/ic_baseline_sensor_door_24"
-            android:contentDescription="@string/log_out" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -33,15 +50,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/join_club_or_create_club"
         android:onClick="onClickAddClub"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/join_club_or_create_club" />
+        app:layout_constraintVertical_bias="1.0" />
 
 
     <androidx.recyclerview.widget.RecyclerView
