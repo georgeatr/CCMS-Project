@@ -12,6 +12,7 @@ public class Club {
         String description;
         ArrayList<User> managers;
 
+    //Reconstruct club from database
     public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
         this.ID = ID;
         this.budget = budget;
@@ -23,6 +24,7 @@ public class Club {
         this.managers = managers;
     }
 
+    //Create new club
     public Club(String ID, String budget, String room, String name, String description) {
         this.ID = ID;
         this.budget = budget;
