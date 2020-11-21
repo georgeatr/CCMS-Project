@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Do something with the new User
             }
         });
-        
+
     }
 
     public void createUser(View view){
