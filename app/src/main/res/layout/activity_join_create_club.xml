@@ -7,6 +7,20 @@
     android:background="@drawable/gradient_color"
     tools:context=".JoinCreateClubActivity">
 
+    <TextView
+        android:id="@+id/clubErrorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="createClub"
+        android:text="!!Please Fill in All the Fields!!"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/createClubButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newClubBudgetEditText" />
+
     <Button
         android:id="@+id/joinClubButton"
         android:layout_width="110dp"
@@ -20,17 +34,19 @@
         android:id="@+id/createClubButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="36dp"
+        android:onClick="createClub"
         android:text="Create Club"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newClubBudgetEditText" />
 
     <EditText
         android:id="@+id/newClubIDEditText"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="New Club ID"
         android:inputType="number"
@@ -92,13 +108,12 @@
         android:id="@+id/newClubBudgetEditText"
         android:layout_width="200dp"
         android:layout_height="40dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="New Club Budget"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/createClubButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newClubIDEditText"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintTop_toBottomOf="@+id/newClubIDEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

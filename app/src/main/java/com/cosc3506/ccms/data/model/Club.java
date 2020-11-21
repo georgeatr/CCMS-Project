@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Club {
         String ID;
-        double budget;
-        double remainingFunds;
+        String budget;
+        String remainingFunds;
         String room;
         String name;
         ArrayList<Event> events;
         String description;
         ArrayList<User> managers;
 
-    public Club(String ID, double budget, double remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
+    public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;
@@ -23,7 +23,7 @@ public class Club {
         this.managers = managers;
     }
 
-    public Club(String ID, double budget, String room, String name, String description) {
+    public Club(String ID, String budget, String room, String name, String description) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;
@@ -43,19 +43,19 @@ public class Club {
         this.ID = ID;
     }
 
-    public double getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
-    public double getRemainingFunds() {
+    public String getRemainingFunds() {
         return remainingFunds;
     }
 
-    public void setRemainingFunds(int remainingFunds) {
+    public void setRemainingFunds(String remainingFunds) {
         this.remainingFunds = remainingFunds;
     }
 
