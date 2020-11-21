@@ -31,6 +31,9 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventCapacity = nEC.getText().toString();
         String newEventStartTime = nEST.getText().toString();
         String newEventEndTime = nEET.getText().toString();
+        String newEventLocation = nEL.getText().toString();
+        String newEventDate = nEDate.getText().toString();
+        String newEventBudget = nEB.getText().toString();
 
 
         TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
