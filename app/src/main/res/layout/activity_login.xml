@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:onClick="createUser"
         android:text="Register"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +88,7 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPassword"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/newStudentNumberEditText"
         app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText"
         tools:visibility="invisible" />
@@ -115,6 +116,7 @@
         android:ems="10"
         android:hint="Student Number"
         android:inputType="textPersonName"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
         tools:visibility="invisible" />
@@ -127,6 +129,7 @@
         android:ems="10"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newStudentNumberEditText"
