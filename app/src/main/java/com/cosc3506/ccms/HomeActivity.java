@@ -19,7 +19,7 @@ import java.util.Arrays;
 public class HomeActivity extends AppCompatActivity {
 
     User user;
-    ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3","Club4","Club5","Club6","Club7"));
+    ArrayList<String> clubList = new ArrayList<String>();
 
 
     @Override
@@ -30,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         user = (User) getIntent().getExtras().getSerializable("user");
+        clubList.addAll(user.getEnrolledClubs());
 
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
