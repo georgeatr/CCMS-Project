@@ -1,34 +1,48 @@
 package com.cosc3506.ccms;
 
 import android.os.Bundle;
-
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 
 public class TransactionActivity extends AppCompatActivity {
+
+    Switch sign;
+    TextView plus;
+    TextView minus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        toolBarLayout.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        sign = findViewById(R.id.signSwitch);
+        plus = findViewById(R.id.plusTextView);
+        minus = findViewById(R.id.minusTextView);
+
     }
+
+    public void signChange(View view){
+
+        if(sign.isChecked()){
+            plus.setVisibility(View.INVISIBLE);
+            minus.setVisibility(View.VISIBLE);
+        }
+        else{
+            plus.setVisibility(View.VISIBLE);
+            minus.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void submitChanges(View view){
+        if(sign.isChecked()){
+            //Subtract Funds
+        }
+        else{
+            //Add Funds
+        }
+    }
+
 }

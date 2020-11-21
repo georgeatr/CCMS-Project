@@ -88,8 +88,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPassword"
+        android:inputType="textPersonName"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/newStudentNumberEditText"
         app:layout_constraintStart_toEndOf="@+id/newStudentNumberEditText"
         app:layout_constraintTop_toTopOf="@+id/newStudentNumberEditText"
         tools:visibility="invisible" />
@@ -116,7 +117,7 @@
         android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Student Number"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
@@ -178,10 +179,8 @@
         android:layout_width="81dp"
         android:layout_height="17dp"
         android:text="dontClick ME"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/studentNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
