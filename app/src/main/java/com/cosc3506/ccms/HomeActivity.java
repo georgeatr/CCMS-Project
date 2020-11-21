@@ -18,8 +18,8 @@ import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity {
 
+    User user;
     ArrayList clubList = new ArrayList(Arrays.asList("Club1","Club2","Club3"));
-    User user = (User) getIntent().getExtras().getSerializable("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +28,22 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        User user = (User) getIntent().getExtras().getSerializable("user");
+
         //Get the recycler view
         RecyclerView clubsView = findViewById(R.id.club_list);
 
         //Create the linear layout manager
         LinearLayoutManager manager = new LinearLayoutManager(clubsView.getContext());
         clubsView.setLayoutManager(manager);
+        clubList.add(user.getStudentNumber());
 
         //Create and apply Adapter
         CustomAdapter customAdapter = new CustomAdapter(this,new Intent(
                 this,ClubActivity.class),clubList);
         clubsView.setAdapter(customAdapter);
+
+
 
     }
 
@@ -50,5 +55,5 @@ public class HomeActivity extends AppCompatActivity {
     public void onClickAddClub(View view) {
         startActivity(new Intent(HomeActivity.this,JoinCreateClubActivity.class));
     }
-    
+
 }

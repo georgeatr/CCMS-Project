@@ -3,8 +3,9 @@ package com.cosc3506.ccms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +26,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Testing
+    }
 
+    public void createUser(View view){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
+        //TODO change the Strings to getting text from the EditTexts
         String studentNumber = "90";
         String name = "no";
         String phone = "no";
@@ -39,50 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(studentNumber, name, phone, email, password);
 
         reference.child(studentNumber).setValue(user);
-
-
-        Button createAccount = findViewById(R.id.createNewAccountButton);
-        final EditText newStudentNumber = findViewById(R.id.newStudentNumberEditText);
-        final EditText newName = findViewById(R.id.newNameEditText);
-        final EditText newEmail = findViewById(R.id.newEmailEditText);
-        final EditText newPhoneNumber = findViewById(R.id.newPhoneNumberEditText);
-        final EditText newPassword = findViewById(R.id.newPasswordEditText);
-        final Button register = findViewById(R.id.registerButton);
-        //Register Fields are invisible
-        newStudentNumber.setVisibility(View.INVISIBLE);
-        newName.setVisibility(View.INVISIBLE);
-        newEmail.setVisibility(View.INVISIBLE);
-        newPhoneNumber.setVisibility(View.INVISIBLE);
-        newPassword.setVisibility(View.INVISIBLE);
-        register.setVisibility(View.INVISIBLE);
-
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newStudentNumber.setVisibility(View.VISIBLE);
-                newName.setVisibility(View.VISIBLE);
-                newEmail.setVisibility(View.VISIBLE);
-                newPhoneNumber.setVisibility(View.VISIBLE);
-                newPassword.setVisibility(View.VISIBLE);
-                register.setVisibility(View.VISIBLE);
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User u = new User(  newStudentNumber.getText().toString(),
-                                    newName.getText().toString(),
-                                    newPhoneNumber.getText().toString(),
-                                    newEmail.getText().toString(),
-                                    newPassword.getText().toString());
-
-                //Do something with the new User
-            }
-        });
-
-
     }
+
 
     public void login(View view) {
         //Validate Login Info
@@ -92,15 +53,22 @@ public class LoginActivity extends AppCompatActivity {
         final String userEnteredPassword = password.getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        checkUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    studentNumber.setError(null);
-                    String passwordFromDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
-                    if (passwordFromDB.equals(userEnteredPassword)) {
+                    String passwordDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
+                    if (passwordDB.equals(userEnteredPassword)) {
                         //TODO login and go to Home
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
+                        String nameDB = snapshot.child(userEnteredStudentNumber).child("phoneNo").getValue(String.class);
+                        String phoneDB = snapshot.child(userEnteredStudentNumber).child("username").getValue(String.class);
+                        String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,passwordDB);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }
