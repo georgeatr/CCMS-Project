@@ -35,9 +35,10 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventDate = nEDate.getText().toString();
         String newEventBudget = nEB.getText().toString();
 
-
         TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
         fieldsNotFilledError.setVisibility(View.INVISIBLE);
+
+        
 
         Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();
 
