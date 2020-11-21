@@ -33,7 +33,7 @@ public class CreateEventActivity extends AppCompatActivity {
         nEET = findViewById(R.id.newEventEndDateTimeEditText);
         nEL = findViewById(R.id.newEventLocationEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
-        
+
     }
 
 
