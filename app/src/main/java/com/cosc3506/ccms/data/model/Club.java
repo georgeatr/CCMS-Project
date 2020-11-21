@@ -25,7 +25,7 @@ public class Club {
     }
 
     //Create new club
-    public Club(String ID, String budget, String room, String name, String description) {
+    public Club(String ID, String budget, String room, String name, String description, ArrayList<User> managers) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;

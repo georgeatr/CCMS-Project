@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.User;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class JoinCreateClubActivity extends AppCompatActivity {
 
     User user;
@@ -57,6 +60,8 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         String newClubRoom = nCR.getText().toString();
         String newClubBudget = nCB.getText().toString();
 
+        ArrayList<User> managers = new ArrayList<>((Collection<? extends User>) user);
+
         if( newClubName.isEmpty() ||
             newClubDescription.isEmpty() ||
             newClubID.isEmpty() ||
@@ -72,7 +77,8 @@ public class JoinCreateClubActivity extends AppCompatActivity {
                                 newClubBudget,
                                 newClubRoom,
                                 newClubName,
-                                newClubDescription);
+                                newClubDescription,
+                                managers);
 
             //Do something with new Club
 
