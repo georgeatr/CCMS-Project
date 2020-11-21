@@ -23,7 +23,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="COSC Club Management System" >
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
