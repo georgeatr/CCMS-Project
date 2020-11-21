@@ -2,10 +2,8 @@ package com.cosc3506.ccms;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,9 +18,6 @@ public class CreateEventActivity extends AppCompatActivity {
     EditText nEL;
     EditText nEDate;
     EditText nEB;
-
-    TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
-    Button createEvent = findViewById(R.id.createNewEventButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +34,13 @@ public class CreateEventActivity extends AppCompatActivity {
         nEDate = findViewById(R.id.newEventDateEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
 
-        fieldsNotFilledError.setVisibility(View.INVISIBLE);
-
-        Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"!!Please Fill in All the Fields!!", Toast.LENGTH_SHORT).show();
 
     }
 
 
     public void createEvent(View view){
+
         String newEventName = nEN.getText().toString();
         String newEventDescription = nEDesc.getText().toString();
         String newEventID = nEID.getText().toString();
@@ -57,7 +51,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventDate = nEDate.getText().toString();
         String newEventBudget = nEB.getText().toString();
 
-        if( newEventName.isEmpty() ||
+        if(     newEventName.isEmpty() ||
                 newEventDescription.isEmpty() ||
                 newEventID.isEmpty() ||
                 newEventCapacity.isEmpty() ||
@@ -67,6 +61,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 newEventDate.isEmpty() ||
                 newEventBudget.isEmpty()){
 
+            TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
             fieldsNotFilledError.setVisibility(View.VISIBLE);
 
         }
@@ -75,6 +70,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         }
+
+
+
+
     }
 
 
