@@ -58,12 +58,12 @@ public class TransactionActivity extends AppCompatActivity {
     public void submitChanges(View view){
         if(sign.isChecked()){
             //Subtract Funds
-            amount.setText("");
         }
         else{
             //Add Funds
-            amount.setText("");
         }
+        
+        amount.setText("");
     }
 
 }
