@@ -53,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
             clubList.add(clubs.get(i).getName());
         }
 
+        clubList.add("Hi");
+
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
 
