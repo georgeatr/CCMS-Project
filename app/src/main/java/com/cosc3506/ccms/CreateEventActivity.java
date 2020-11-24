@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,8 +58,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 newEventLocation.isEmpty() ||
                 newEventBudget.isEmpty()){
 
-            TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
-            fieldsNotFilledError.setVisibility(View.VISIBLE);
+            Toast.makeText(this,"Please fill out all the fields ",Toast.LENGTH_SHORT);
 
         }
         else {
