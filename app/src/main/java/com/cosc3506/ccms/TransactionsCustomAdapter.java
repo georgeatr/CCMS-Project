@@ -19,19 +19,22 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
     Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView transactionTextView;
+        private final TextView amountTextView;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            textView = (TextView) view.findViewById(R.id.member_name);
-            linearLayout = (LinearLayout) view.findViewById(R.id.member_rowLayout_linear);
+            transactionTextView = (TextView) view.findViewById(R.id.transaction_number);
+            amountTextView = (TextView) view.findViewById(R.id.transaction_amount);
+            linearLayout = (LinearLayout) view.findViewById(R.id.transaction_rowLayout_linear);
         }
 
-        public TextView getTextView() {
-            return textView;
+        public TextView getTransactionTextView() {
+            return transactionTextView;
         }
+        public TextView getAmountTextView(){ return amountTextView; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -46,7 +49,7 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.memberrowlayout, viewGroup, false);
+                .inflate(R.layout.transactionsrowlayout, viewGroup, false);
 
         return new ViewHolder(view);
     }
@@ -57,7 +60,8 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText((String)localDataSet.get(position));
+        viewHolder.getTransactionTextView().setText((String)localDataSet.get(position));
+        viewHolder.getAmountTextView().setText("$ 1,000,000");
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 

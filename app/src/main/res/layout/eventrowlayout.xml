@@ -3,6 +3,7 @@
     android:id="@+id/event_rowLayout_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/customborder"
     android:orientation="vertical">
     <!--
