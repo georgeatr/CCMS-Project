@@ -1,14 +1,9 @@
 package com.cosc3506.ccms.data.model;
 
-import android.os.Parcel;
-import android.widget.Toast;
-
-import com.cosc3506.ccms.ClubActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
-import java.net.UnknownServiceException;
 import java.util.ArrayList;
 
 public class User implements Serializable {
@@ -85,7 +80,7 @@ public class User implements Serializable {
         reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
         reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
         ArrayList<User> managers = club.getManagers();
-        managers.add(user.getStudentNumber());
+        managers.add(user);
         club.setManagers(managers);
     }
 
