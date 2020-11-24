@@ -112,7 +112,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
 
-                    club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
+                   // club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
                 }
             }
 
