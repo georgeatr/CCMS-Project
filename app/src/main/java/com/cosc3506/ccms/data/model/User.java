@@ -18,8 +18,8 @@ public class User implements Serializable {
     String password;
     ArrayList<String> enrolledClubs;
     ArrayList<String> managedClubs;
-
     DatabaseReference reference;
+    //Please work
 
 
     public User(String studentNumber, String name, String phone, String email, ArrayList<String> enrolledClubs, String password, ArrayList<String> managedClubs) {
