@@ -59,7 +59,7 @@ public class User implements Serializable {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         joinClub(club.getID(), user);
         reference = rootNode.getReference("Clubs");
-        reference.child(String.valueOf(club.getID())).setValue(club);
+        reference.child(club.getID()).setValue(club);
         //Make the creator a manager
         promoteToManager(club,user);
     }

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cosc3506.ccms.data.model.User;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -109,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         final String userEnteredStudentNumber = studentNumber.getText().toString().trim();
         final String userEnteredPassword = password.getText().toString().trim();
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
-        checkUser.addValueEventListener(new ValueEventListener() {
+        final Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
