@@ -3,8 +3,8 @@
     android:id="@+id/transaction_rowLayout_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_marginBottom="10dp"
+    android:orientation="vertical"
     android:background="@drawable/customborder">
     <!--
     items for a single row of RecyclerView
@@ -27,4 +27,5 @@
         android:shadowColor="@color/Black"
         android:textColor="#333"
         android:textSize="20sp" />
+
 </LinearLayout>
