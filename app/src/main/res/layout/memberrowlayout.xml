@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/transaction_rowLayout_linear"
+    android:id="@+id/member_rowLayout_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -10,11 +10,42 @@
     -->
 
     <TextView
-        android:id="@+id/transaction_name"
-        android:layout_width="wrap_content"
+        android:id="@+id/member_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:shadowColor="@color/Black"
         android:textColor="#333"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/member_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:shadowColor="@color/Black"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/remove_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text = "Remove"/>
+
+        <Button
+            android:id="@+id/promote_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Promote"/>
+    </LinearLayout>
+
 </LinearLayout>

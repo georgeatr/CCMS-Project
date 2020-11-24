@@ -25,8 +25,8 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            textView = (TextView) view.findViewById(R.id.transaction_name);
-            linearLayout = (LinearLayout) view.findViewById(R.id.transaction_rowLayout_linear);
+            textView = (TextView) view.findViewById(R.id.member_name);
+            linearLayout = (LinearLayout) view.findViewById(R.id.member_rowLayout_linear);
         }
 
         public TextView getTextView() {

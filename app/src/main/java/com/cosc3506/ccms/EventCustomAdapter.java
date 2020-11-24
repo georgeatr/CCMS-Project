@@ -21,6 +21,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView nameTextView;
         private final TextView dateTextView;
+        private final TextView locationTextView;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
@@ -28,6 +29,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
             // Define click listener for the ViewHolder's View
             nameTextView = (TextView) view.findViewById(R.id.event_name);
             dateTextView = (TextView) view.findViewById(R.id.event_date);
+            locationTextView = (TextView) view.findViewById(R.id.event_location);
             linearLayout = (LinearLayout) view.findViewById(R.id.event_rowLayout_linear);
         }
 
@@ -35,6 +37,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
             return nameTextView;
         }
         public TextView getDateTextView(){ return dateTextView; }
+        public TextView getLocationTextView(){ return locationTextView; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -63,6 +66,8 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         viewHolder.getNameTextView().setText((String)localDataSet.get(position));
 
         viewHolder.getDateTextView().setText("02/02/20");
+
+        viewHolder.getLocationTextView().setText("NW200");
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
