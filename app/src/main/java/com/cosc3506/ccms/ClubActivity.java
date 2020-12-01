@@ -74,7 +74,7 @@ public class ClubActivity extends AppCompatActivity {
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
             eventList.addAll(club.getEvents());
-            clubDescriptionTV.setText(club.getDescription());
+            clubDescriptionTV.setText("Club Description:" + club.getDescription());
         }catch (Exception e){
         }
 
