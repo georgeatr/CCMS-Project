@@ -12,7 +12,8 @@ public class Club {
         String description;
         ArrayList<String> managers;
 
-    public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<String> managers) {
+    public Club(String ID, String budget, String remainingFunds, String room, String name,
+                ArrayList<Event> events, String description, ArrayList<String> managers) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;

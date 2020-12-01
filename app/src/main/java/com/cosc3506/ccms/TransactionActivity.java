@@ -6,7 +6,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -28,15 +27,10 @@ public class TransactionActivity extends AppCompatActivity {
         plus = findViewById(R.id.plusTextView);
         minus = findViewById(R.id.minusTextView);
 
-        RecyclerView transactionsRV = findViewById(R.id.transactions_RV);
+        //RecyclerView transactionsRV = findViewById(R.id.tran)
 
-        LinearLayoutManager transactionsLayoutManager = new LinearLayoutManager(transactionsRV.getContext());
 
-        transactionsRV.setLayoutManager(transactionsLayoutManager);
 
-        TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
-
-        transactionsRV.setAdapter(transactionsAdapter);
 
     }
 
