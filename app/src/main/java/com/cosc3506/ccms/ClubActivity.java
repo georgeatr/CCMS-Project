@@ -33,11 +33,11 @@ public class ClubActivity extends AppCompatActivity {
 
     int x = 0;
     Button refresh;
+    TextView clubDescriptionTV;
     Club club;
     String clubID;
-    String test;
-    String clubDescription = "But Can you do this??????";
-    ArrayList<String> eventList = new ArrayList<>();
+    String clubDescription;
+    ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
 
     @Override
@@ -50,21 +50,14 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
 
-        getClub(clubID);
-        refresh(new View(this));
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
 
-        TextView clubDescriptionTV = findViewById(R.id.clubDescription);
-        clubDescriptionTV.setText(clubDescription);
+        clubDescriptionTV = findViewById(R.id.clubDescription);
+
+
+        getClub(clubID);
+        refresh(new View(this));
 
     }
 
@@ -80,7 +73,8 @@ public class ClubActivity extends AppCompatActivity {
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
-            eventList.add(club.getEvents().get(0).getName());
+            eventList.add(club.getEvents().get(0));
+            clubDescriptionTV.setText(club.getDescription());
         }catch (Exception e){
         }
 
