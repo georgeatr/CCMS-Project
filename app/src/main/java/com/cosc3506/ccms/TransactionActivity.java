@@ -62,7 +62,7 @@ public class TransactionActivity extends AppCompatActivity {
         else{
             //Add Funds
         }
-        
+
         amount.setText("");
     }
 
