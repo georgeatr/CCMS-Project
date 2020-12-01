@@ -3,10 +3,11 @@ package com.cosc3506.ccms;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class CreateEventActivity extends AppCompatActivity {
     EditText nEET;
     EditText nEL;
     EditText nEB;
+
+    Club club;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class CreateEventActivity extends AppCompatActivity {
         nEET = findViewById(R.id.newEventEndDateTimeEditText);
         nEL = findViewById(R.id.newEventLocationEditText);
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
+
+        club = (Club) getIntent().getExtras().getSerializable("club");
 
     }
 
@@ -57,8 +62,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 newEventLocation.isEmpty() ||
                 newEventBudget.isEmpty()){
 
-            TextView fieldsNotFilledError = findViewById(R.id.errorTextView);
-            fieldsNotFilledError.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Please Fill in All the Fields!!!", Toast.LENGTH_SHORT).show();
 
         }
         else {
@@ -66,7 +70,6 @@ public class CreateEventActivity extends AppCompatActivity {
             Event e = new Event(newEventID, newEventName, newEventDescription, newEventLocation, newEventStartDateTime, newEventEndDateTime, newEventBudget, newEventCapacity);
             club.newEvent(e);
 
-            //club.subtractfunds(Double.parseDouble(newEventBudget), newEventName);
             finish();
 
         }

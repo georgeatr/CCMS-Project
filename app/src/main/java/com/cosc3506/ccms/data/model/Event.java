@@ -1,11 +1,8 @@
 package com.cosc3506.ccms.data.model;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import java.io.Serializable;
 
-import java.util.ArrayList;
-
-public class Event{
+public class Event implements Serializable {
         String ID;
         String name;
         String description;
