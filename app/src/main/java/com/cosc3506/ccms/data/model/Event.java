@@ -15,8 +15,6 @@ public class Event{
         String cost;
         String capacity;
 
-    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
 
     public Event(String address, String description,  String name, String ID, String startDate,
                  String cost, String endDate, String capacity) {
@@ -30,21 +28,6 @@ public class Event{
         this.capacity = capacity;
     }
 
-    public void newEvent(Event event, Club club){
-        ArrayList<Event> events = club.getEvents();
-        events.add(event);
-        club.setEvents(events);
-        reference = rootNode.getReference("Clubs/" + club.getID() + "/Events");
-        reference.child(String.valueOf(event.getID())).setValue(event);
-    }
-
-    public void deleteEvent(Event event, Club club){
-        ArrayList<Event> events = club.getEvents();
-        events.remove(event);
-        club.setEvents(events);
-        reference = rootNode.getReference("Clubs/" + club.getID() + "/Events/" + event.getID());
-        reference.removeValue();
-    }
 
     //----------getters and setters
 
