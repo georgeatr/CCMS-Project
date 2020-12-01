@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cosc3506.ccms.data.model.User;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -109,31 +108,32 @@ public class LoginActivity extends AppCompatActivity {
         final EditText password = findViewById(R.id.password);
         final String userEnteredStudentNumber = studentNumber.getText().toString().trim();
         final String userEnteredPassword = password.getText().toString().trim();
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        final Query checkUser = reference.orderByChild("studentNumber").equalTo(userEnteredStudentNumber);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users/" + userEnteredStudentNumber);
+        Query checkUser = reference;
+        final ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String passwordDB = snapshot.child(userEnteredStudentNumber).child("password").getValue(String.class);
+                    String passwordDB = snapshot.child("password").getValue(String.class);
                     if (passwordDB.equals(userEnteredPassword)) {
-                        String studentNumberDB = snapshot.child(userEnteredStudentNumber).child("studentNumber").getValue(String.class);
-                        String nameDB = snapshot.child(userEnteredStudentNumber).child("name").getValue(String.class);
-                        String phoneDB = snapshot.child(userEnteredStudentNumber).child("phone").getValue(String.class);
-                        String emailDB = snapshot.child(userEnteredStudentNumber).child("email").getValue(String.class);
-                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child(userEnteredStudentNumber).child("Enrolled").getValue();
+                        String studentNumberDB = snapshot.child("studentNumber").getValue(String.class);
+                        String nameDB = snapshot.child("name").getValue(String.class);
+                        String phoneDB = snapshot.child("phone").getValue(String.class);
+                        String emailDB = snapshot.child("email").getValue(String.class);
+                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child("Enrolled").getValue();
                         Collection clubsColl = clubsMap.values();
                         ArrayList<String> clubs = new ArrayList<String>();
                         for (Object value : clubsColl){
                             clubs.add(value.toString());
                         }
-//                        Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child(userEnteredStudentNumber).child("Managed").getValue();
+//                        Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child("Managed").getValue();
 //                        Collection managedColl = managedMap.values();
                         ArrayList<String> managed = new ArrayList<String>();
 //                        for (Object value : managedColl){
 //                            managed.add(value.toString());
 //                        }
                         User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,clubs,passwordDB,managed);
+                        reference.removeEventListener(this);
                         goHome(user);
                     }
                 }
@@ -143,8 +143,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
+        };
+        checkUser.addListenerForSingleValueEvent(eventListener);
     }
 
 

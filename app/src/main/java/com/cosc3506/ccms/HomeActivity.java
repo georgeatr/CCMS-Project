@@ -30,35 +30,28 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class HomeActivity extends AppCompatActivity {
 
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         user = (User) getIntent().getExtras().getSerializable("user");
 
         ArrayList<Club> clubs = new ArrayList<>();
 
-        ArrayList events = new ArrayList(2);
-        ArrayList  managers = new ArrayList(2);
+//        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
+//            clubs.add(getClub(user.getEnrolledClubs().get(0)));
+//        }
 
-        Club club = new Club("123", "1.23", "69", "4h", "Floor Gang", events, "death", managers);
-
-        user.createClub(club, user);
-
-        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
-            clubs.add(getClub(user.getEnrolledClubs().get(0)));
-        }
-
-        for(int i = 0; i < clubs.size();i++){
-            clubList.add(clubs.get(i).getName());
-        }
+        clubList.addAll(user.getEnrolledClubs());
 
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
@@ -92,9 +85,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public Club getClub(final String clubID){
         final Club[] club = new Club[1];
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Clubs/123");
-        Query checkClub = reference;
-        checkClub.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference clubsRef = rootRef.child("Clubs");
+        Query checkClub = clubsRef;
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -112,9 +106,9 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
                     Collection<Object> eventsColl = eventsMap.values();
-                    for (Object value : eventsColl) {
-                        events.add(getEvents(value, clubID));
-                    }
+//                    for (Object value : eventsColl) {
+//                        events.add(getEvents(value, clubID));
+//                    }
 
 
                     club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
@@ -125,7 +119,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.d("home", error.getMessage());
             }
-        });return club[0];
+        };
+        checkClub.addListenerForSingleValueEvent(eventListener);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return club[0];
     }
 
     private Event getEvents(Object value, String clubID) {
