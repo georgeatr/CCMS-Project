@@ -33,11 +33,11 @@ public class ClubActivity extends AppCompatActivity {
 
     int x = 0;
     Button refresh;
+    TextView clubDescriptionTV;
     Club club;
     String clubID;
-    String test;
-    String clubDescription = "But Can you do this??????";
-    ArrayList<String> eventList = new ArrayList<>();
+    String clubDescription;
+    ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
 
     @Override
@@ -50,21 +50,14 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
 
-        getClub(clubID);
-        refresh(new View(this));
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
 
-        TextView clubDescriptionTV = findViewById(R.id.clubDescription);
-        clubDescriptionTV.setText(clubDescription);
+        clubDescriptionTV = findViewById(R.id.clubDescription);
+
+
+        getClub(clubID);
+        refresh(new View(this));
 
     }
 
@@ -80,7 +73,8 @@ public class ClubActivity extends AppCompatActivity {
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
-            eventList.add(club.getEvents().get(0).getName());
+            eventList.addAll(club.getEvents());
+            clubDescriptionTV.setText(club.getDescription());
         }catch (Exception e){
         }
 
@@ -113,12 +107,17 @@ public class ClubActivity extends AppCompatActivity {
             public void onDataChange(@NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String budget = snapshot.child(clubID).child("budget").getValue(String.class);
-                    String remainingFunds = snapshot.child(clubID).child("remainingFunds").getValue(String.class);
                     String room = snapshot.child(clubID).child("room").getValue(String.class);
                     String name = snapshot.child(clubID).child("name").getValue(String.class);
                     String description = snapshot.child(clubID).child("description").getValue(String.class);
                     ArrayList<Event> events = new ArrayList<Event>();
                     ArrayList<String> managers = new ArrayList<String>();
+                    ArrayList<String> transactions = new ArrayList<>();
+                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
+                    Collection<Object> transactionsColl = transactionsMap.values();
+                    for (Object value : transactionsColl) {
+                        transactions.add(value.toString());
+                    }
                     Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
                     Collection<Object> managersColl = managersMap.values();
                     for (Object value : managersColl) {
@@ -136,7 +135,7 @@ public class ClubActivity extends AppCompatActivity {
                         events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                         eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                     }
-                    club = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
+                    club = new Club(clubID, budget, transactions, room, name, events, description, managers);
                 }
             }
 

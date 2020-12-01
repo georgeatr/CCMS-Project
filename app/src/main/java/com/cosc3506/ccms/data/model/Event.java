@@ -18,8 +18,8 @@ public class Event{
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    public Event(String ID, String name,  String description, String address, String startDate,
-                 String endDate, String cost, String capacity) {
+    public Event(String address, String description,  String name, String ID, String startDate,
+                 String cost, String endDate, String capacity) {
         this.ID = ID;
         this.name = name;
         this.description = description;

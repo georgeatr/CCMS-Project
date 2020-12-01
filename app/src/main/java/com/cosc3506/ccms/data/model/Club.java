@@ -6,23 +6,18 @@ import java.util.ArrayList;
 public class Club implements Serializable {
         String ID;
         String budget;
-        String remainingFunds;
+        ArrayList<String> transactions;
         String room;
         String name;
         ArrayList<Event> events;
         String description;
         ArrayList<String> managers;
 
-
-    //Reconstruct club from database
-    //public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<String> managers) {}
-
-    public Club(String ID, String budget, String remainingFunds, String room, String name,
+    public Club(String ID, String budget, ArrayList<String> transactions, String room, String name,
                 ArrayList<Event> events, String description, ArrayList<String> managers) {
-
         this.ID = ID;
         this.budget = budget;
-        this.remainingFunds = remainingFunds;
+        this.transactions = transactions;
         this.room = room;
         this.name = name;
         this.events = events;
@@ -30,11 +25,10 @@ public class Club implements Serializable {
         this.managers = managers;
     }
 
-    //Create new club
-    public Club(String ID, String budget, String room, String name, String description, ArrayList<String> managers) {
+    public Club(String ID, String budget, String room, String name, String description) {
         this.ID = ID;
         this.budget = budget;
-        this.remainingFunds = remainingFunds;
+        this.transactions = transactions;
         this.room = room;
         this.name = name;
         this.description = description;
@@ -59,12 +53,12 @@ public class Club implements Serializable {
         this.budget = budget;
     }
 
-    public String getRemainingFunds() {
-        return remainingFunds;
+    public ArrayList<String> getTransactions() {
+        return transactions;
     }
 
-    public void setRemainingFunds(String remainingFunds) {
-        this.remainingFunds = remainingFunds;
+    public void setTransactions(ArrayList<String> transactions) {
+        this.transactions = transactions;
     }
 
     public String getRoom() {
