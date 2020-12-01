@@ -35,8 +35,8 @@ public class ClubActivity extends AppCompatActivity {
     String clubID;
     String test;
     String clubDescription = "But Can you do this??????";
-    ArrayList<String> eventList = new ArrayList<>(Arrays.asList("Event1","Event2","Event3","Event4","Event5","Event6","Event7"));
-    ArrayList<String> memberList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
+    ArrayList<String> eventList = new ArrayList<>();
+    ArrayList<String> managerList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,16 @@ public class ClubActivity extends AppCompatActivity {
         TextView clubDescriptionTV = findViewById(R.id.clubDescription);
         clubDescriptionTV.setText(clubDescription);
 
+        //Add events to the array
+        for(int i = 0;i < club.getEvents().size();i++){
+            eventList.add(club.getEvents().get(i).getName());
+        }
+
+        //Add managers to the array
+        for(int i = 0; i < club.getManagers().size();i++){
+            managerList.add(club.getManagers().get(i));
+        }
+
         //Fetch RecyclerViews
         RecyclerView memberListRV = findViewById(R.id.memberListRV);
         RecyclerView eventListRV = findViewById(R.id.eventListRV);
@@ -68,7 +78,7 @@ public class ClubActivity extends AppCompatActivity {
         eventListRV.setLayoutManager(eventLayoutManager);
 
         //Create Adapters
-        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList);
+        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,managerList);
         EventCustomAdapter eventAdapter = new EventCustomAdapter(this,eventList);
 
         //Set Adapters
