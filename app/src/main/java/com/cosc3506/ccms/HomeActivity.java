@@ -66,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
         //Create and apply Adapter
         Intent intent = new Intent(this,ClubActivity.class);
         intent.putExtra("user", user);
-        //intent.putExtra("clubID", )
         startActivity(intent);
         ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,intent,clubList);
         clubsView.setAdapter(clubCustomAdapter);
