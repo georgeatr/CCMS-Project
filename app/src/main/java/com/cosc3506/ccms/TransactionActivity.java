@@ -16,7 +16,7 @@ public class TransactionActivity extends AppCompatActivity {
     Switch sign;
     TextView plus;
     TextView minus;
-    ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4"));
+    ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4","Transaction5","Transaction6"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

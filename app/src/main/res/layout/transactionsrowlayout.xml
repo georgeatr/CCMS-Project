@@ -3,6 +3,7 @@
     android:id="@+id/transaction_rowLayout_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     android:background="@drawable/customborder">
     <!--
@@ -10,11 +11,22 @@
     -->
 
     <TextView
-        android:id="@+id/transaction_name"
-        android:layout_width="wrap_content"
+
+        android:id="@+id/transaction_number"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:shadowColor="@color/Black"
         android:textColor="#333"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/transaction_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:shadowColor="@color/Black"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
 </LinearLayout>
