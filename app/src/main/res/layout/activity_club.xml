@@ -125,4 +125,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.769" />
+
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="refresh"
+        android:text="Show Events"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/eventListRV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/eventListTV"
+        app:layout_constraintTop_toBottomOf="@+id/edit_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

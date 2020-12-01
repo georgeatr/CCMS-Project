@@ -1,8 +1,9 @@
 package com.cosc3506.ccms.data.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Club {
+public class Club implements Serializable {
         String ID;
         String budget;
         String remainingFunds;

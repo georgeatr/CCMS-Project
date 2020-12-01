@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cosc3506.ccms.data.model.Club;
@@ -30,10 +31,13 @@ import java.util.Map;
 
 public class ClubActivity extends AppCompatActivity {
 
+    int x = 0;
+    Button refresh;
+    Club club;
     String clubID;
     String test;
     String clubDescription = "But Can you do this??????";
-    ArrayList<String> eventList = new ArrayList<>(Arrays.asList("Event1","Event2","Event3","Event4","Event5","Event6","Event7"));
+    ArrayList<String> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
 
     @Override
@@ -41,10 +45,20 @@ public class ClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
 
+        refresh = findViewById(R.id.refreshButton);
+
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
 
-        Club club = getClub(clubID);
+        getClub(clubID);
+        refresh(new View(this));
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
@@ -52,6 +66,9 @@ public class ClubActivity extends AppCompatActivity {
         TextView clubDescriptionTV = findViewById(R.id.clubDescription);
         clubDescriptionTV.setText(clubDescription);
 
+    }
+
+    public void refresh(View view){
         //Fetch RecyclerViews
         RecyclerView memberListRV = findViewById(R.id.memberListRV);
         RecyclerView eventListRV = findViewById(R.id.eventListRV);
@@ -59,10 +76,13 @@ public class ClubActivity extends AppCompatActivity {
         //Create both linear layout managers
         LinearLayoutManager memberLayoutManager = new LinearLayoutManager(memberListRV.getContext());
         LinearLayoutManager eventLayoutManager = new LinearLayoutManager(eventListRV.getContext());
-
         //Apply layout managers
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
+        try {
+            eventList.add(club.getEvents().get(0).getName());
+        }catch (Exception e){
+        }
 
         //Create Adapters
         MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList);
@@ -71,7 +91,9 @@ public class ClubActivity extends AppCompatActivity {
         //Set Adapters
         memberListRV.setAdapter(memberAdapter);
         eventListRV.setAdapter(eventAdapter);
-
+        if (x > 0)
+        refresh.setVisibility(View.INVISIBLE);
+        x++;
     }
 
     public void onClickAddEvent(View view) {
@@ -82,8 +104,7 @@ public class ClubActivity extends AppCompatActivity {
         startActivity(new Intent(ClubActivity.this,TransactionActivity.class));
     }
 
-    public Club getClub(final String clubID){
-        final Club[] club = new Club[1];
+    public void getClub(final String clubID){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference clubsRef = rootRef.child("Clubs");
         Query checkClub = clubsRef;
@@ -115,9 +136,7 @@ public class ClubActivity extends AppCompatActivity {
                         events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                         eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                     }
-
-
-                    club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
+                    club = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
                 }
             }
 
@@ -127,12 +146,6 @@ public class ClubActivity extends AppCompatActivity {
             }
         };
         checkClub.addListenerForSingleValueEvent(eventListener);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return club[0];
     }
 
 
