@@ -113,12 +113,17 @@ public class ClubActivity extends AppCompatActivity {
             public void onDataChange(@NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String budget = snapshot.child(clubID).child("budget").getValue(String.class);
-                    String remainingFunds = snapshot.child(clubID).child("remainingFunds").getValue(String.class);
                     String room = snapshot.child(clubID).child("room").getValue(String.class);
                     String name = snapshot.child(clubID).child("name").getValue(String.class);
                     String description = snapshot.child(clubID).child("description").getValue(String.class);
                     ArrayList<Event> events = new ArrayList<Event>();
                     ArrayList<String> managers = new ArrayList<String>();
+                    ArrayList<String> transactions = new ArrayList<>();
+                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
+                    Collection<Object> transactionsColl = transactionsMap.values();
+                    for (Object value : transactionsColl) {
+                        transactions.add(value.toString());
+                    }
                     Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
                     Collection<Object> managersColl = managersMap.values();
                     for (Object value : managersColl) {
@@ -136,7 +141,7 @@ public class ClubActivity extends AppCompatActivity {
                         events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                         eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                     }
-                    club = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
+                    club = new Club(clubID, budget, transactions, room, name, events, description, managers);
                 }
             }
 
