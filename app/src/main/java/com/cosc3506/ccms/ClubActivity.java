@@ -130,7 +130,7 @@ public class ClubActivity extends AppCompatActivity {
                     for (Object value : eventsColl) {
                         String eventString = value.toString().replace("{address=","")
                                 .replace("}","").replace(" description=", "")
-                                .replace(" name=","").replace(" ID=","")
+                                .replace(" name=","").replace(" id=","")
                                 .replace(" startDate=","").replace(" cost=","")
                                 .replace(" endDate=","").replace(" capacity=","");
                         String[] eventStringArray = eventString.split(",");
