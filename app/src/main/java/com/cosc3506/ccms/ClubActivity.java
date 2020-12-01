@@ -73,7 +73,7 @@ public class ClubActivity extends AppCompatActivity {
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
-            eventList.add(club.getEvents().get(0));
+            eventList.addAll(club.getEvents());
             clubDescriptionTV.setText(club.getDescription());
         }catch (Exception e){
         }
