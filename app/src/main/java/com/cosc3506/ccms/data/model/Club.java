@@ -1,5 +1,8 @@
 package com.cosc3506.ccms.data.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -12,6 +15,8 @@ public class Club implements Serializable {
         ArrayList<Event> events;
         String description;
         ArrayList<String> managers;
+
+    DatabaseReference reference;
 
     public Club(String ID, String budget, ArrayList<String> transactions, String room, String name,
                 ArrayList<Event> events, String description, ArrayList<String> managers) {
@@ -33,6 +38,45 @@ public class Club implements Serializable {
         this.name = name;
         this.description = description;
         this.managers = managers;
+    }
+
+    public void addFunds(double money, String transactionName) {
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        double budgetInt = Double.parseDouble(budget);
+        budgetInt = budgetInt + money;
+        setBudget(String.valueOf(budgetInt));
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
+        reference.child(transactionName).setValue(String.valueOf(money));
+        transactions.add(transactionName + ": " + money);
+    }
+
+    public void subtractFunds(double money, String transactionName) {
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        double budgetInt = Double.parseDouble(budget);
+        budgetInt = budgetInt - money;
+        setBudget(String.valueOf(budgetInt));
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
+        reference.child(transactionName).setValue(String.valueOf(money));
+        transactions.add(transactionName + ": " + money);
+    }
+
+    public void newEvent(Event event){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList<Event> events = getEvents();
+        events.add(event);
+        setEvents(events);
+        reference = rootNode.getReference("Clubs/" + getID() + "/Events");
+        reference.child(String.valueOf(event.getID())).setValue(event);
+        subtractFunds(Double.parseDouble(event.getCost()), "Event: " + event.getName());
+    }
+
+    public void deleteEvent(Event event){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList<Event> events = getEvents();
+        events.remove(event);
+        setEvents(events);
+        reference = rootNode.getReference("Clubs/" + getID() + "/Events/" + event.getID());
+        reference.removeValue();
     }
 
     //-----------getters and setters
