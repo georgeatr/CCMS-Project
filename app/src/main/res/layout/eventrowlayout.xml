@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:scrollHorizontally="false"
         android:shadowColor="@color/Black"
         android:textAlignment="center"
         android:textColor="#333"
@@ -27,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:scrollHorizontally="false"
         android:text="TextView"
         android:textSize="14sp" />
 
@@ -35,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:scrollHorizontally="false"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -44,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:scrollHorizontally="false"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -58,6 +62,7 @@
             android:id="@+id/event_start"
             android:layout_width="186dp"
             android:layout_height="match_parent"
+            android:scrollHorizontally="false"
             android:text="TextView"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -67,6 +72,7 @@
             android:id="@+id/event_end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollHorizontally="false"
             android:text="TextView"
             android:textAlignment="center"
             android:textSize="16sp"

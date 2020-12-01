@@ -74,7 +74,7 @@ public class ClubActivity extends AppCompatActivity {
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
             eventList.addAll(club.getEvents());
-            clubDescriptionTV.setText("Club Description:" + club.getDescription());
+            clubDescriptionTV.setText("Club Description we will se if the things scroll to the next line of the club description text view:\n" + club.getDescription());
         }catch (Exception e){
         }
 
