@@ -65,8 +65,8 @@ public class CreateEventActivity extends AppCompatActivity {
 
             Event e = new Event(newEventID, newEventName, newEventDescription, newEventLocation, newEventStartDateTime, newEventEndDateTime, newEventBudget, newEventCapacity);
             club.newEvent(e);
-            
-            club.subtractfunds(Double.parseDouble(newEventBudget), newEventName);
+
+            //club.subtractfunds(Double.parseDouble(newEventBudget), newEventName);
             finish();
 
         }
