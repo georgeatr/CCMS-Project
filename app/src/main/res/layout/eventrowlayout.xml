@@ -13,35 +13,50 @@
 
     <TextView
         android:id="@+id/event_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:shadowColor="@color/Black"
+        android:textAlignment="center"
         android:textColor="#333"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/event_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/event_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/customborder"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/event_start"
+            android:layout_width="195dp"
+            android:layout_height="match_parent"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/event_end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/event_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </LinearLayout>
 
 </LinearLayout>
