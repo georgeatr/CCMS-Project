@@ -91,7 +91,9 @@ public class ClubActivity extends AppCompatActivity {
     }
 
     public void onClickAddEvent(View view) {
-        startActivity(new Intent(ClubActivity.this,CreateEventActivity.class));
+        Intent intent = new Intent(ClubActivity.this, CreateEventActivity.class);
+        intent.putExtra("club", club);
+        startActivity(intent);
     }
 
     public void onClickCheckTransactions(View view) {
