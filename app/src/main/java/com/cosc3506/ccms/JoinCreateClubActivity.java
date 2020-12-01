@@ -51,6 +51,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         user.joinClub(clubID, user);
     }
 
+<<<<<<< HEAD
 
     public void createClub(View view){
 
@@ -86,6 +87,17 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         }
 
     }
+=======
+    public void onClickCreateClub(View view) {
+
+        /*
+        club creation goes here
+        user.createClub(newClub,user)
+         */
+
+    }
+
+>>>>>>> jorge
     /*
         int ID = XtextField.getText();
         float budget = XtextField.getText();
