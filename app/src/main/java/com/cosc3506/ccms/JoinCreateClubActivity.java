@@ -3,7 +3,6 @@ package com.cosc3506.ccms;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,38 +18,21 @@ public class JoinCreateClubActivity extends AppCompatActivity {
     String clubID;
     EditText joinClubEditText;
 
-    EditText nCN;
-    EditText nCD;
-    EditText nCID;
-    EditText nCR;
-    EditText nCB;
-    TextView clubErrorTV;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_create_club);
 
-        nCN = findViewById(R.id.newClubNameEditText);
-        nCD = findViewById(R.id.newClubIDEditText);
-        nCID = findViewById(R.id.newClubIDEditText);
-        nCR = findViewById(R.id.newClubRoomEditText);
-        nCB = findViewById(R.id.newClubBudgetEditText);
-
-        clubErrorTV = findViewById(R.id.clubErrorTextView);
-
-
         joinClubEditText = findViewById(R.id.joinClubEditText);
 
-        user = (User) getIntent().getExtras().getSerializable("user");
 
+        user = (User) getIntent().getExtras().getSerializable("user");
     }
 
     public void joinClub(View view){
         clubID = joinClubEditText.getText().toString().trim();
         user.joinClub(clubID, user);
     }
-
 
     public void createClub(View view){
 

@@ -1,6 +1,7 @@
 package com.cosc3506.ccms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,25 +20,19 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
     Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView nameTextView;
-        private final TextView dateTextView;
-        private final TextView locationTextView;
+        private final TextView textView;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            nameTextView = (TextView) view.findViewById(R.id.event_name);
-            dateTextView = (TextView) view.findViewById(R.id.event_date);
-            locationTextView = (TextView) view.findViewById(R.id.event_location);
+            textView = (TextView) view.findViewById(R.id.event_name);
             linearLayout = (LinearLayout) view.findViewById(R.id.event_rowLayout_linear);
         }
 
-        public TextView getNameTextView() {
-            return nameTextView;
+        public TextView getTextView() {
+            return textView;
         }
-        public TextView getDateTextView(){ return dateTextView; }
-        public TextView getLocationTextView(){ return locationTextView; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -63,11 +58,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getNameTextView().setText((String)localDataSet.get(position));
-
-        viewHolder.getDateTextView().setText("02/02/20");
-
-        viewHolder.getLocationTextView().setText("NW200");
+        viewHolder.getTextView().setText((String)localDataSet.get(position));
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 

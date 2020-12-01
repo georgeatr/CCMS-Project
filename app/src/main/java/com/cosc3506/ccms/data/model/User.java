@@ -14,8 +14,8 @@ public class User implements Serializable {
     String password;
     ArrayList<String> enrolledClubs;
     ArrayList<String> managedClubs;
+
     DatabaseReference reference;
-    //Please work
 
 
     public User(String studentNumber, String name, String phone, String email, ArrayList<String> enrolledClubs, String password, ArrayList<String> managedClubs) {
@@ -55,7 +55,7 @@ public class User implements Serializable {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         joinClub(club.getID(), user);
         reference = rootNode.getReference("Clubs");
-        reference.child(String.valueOf(club.getID())).setValue(club);
+        reference.child(club.getID()).setValue(club);
         //Make the creator a manager
         promoteToManager(club,user);
     }

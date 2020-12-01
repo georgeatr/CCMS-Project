@@ -2,6 +2,7 @@ package com.cosc3506.ccms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,38 +23,35 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class HomeActivity extends AppCompatActivity {
 
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         user = (User) getIntent().getExtras().getSerializable("user");
 
         ArrayList<Club> clubs = new ArrayList<>();
 
-        /*
-        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
-            clubs.add(getClub(user.getEnrolledClubs().get(i)));
-        }
+//        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
+//            clubs.add(getClub(user.getEnrolledClubs().get(0)));
+//        }
 
-         */
-
-        for(int i = 0; i < clubs.size();i++){
-            clubList.add(clubs.get(i).getName());
-        }
-
-        clubList.add("Hi");
+        clubList.addAll(user.getEnrolledClubs());
 
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
@@ -87,11 +85,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public Club getClub(final String clubID){
         final Club[] club = new Club[1];
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Clubs");
-        Query checkUser = reference.orderByChild(clubID).equalTo(clubID);
-        checkUser.addValueEventListener(new ValueEventListener() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference clubsRef = rootRef.child("Clubs");
+        Query checkClub = clubsRef;
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String budget = snapshot.child(clubID).child("budget").getValue(String.class);
                     String remainingFunds = snapshot.child(clubID).child("remainingFunds").getValue(String.class);
@@ -101,15 +100,15 @@ public class HomeActivity extends AppCompatActivity {
                     ArrayList<Event> events = new ArrayList<Event>();
                     ArrayList<String> managers = new ArrayList<String>();
                     Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
-                    Collection managersColl = managersMap.values();
+                    Collection<Object> managersColl = managersMap.values();
                     for (Object value : managersColl) {
                         managers.add(value.toString());
                     }
                     Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
-                    Collection eventsColl = eventsMap.values();
-                    for (Object value : eventsColl) {
-                        events.add(getEvents(value, clubID));
-                    }
+                    Collection<Object> eventsColl = eventsMap.values();
+//                    for (Object value : eventsColl) {
+//                        events.add(getEvents(value, clubID));
+//                    }
 
 
                    // club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
@@ -118,9 +117,16 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("home", error.getMessage());
             }
-        });return club[0];
+        };
+        checkClub.addListenerForSingleValueEvent(eventListener);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return club[0];
     }
 
     private Event getEvents(Object value, String clubID) {
