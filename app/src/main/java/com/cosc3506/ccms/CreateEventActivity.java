@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -71,8 +72,6 @@ public class CreateEventActivity extends AppCompatActivity {
                                 newEventEndDateTime,
                                 newEventBudget,
                                 newEventCapacity);
-
-            //Do something with the new Event
 
             finish();
 
