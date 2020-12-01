@@ -21,7 +21,8 @@
         android:shadowColor="@color/Black"
         android:textAlignment="center"
         android:textColor="#333"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/club_location"
