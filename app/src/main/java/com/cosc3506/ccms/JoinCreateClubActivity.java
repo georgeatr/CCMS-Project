@@ -67,7 +67,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         }
         else{
 
-            Club c = new Club(newClubID, newClubBudget, newClubRoom, newClubName, newClubDescription, managers);
+            Club c = new Club(newClubID, newClubBudget, newClubRoom, newClubName, newClubDescription);
 
             user.createClub(c, user);
             //Do something with new Club
