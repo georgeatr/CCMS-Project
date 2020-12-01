@@ -16,12 +16,17 @@
 
     <TextView
         android:id="@+id/club_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:shadowColor="@color/Black"
         android:textAlignment="center"
         android:textColor="#333"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/club_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 </LinearLayout>
