@@ -36,7 +36,7 @@ public class ClubActivity extends AppCompatActivity {
     String test;
     String clubDescription = "But Can you do this??????";
     ArrayList<String> eventList = new ArrayList<>();
-    ArrayList<String> managerList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
+    ArrayList<String> managerList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
