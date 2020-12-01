@@ -66,7 +66,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         }
         else {
-            
+
             Event e = new Event(newEventLocation, newEventDescription, newEventName, newEventID, newEventStartDateTime, newEventBudget, newEventEndDateTime, newEventCapacity);
             club.newEvent(e);
 
