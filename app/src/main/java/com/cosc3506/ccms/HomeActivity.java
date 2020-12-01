@@ -64,8 +64,11 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,new Intent(
-                this,ClubActivity.class),clubList);
+        Intent intent = new Intent(this,ClubActivity.class);
+        intent.putExtra("user", user);
+        //intent.putExtra("clubID", )
+        startActivity(intent);
+        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,intent,clubList);
         clubsView.setAdapter(clubCustomAdapter);
 
 
@@ -83,78 +86,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public Club getClub(final String clubID){
-        final Club[] club = new Club[1];
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference clubsRef = rootRef.child("Clubs");
-        Query checkClub = clubsRef;
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NotNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String budget = snapshot.child(clubID).child("budget").getValue(String.class);
-                    String remainingFunds = snapshot.child(clubID).child("remainingFunds").getValue(String.class);
-                    String room = snapshot.child(clubID).child("room").getValue(String.class);
-                    String name = snapshot.child(clubID).child("name").getValue(String.class);
-                    String description = snapshot.child(clubID).child("description").getValue(String.class);
-                    ArrayList<Event> events = new ArrayList<Event>();
-                    ArrayList<String> managers = new ArrayList<String>();
-                    Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
-                    Collection<Object> managersColl = managersMap.values();
-                    for (Object value : managersColl) {
-                        managers.add(value.toString());
-                    }
-                    Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
-                    Collection<Object> eventsColl = eventsMap.values();
-//                    for (Object value : eventsColl) {
-//                        events.add(getEvents(value, clubID));
-//                    }
 
 
-                    club[0] = new Club(clubID, budget, remainingFunds, room, name, events, description, managers);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("home", error.getMessage());
-            }
-        };
-        checkClub.addListenerForSingleValueEvent(eventListener);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return club[0];
-    }
-
-    private Event getEvents(Object value, String clubID) {
-        final String eventID = value.toString();
-        final Event[] event = new Event[1];
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Clubs/" + clubID + "Events");
-        Query checkUser = reference.orderByChild(eventID).equalTo(eventID);
-        checkUser.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String address = snapshot.child(eventID).child("address").getValue(String.class);
-                    String startDate = snapshot.child(eventID).child("startDate").getValue(String.class);
-                    String endDate = snapshot.child(eventID).child("endDate").getValue(String.class);
-                    String cost = snapshot.child(eventID).child("cost").getValue(String.class);
-                    String capacity = snapshot.child(eventID).child("capacity").getValue(String.class);
-                    String name = snapshot.child(eventID).child("name").getValue(String.class);
-                    String description = snapshot.child(eventID).child("description").getValue(String.class);
-                    event[0] = new Event(eventID,name,description,address,startDate,endDate,cost,capacity);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });return event[0];
-    }
 
 }
 

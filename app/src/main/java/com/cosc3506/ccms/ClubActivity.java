@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
+import com.cosc3506.ccms.data.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,7 @@ import java.util.Map;
 
 public class ClubActivity extends AppCompatActivity {
 
+    User user;
     String clubID;
     String test;
     String clubDescription = "But Can you do this??????";
@@ -45,6 +47,7 @@ public class ClubActivity extends AppCompatActivity {
         clubID = intent.getStringExtra("keyname");
 
         Club club = getClub(clubID);
+        user = (User) getIntent().getExtras().getSerializable("user");
 
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
@@ -127,11 +130,6 @@ public class ClubActivity extends AppCompatActivity {
             }
         };
         checkClub.addListenerForSingleValueEvent(eventListener);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return club[0];
     }
 
