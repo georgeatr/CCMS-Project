@@ -10,11 +10,11 @@ public class Club {
         String name;
         ArrayList<Event> events;
         String description;
-        ArrayList<User> managers;
+        ArrayList<String> managers;
 
 
     //Reconstruct club from database
-    public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<User> managers) {
+    //public Club(String ID, String budget, String remainingFunds, String room, String name, ArrayList<Event> events, String description, ArrayList<String> managers) {}
 
     public Club(String ID, String budget, String remainingFunds, String room, String name,
                 ArrayList<Event> events, String description, ArrayList<String> managers) {
@@ -30,7 +30,7 @@ public class Club {
     }
 
     //Create new club
-    public Club(String ID, String budget, String room, String name, String description, ArrayList<User> managers) {
+    public Club(String ID, String budget, String room, String name, String description, ArrayList<String> managers) {
         this.ID = ID;
         this.budget = budget;
         this.remainingFunds = remainingFunds;
@@ -98,11 +98,11 @@ public class Club {
         this.description = description;
     }
 
-    public ArrayList<User> getManagers() {
+    public ArrayList<String> getManagers() {
         return managers;
     }
 
-    public void setManagers(ArrayList<User> managers) {
+    public void setManagers(ArrayList<String> managers) {
         this.managers = managers;
     }
 }

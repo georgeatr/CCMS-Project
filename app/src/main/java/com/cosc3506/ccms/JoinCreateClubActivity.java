@@ -3,6 +3,7 @@ package com.cosc3506.ccms;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,13 +11,19 @@ import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class JoinCreateClubActivity extends AppCompatActivity {
 
+    //Join Club
     User user;
     String clubID;
     EditText joinClubEditText;
+    //Create Club
+    EditText nCN;
+    EditText nCD;
+    EditText nCID;
+    EditText nCR;
+    EditText nCB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,11 @@ public class JoinCreateClubActivity extends AppCompatActivity {
 
         joinClubEditText = findViewById(R.id.joinClubEditText);
 
+        nCN = findViewById(R.id.newClubNameEditText);
+        nCD = findViewById(R.id.newClubDescriptionEditText);
+        nCID = findViewById(R.id.newClubIDEditText);
+        nCR = findViewById(R.id.newClubRoomEditText);
+        nCB = findViewById(R.id.newClubBudgetEditText);
 
         user = (User) getIntent().getExtras().getSerializable("user");
     }
@@ -42,7 +54,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         String newClubRoom = nCR.getText().toString();
         String newClubBudget = nCB.getText().toString();
 
-        ArrayList<User> managers = new ArrayList<>((Collection<? extends User>) user);
+        ArrayList<String> managers = new ArrayList<>();
 
         if( newClubName.isEmpty() ||
             newClubDescription.isEmpty() ||
@@ -50,18 +62,14 @@ public class JoinCreateClubActivity extends AppCompatActivity {
             newClubRoom.isEmpty() ||
             newClubBudget.isEmpty()){
 
-            clubErrorTV.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Please Fill in All the Fields!!!", Toast.LENGTH_SHORT).show();
 
         }
         else{
 
-            Club c = new Club(  newClubID,
-                                newClubBudget,
-                                newClubRoom,
-                                newClubName,
-                                newClubDescription,
-                                managers);
+            Club c = new Club(newClubID, newClubBudget, newClubRoom, newClubName, newClubDescription, managers);
 
+            user.createClub(c, user);
             //Do something with new Club
 
             finish();
