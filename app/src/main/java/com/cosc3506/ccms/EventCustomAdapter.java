@@ -27,6 +27,8 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         private final TextView eventAddress;
         private final TextView eventStart;
         private final TextView eventEnd;
+        private final TextView eventDescription;
+        private final TextView eventCapacity;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
@@ -34,8 +36,10 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
             // Define click listener for the ViewHolder's View
             eventName = (TextView) view.findViewById(R.id.event_name);
             eventAddress = (TextView) view.findViewById(R.id.event_address);
+            eventDescription = (TextView) view.findViewById(R.id.event_description);
             eventStart = (TextView) view.findViewById(R.id.event_start);
             eventEnd = (TextView) view.findViewById(R.id.event_end);
+            eventCapacity = (TextView) view.findViewById(R.id.event_capacity);
             linearLayout = (LinearLayout) view.findViewById(R.id.event_rowLayout_linear);
         }
 
@@ -43,8 +47,10 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
             return eventName;
         }
         public TextView getEventAddress() { return eventAddress; }
+        public TextView getEventDescription() { return eventDescription; }
         public TextView getEventEnd() { return eventEnd; }
         public TextView getEventStart() { return eventStart; }
+        public TextView getEventCapacity() { return eventCapacity; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -72,8 +78,10 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         // contents of the view with that element
         viewHolder.getEventName().setText((String)localDataSet.get(position).getName());
         viewHolder.getEventAddress().setText((String)localDataSet.get(position).getAddress());
-        viewHolder.getEventStart().setText((String)localDataSet.get(position).getStartDate());
-        viewHolder.getEventEnd().setText((String)localDataSet.get(position).getEndDate());
+        viewHolder.getEventDescription().setText((String)localDataSet.get(position).getDescription());
+        viewHolder.getEventStart().setText("Start: " + (String)localDataSet.get(position).getStartDate());
+        viewHolder.getEventEnd().setText("End " + (String)localDataSet.get(position).getEndDate());
+        viewHolder.getEventCapacity().setText("Capacity: " + (String)localDataSet.get(position).getCapacity());
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
