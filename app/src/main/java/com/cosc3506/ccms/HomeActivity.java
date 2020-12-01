@@ -45,7 +45,6 @@ public class HomeActivity extends AppCompatActivity {
 
         user = (User) getIntent().getExtras().getSerializable("user");
 
-        ArrayList<Club> clubs = new ArrayList<>();
 
 //        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
 //            clubs.add(getClub(user.getEnrolledClubs().get(0)));
