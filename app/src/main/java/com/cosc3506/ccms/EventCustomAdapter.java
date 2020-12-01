@@ -78,9 +78,9 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         // contents of the view with that element
         viewHolder.getEventName().setText((String)localDataSet.get(position).getName());
         viewHolder.getEventAddress().setText((String)localDataSet.get(position).getAddress());
-        viewHolder.getEventDescription().setText((String)localDataSet.get(position).getDescription());
+        viewHolder.getEventDescription().setText("Event Description: lalalalalalalalalalalalalalaalalal" +(String)localDataSet.get(position).getDescription());
         viewHolder.getEventStart().setText("Start: " + (String)localDataSet.get(position).getStartDate());
-        viewHolder.getEventEnd().setText("End " + (String)localDataSet.get(position).getEndDate());
+        viewHolder.getEventEnd().setText("End: " + (String)localDataSet.get(position).getEndDate());
         viewHolder.getEventCapacity().setText("Capacity: " + (String)localDataSet.get(position).getCapacity());
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());

@@ -15,6 +15,7 @@
         android:id="@+id/event_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:shadowColor="@color/Black"
         android:textAlignment="center"
         android:textColor="#333"
@@ -25,6 +26,7 @@
         android:id="@+id/event_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
         android:textSize="14sp" />
 
@@ -32,6 +34,7 @@
         android:id="@+id/event_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -40,6 +43,7 @@
         android:id="@+id/event_capacity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -52,7 +56,7 @@
 
         <TextView
             android:id="@+id/event_start"
-            android:layout_width="195dp"
+            android:layout_width="186dp"
             android:layout_height="match_parent"
             android:text="TextView"
             android:textAlignment="center"
