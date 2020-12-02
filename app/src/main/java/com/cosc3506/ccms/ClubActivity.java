@@ -98,9 +98,10 @@ public class ClubActivity extends AppCompatActivity {
 
             ArrayList<String> managed = user.getManagedClubs();
             int index = managed.indexOf(clubID);
-            if (index != -1) //checks if manager
+            if (index != -1) { //checks if manager
                 checkTransactionsFB.setVisibility(View.VISIBLE);
                 addEventFB2.setVisibility(View.VISIBLE);
+            }
         }
         x++;
     }
