@@ -147,15 +147,17 @@ public class ClubActivity extends AppCompatActivity {
                         managers.add(value.toString());
                     }
 
-                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
-                    Object[] transactionsColl = transactionsMap.values().toArray();
-                    Object[] transactionKeys = transactionsMap.keySet().toArray();
 
-                    for (int j = 0; j < transactionKeys.length; j++) {
-                        transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
-                    }
 
                     try {
+                        Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
+                        Object[] transactionsColl = transactionsMap.values().toArray();
+                        Object[] transactionKeys = transactionsMap.keySet().toArray();
+
+                        for (int j = 0; j < transactionKeys.length; j++) {
+                            transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
+                        }
+
                         Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("events").getValue();
                         Collection<Object> eventsColl = eventsMap.values();
                         for (Object value : eventsColl) {
