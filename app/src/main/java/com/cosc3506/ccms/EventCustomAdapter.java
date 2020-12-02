@@ -77,8 +77,8 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getEventName().setText((String)localDataSet.get(position).getName());
-        viewHolder.getEventAddress().setText((String)localDataSet.get(position).getAddress());
-        viewHolder.getEventDescription().setText("Event Description: this is a test to see if its going to scroll down into the next line of the text view" + (String)localDataSet.get(position).getDescription());
+        viewHolder.getEventAddress().setText("Location: " + (String)localDataSet.get(position).getAddress());
+        viewHolder.getEventDescription().setText("Event Description: " + (String)localDataSet.get(position).getDescription());
         viewHolder.getEventStart().setText("Start: " + (String)localDataSet.get(position).getStartDate());
         viewHolder.getEventEnd().setText("End: " + (String)localDataSet.get(position).getEndDate());
         viewHolder.getEventCapacity().setText("Capacity: " + (String)localDataSet.get(position).getCapacity());
