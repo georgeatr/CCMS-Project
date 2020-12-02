@@ -75,7 +75,9 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(context, user.getEnrolledClubs().get(position), Toast.LENGTH_SHORT).show();
                 user.leaveClub((String)localDataSet.get(position),user);
+
             }
         });
 
