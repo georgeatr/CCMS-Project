@@ -78,10 +78,9 @@ public class TransactionActivity extends AppCompatActivity {
             String addAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
             club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
         }
-
+        budget.setText(club.getBudget());
         transName.setText("");
         amount.setText("");
-
 
     }
 
