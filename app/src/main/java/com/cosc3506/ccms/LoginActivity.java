@@ -120,18 +120,24 @@ public class LoginActivity extends AppCompatActivity {
                         String nameDB = snapshot.child("name").getValue(String.class);
                         String phoneDB = snapshot.child("phone").getValue(String.class);
                         String emailDB = snapshot.child("email").getValue(String.class);
-                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child("Enrolled").getValue();
-                        Collection clubsColl = clubsMap.values();
                         ArrayList<String> clubs = new ArrayList<String>();
-                        for (Object value : clubsColl){
-                            clubs.add(value.toString());
-                        }
-//                        Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child("Managed").getValue();
-//                        Collection managedColl = managedMap.values();
                         ArrayList<String> managed = new ArrayList<String>();
-//                        for (Object value : managedColl){
-//                            managed.add(value.toString());
-//                        }
+                        try {
+                            Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child("enrolled").getValue();
+                            Collection clubsColl = clubsMap.values();
+
+                            for (Object value : clubsColl){
+                                clubs.add(value.toString());
+                            }
+                            Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child("managed").getValue();
+                            Collection managedColl = managedMap.values();
+                            for (Object value : managedColl){
+                                managed.add(value.toString());
+                            }
+                        }catch (NullPointerException e){
+
+                        }
+
                         User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,clubs,passwordDB,managed);
                         reference.removeEventListener(this);
                         goHome(user);
@@ -144,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         };
-        checkUser.addListenerForSingleValueEvent(eventListener);
+        checkUser.addValueEventListener(eventListener);
     }
 
 

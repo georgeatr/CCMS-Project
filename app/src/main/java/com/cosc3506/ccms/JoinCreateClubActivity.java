@@ -3,6 +3,7 @@ package com.cosc3506.ccms;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,8 +42,15 @@ public class JoinCreateClubActivity extends AppCompatActivity {
     }
 
     public void joinClub(View view){
-        String clubID = joinClubEditText.getText().toString().trim();
-        user.joinClub(clubID, user);
+        String clubID = joinClubEditText.getText().toString();
+
+        if(clubID.isEmpty()){
+            Toast.makeText(this, "Please Fill in The ClubID!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            user.joinClub(clubID, user);
+            finish();
+        }
     }
 
     public void createClub(View view){
@@ -51,23 +59,23 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         String newClubDesc = nCD.getText().toString();
         String newClubID = nCID.getText().toString();
         String newClubRoom = nCR.getText().toString();
-        String newClubBudget = String.format("%.2f", Double.parseDouble(nCB.getText().toString()));
+        String newClubBudget = nCB.getText().toString();
 
-        club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
-                new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
-        club.addFunds(Double.parseDouble(newClubBudget), "Initial Funds");
-        user.createClub(club, user);
+        if (    newClubName.isEmpty() ||
+                newClubDesc.isEmpty() ||
+                newClubID.isEmpty() ||
+                newClubRoom.isEmpty() ||
+                newClubBudget.isEmpty()){
+
+            Toast.makeText(this, "Please Fill in All New Club Fields!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            newClubBudget = String.format("%.2f", Double.parseDouble(newClubBudget));
+            club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
+                    new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
+            user.createClub(club, user, newClubBudget);
+            finish();
+        }
 
     }
-    /*
-        int ID = XtextField.getText();
-        float budget = XtextField.getText();
-        String room = XtextField.getText();
-        String name = XtextField.getText();
-        ArrayList<Event> events = XtextField.getText();
-        String description = XtextField.getText();
-
-        Club club = new Club(ID, budget, room, name, description);
-        user.createClub(club, user);
-        */
 }

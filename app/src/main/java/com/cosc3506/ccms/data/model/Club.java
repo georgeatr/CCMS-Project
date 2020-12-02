@@ -47,7 +47,7 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt + money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
         reference.child(transactionName).setValue("+ $" + money);
         transactions.add(transactionName + ": + $" + money);
         reference = rootNode.getReference("Clubs/" + ID );
@@ -59,7 +59,7 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt - money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
         reference.child(transactionName).setValue("- $" + money);
         transactions.add(transactionName + ": - $" + money);
         reference = rootNode.getReference("Clubs/" + ID );
@@ -84,6 +84,43 @@ public class Club implements Serializable {
         setEvents(events);
         reference = rootNode.getReference("Clubs/" + getID() + "/Events/" + event.getID());
         reference.removeValue();
+    }
+
+    public void kickUser(String userStudentNumber){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        members.remove(userStudentNumber);
+        reference = rootNode.getReference("Users/"+ userStudentNumber + "/enrolled/" + getID());
+        reference.removeValue();
+        reference = rootNode.getReference("Clubs/"+ getID() + "/members/" + userStudentNumber);
+        reference.removeValue();
+    }
+
+    public void promoteToManager(User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList managed = user.getManagedClubs();
+        managed.add(user.getStudentNumber());
+        user.setManagedClubs(managed);
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/managed");
+        reference.child(getID()).setValue(getID());
+        reference = rootNode.getReference("Clubs/" + getID() + "/managers");
+        reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
+        ArrayList<String> managers = getManagers();
+        managers.add(user.getStudentNumber());
+        setManagers(managers);
+    }
+
+    public boolean dropFromManager(User manager){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList<String> managers = getManagers();
+        if (managers.size()>1) { //check if there are other managers for that club
+            managers.remove(manager);
+            setManagers(managers);
+            reference = rootNode.getReference("Clubs/" + getID() + "/managers/"
+                    + manager.getStudentNumber());
+            reference.removeValue();
+            return true;
+        }
+        return false;
     }
 
     //-----------getters and setters
