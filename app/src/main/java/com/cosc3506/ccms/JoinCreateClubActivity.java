@@ -53,7 +53,8 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         String newClubRoom = nCR.getText().toString();
         String newClubBudget = String.format("%.2f", Double.parseDouble(nCB.getText().toString()));
 
-        club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName, new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
+        club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
+                new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
         club.addFunds(Double.parseDouble(newClubBudget), "Initial Funds");
         user.createClub(club, user);
 
