@@ -160,7 +160,7 @@ public class ClubActivity extends AppCompatActivity {
                 Log.d("home", error.getMessage());
             }
         };
-        checkClub.addListenerForSingleValueEvent(eventListener);
+        checkClub.addValueEventListener(eventListener);
     }
 
 
