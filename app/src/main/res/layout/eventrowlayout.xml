@@ -94,4 +94,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/remove_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
 </LinearLayout>
