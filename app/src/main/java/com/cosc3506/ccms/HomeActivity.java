@@ -75,6 +75,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickRemoveClub(View view){
+
+    }
 
 //    public Club getClub(final String clubID){
 //        final Club[] club = new Club[1];

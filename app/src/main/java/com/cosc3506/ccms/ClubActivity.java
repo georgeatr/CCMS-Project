@@ -74,7 +74,7 @@ public class ClubActivity extends AppCompatActivity {
         try {
             eventList.addAll(club.getEvents());
             memberList.addAll(club.getMembers());
-            clubDescriptionTV.setText("Club Description we will se if the things scroll to the next line of the club description text view:\n" + club.getDescription());
+            clubDescriptionTV.setText("Club Description:\n" + club.getDescription());
         }catch (Exception e){
         }
 
@@ -107,10 +107,6 @@ public class ClubActivity extends AppCompatActivity {
     }
 
     public void onClickRemoveMember(View view){
-
-    }
-
-    public void onClickRemoveClub(View view){
 
     }
 
