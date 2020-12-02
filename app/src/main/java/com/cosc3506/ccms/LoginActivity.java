@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                             for (Object value : clubsColl){
                                 clubs.add(value.toString());
                             }
-                            Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child("Managed").getValue();
+                            Map<String, Object> managedMap = (HashMap<String, Object>) snapshot.child("managed").getValue();
                             Collection managedColl = managedMap.values();
                             for (Object value : managedColl){
                                 managed.add(value.toString());

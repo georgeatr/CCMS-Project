@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
+import com.cosc3506.ccms.data.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,7 @@ public class ClubActivity extends AppCompatActivity {
     ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>();
     FloatingActionButton checkTransactionsFB;
+    User user;
 
 
     @Override
@@ -51,19 +53,13 @@ public class ClubActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
-
+        user = (User) intent.getExtras().getSerializable("name");
 
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
 
         clubDescriptionTV = findViewById(R.id.clubDescription);
-
-
-        ArrayList<String> managed = user.getManaged();
-        int index = managed.indexOf(clubID);
-//        if (index != -1) //does not have club id
-//            checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
-//            checkTransactionsFB.setVisibility(View.INVISIBLE);
+        checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
 
         getClub(clubID);
         refresh(new View(this));
@@ -95,8 +91,14 @@ public class ClubActivity extends AppCompatActivity {
         //Set Adapters
         memberListRV.setAdapter(memberAdapter);
         eventListRV.setAdapter(eventAdapter);
-        if (x > 0)
-        refresh.setVisibility(View.INVISIBLE);
+        if (x != 0) {
+            refresh.setVisibility(View.INVISIBLE);
+
+            ArrayList<String> managed = user.getManagedClubs();
+            int index = managed.indexOf(clubID);
+            if (index != -1) //does not have club id
+                checkTransactionsFB.setVisibility(View.VISIBLE);
+        }
         x++;
     }
 
@@ -153,12 +155,12 @@ public class ClubActivity extends AppCompatActivity {
                             transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
                         }
 
-                        ArrayList membersMap = (ArrayList) snapshot.child(clubID).child("members").getValue();
-//                        Collection<Object> membersColl = membersMap.values();
-//                        for (Object value : membersMap) {
-//                            members.add(value.toString());
-//                        }
-                        members = membersMap;
+                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
+                        Collection<Object> membersColl = membersMap.values();
+                        for (Object value : membersColl) {
+                            members.add(value.toString());
+                        }
+                        //members = membersMap;
 
                         Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("events").getValue();
                         Collection<Object> eventsColl = eventsMap.values();
@@ -172,7 +174,7 @@ public class ClubActivity extends AppCompatActivity {
                             events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                                     eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                         }
-                    }catch (Exception e){
+                    }catch (NullPointerException e){
                         Log.e("Club onData", String.valueOf(e));
                     }
 
