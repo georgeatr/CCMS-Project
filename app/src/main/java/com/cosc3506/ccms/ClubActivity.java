@@ -117,7 +117,7 @@ public class ClubActivity extends AppCompatActivity {
                     ArrayList<Event> events = new ArrayList<Event>();
                     ArrayList<String> managers = new ArrayList<String>();
                     ArrayList<String> transactions = new ArrayList<>();
-                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
+                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Transactions").getValue();
                     Object[] transactionsColl = transactionsMap.values().toArray();
                     Object[] transactionKeys = transactionsMap.keySet().toArray();
 
