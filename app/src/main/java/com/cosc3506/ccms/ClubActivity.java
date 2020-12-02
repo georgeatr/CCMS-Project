@@ -88,7 +88,7 @@ public class ClubActivity extends AppCompatActivity {
 
         //Create Adapters
         MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList,user,club);
-        EventCustomAdapter eventAdapter = new EventCustomAdapter(this,eventList);
+        EventCustomAdapter eventAdapter = new EventCustomAdapter(this,eventList,user,club);
 
         //Set Adapters
         memberListRV.setAdapter(memberAdapter);

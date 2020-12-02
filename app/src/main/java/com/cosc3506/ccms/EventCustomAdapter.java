@@ -5,12 +5,15 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
+import com.cosc3506.ccms.data.model.User;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +24,8 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
 
     private ArrayList<Event> localDataSet;
     Context context;
+    User user;
+    Club club;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView eventName;
@@ -29,6 +34,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         private final TextView eventEnd;
         private final TextView eventDescription;
         private final TextView eventCapacity;
+        private final Button removeEvent;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
@@ -40,6 +46,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
             eventStart = (TextView) view.findViewById(R.id.event_start);
             eventEnd = (TextView) view.findViewById(R.id.event_end);
             eventCapacity = (TextView) view.findViewById(R.id.event_capacity);
+            removeEvent = (Button) view.findViewById(R.id.remove_event);
             linearLayout = (LinearLayout) view.findViewById(R.id.event_rowLayout_linear);
         }
 
@@ -51,13 +58,16 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         public TextView getEventEnd() { return eventEnd; }
         public TextView getEventStart() { return eventStart; }
         public TextView getEventCapacity() { return eventCapacity; }
+        public Button getRemoveEvent(){ return removeEvent; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
 
-    public EventCustomAdapter(Context context, ArrayList<Event> dataSet) {
+    public EventCustomAdapter(Context context, ArrayList<Event> dataSet, User user, Club club) {
         this.context = context;
         localDataSet = dataSet;
+        this.club = club;
+        this.user = user;
     }
 
     // Create new views (invoked by the layout manager)
@@ -82,6 +92,21 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
         viewHolder.getEventStart().setText("Start: " + (String)localDataSet.get(position).getStartDate());
         viewHolder.getEventEnd().setText("End: " + (String)localDataSet.get(position).getEndDate());
         viewHolder.getEventCapacity().setText("Capacity: " + (String)localDataSet.get(position).getCapacity());
+
+        viewHolder.getRemoveEvent().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                club.deleteEvent(club.getEvents().get(position));
+                localDataSet.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        ArrayList<String> managed = user.getManagedClubs();
+        int index = managed.indexOf(club.getID());
+        if (index != -1) { //checks if manager
+            viewHolder.getRemoveEvent().setVisibility(View.VISIBLE);
+        }
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
