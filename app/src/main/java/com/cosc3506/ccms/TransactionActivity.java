@@ -21,6 +21,7 @@ public class TransactionActivity extends AppCompatActivity {
     TextView plus;
     TextView minus;
     TextView amount;
+    TextView budgetTextView;
     ArrayList transactionList = new ArrayList();
 
     Club club;
@@ -46,6 +47,9 @@ public class TransactionActivity extends AppCompatActivity {
         TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
         transactionsRV.setAdapter(transactionsAdapter);
 
+        //Set Budget
+        budgetTextView = findViewById(R.id.budget_amount);
+        budgetTextView.setText(club.getBudget());
 
     }
 
