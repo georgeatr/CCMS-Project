@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:shadowColor="@color/Black"
         android:textAlignment="center"
-        android:textColor="#333"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="italic" />
 
