@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:onClick="signChange"
         android:text="+/-"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintEnd_toStartOf="@+id/amountEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,10 +26,12 @@
         android:layout_marginTop="16dp"
         android:onClick="submitChanges"
         android:text="Submit Changes"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
+
 
     <TextView
         android:id="@+id/editFundsTextView"
@@ -36,12 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Edit Funds"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/amountEditText"
@@ -50,6 +53,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,8 +85,9 @@
         android:id="@+id/transactionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="128dp"
         android:text="Transactions"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -94,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintEnd_toStartOf="@+id/moneyTextView"
@@ -102,12 +108,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transactions_RV"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="413dp"
+        android:layout_height="334dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/transactionNameEditText"
@@ -117,7 +124,36 @@
         android:ems="10"
         android:hint="Transaction Name"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/budget_textView"
+        android:layout_width="185dp"
+        android:layout_height="34dp"
+        android:gravity="center"
+        android:text="Budget"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/transactions_RV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <TextView
+        android:id="@+id/budget_amount"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405" />
 </androidx.constraintlayout.widget.ConstraintLayout>

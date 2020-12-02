@@ -19,6 +19,7 @@ public class TransactionActivity extends AppCompatActivity {
     Switch sign;
     TextView plus;
     TextView minus;
+    TextView budget;
     EditText transName;
     EditText amount;
     ArrayList transactionList = new ArrayList();
@@ -38,6 +39,9 @@ public class TransactionActivity extends AppCompatActivity {
 
         club = (Club) getIntent().getExtras().getSerializable("club");
 
+        //Edit Budget
+        budget.setText(club.getBudget());   
+
         transactionList.addAll(club.getTransactions());
 
         //Set Everything for the recycler view of the transactions
@@ -46,6 +50,7 @@ public class TransactionActivity extends AppCompatActivity {
         transactionsRV.setLayoutManager(transactionLayoutManager);
         TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
         transactionsRV.setAdapter(transactionsAdapter);
+
 
     }
 
