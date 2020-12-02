@@ -15,6 +15,8 @@ import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
 import com.cosc3506.ccms.data.model.User;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 

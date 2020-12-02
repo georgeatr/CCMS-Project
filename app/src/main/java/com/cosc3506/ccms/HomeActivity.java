@@ -50,6 +50,12 @@ public class HomeActivity extends AppCompatActivity {
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
 
+        refresh(new View(this));
+
+    }
+
+    public void refresh(View view){
+
         //Get the recycler view
         clubsView = findViewById(R.id.club_list);
 
@@ -60,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
         //Create and apply Adapter
         clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
         clubsView.setAdapter(clubCustomAdapter);
-
 
     }
 

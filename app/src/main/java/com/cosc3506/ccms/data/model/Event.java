@@ -12,7 +12,8 @@ public class Event implements Serializable {
         String cost;
         String capacity;
 
-    public Event(String address, String description, String ID, String startDate,
+
+    public Event(String address, String description,  String ID, String startDate,
                  String cost, String endDate, String capacity) {
         this.ID = ID;
         this.description = description;

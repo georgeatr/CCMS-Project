@@ -37,7 +37,6 @@ public class CreateEventActivity extends AppCompatActivity {
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
 
         club = (Club) getIntent().getExtras().getSerializable("club");
-
     }
 
 
