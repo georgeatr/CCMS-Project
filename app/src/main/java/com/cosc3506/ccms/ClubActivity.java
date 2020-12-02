@@ -110,6 +110,10 @@ public class ClubActivity extends AppCompatActivity {
 
     }
 
+    public void onClickRemoveClub(View view){
+
+    }
+
     public void getClub(final String clubID){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference clubsRef = rootRef.child("Clubs");

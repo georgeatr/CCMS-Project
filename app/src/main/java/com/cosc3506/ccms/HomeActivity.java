@@ -75,6 +75,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
 //    public Club getClub(final String clubID){
 //        final Club[] club = new Club[1];
 //        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
