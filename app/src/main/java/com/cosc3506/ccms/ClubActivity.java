@@ -125,7 +125,7 @@ public class ClubActivity extends AppCompatActivity {
                     }
 
                     try {
-                        Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Transactions").getValue();
+                        Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
                         Object[] transactionsColl = transactionsMap.values().toArray();
                         Object[] transactionKeys = transactionsMap.keySet().toArray();
 
