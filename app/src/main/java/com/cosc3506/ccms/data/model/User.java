@@ -72,17 +72,6 @@ public class User implements Serializable {
         return club;
     }
 
-    public void promoteToManager(Club club, User user){
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        managedClubs.add(club.getID());
-        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/managed");
-        reference.child(club.getID()).setValue(club.getID());
-        reference = rootNode.getReference("Clubs/" + club.getID() + "/managers");
-        reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
-        ArrayList<String> managers = club.getManagers();
-        managers.add(user.getStudentNumber());
-        club.setManagers(managers);
-    }
 
     public void createClub(Club club, User user, String newBudget){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
@@ -91,23 +80,7 @@ public class User implements Serializable {
         reference.child(club.getID()).setValue(club);
         club.addFunds(Double.parseDouble(newBudget), "Initial funds");
         //Make the creator a manager
-        promoteToManager(club,user);
-    }
-
-
-    public boolean dropFromManager(Club club, User manager){
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        ArrayList<String> managers = club.getManagers();
-        if (managers.size()>1) { //check if there are other managers for that club
-            managers.remove(manager);
-            club.setManagers(managers);
-            reference = rootNode.getReference("Clubs/" + club.getID() + "/managers/"
-                    + manager.getStudentNumber());
-            reference.removeValue();
-            return true;
-        }
-        return false;
-
+        club.promoteToManager(user);
     }
 
 
