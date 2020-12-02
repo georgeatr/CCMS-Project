@@ -110,11 +110,10 @@
         android:id="@+id/transactions_RV"
         android:layout_width="413dp"
         android:layout_height="334dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
 
     <EditText
         android:id="@+id/transactionNameEditText"

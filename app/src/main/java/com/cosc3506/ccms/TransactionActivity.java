@@ -40,7 +40,8 @@ public class TransactionActivity extends AppCompatActivity {
         club = (Club) getIntent().getExtras().getSerializable("club");
 
         //Edit Budget
-        budget.setText(club.getBudget());   
+        budget = findViewById(R.id.budget_amount);
+        budget.setText(club.getBudget());
 
         transactionList.addAll(club.getTransactions());
 
