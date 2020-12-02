@@ -95,6 +95,34 @@ public class Club implements Serializable {
         reference.removeValue();
     }
 
+    public void promoteToManager(User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList managed = user.getManagedClubs();
+        managed.add(user.getStudentNumber());
+        user.setManagedClubs(managed);
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/managed");
+        reference.child(getID()).setValue(getID());
+        reference = rootNode.getReference("Clubs/" + getID() + "/managers");
+        reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
+        ArrayList<String> managers = getManagers();
+        managers.add(user.getStudentNumber());
+        setManagers(managers);
+    }
+
+    public boolean dropFromManager(User manager){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        ArrayList<String> managers = getManagers();
+        if (managers.size()>1) { //check if there are other managers for that club
+            managers.remove(manager);
+            setManagers(managers);
+            reference = rootNode.getReference("Clubs/" + getID() + "/managers/"
+                    + manager.getStudentNumber());
+            reference.removeValue();
+            return true;
+        }
+        return false;
+    }
+
     //-----------getters and setters
 
     public String getID() {
