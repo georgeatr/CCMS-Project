@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -69,28 +70,33 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     public void submitChanges(View view){
-        if(sign.isChecked()){
-            //Subtract Funds
-            String subAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
-            club.subtractFunds(Double.parseDouble(subAmount), transName.getText().toString());
+        if (amount.getText().toString().isEmpty()||
+            transName.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please Complete Both Fields!!", Toast.LENGTH_SHORT).show();
         }
         else{
-            //Add Funds
-            String addAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
-            club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
+            if(sign.isChecked()){
+                //Subtract Funds
+                String subAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
+                club.subtractFunds(Double.parseDouble(subAmount), transName.getText().toString());
+            }
+            else{
+                //Add Funds
+                String addAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
+                club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
+            }
+
+            if(Double.parseDouble(club.getBudget()) < 0){
+                budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
+                budget.setTextColor(Color.RED);
+            }else{
+                budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
+                budget.setTextColor(Color.BLACK);
+            }
+
+            transName.setText("");
+            amount.setText("");
         }
-
-        if(Double.parseDouble(club.getBudget()) < 0){
-            budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
-            budget.setTextColor(Color.RED);
-        }else{
-            budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
-            budget.setTextColor(Color.BLACK);
-        }
-
-        transName.setText("");
-        amount.setText("");
-
     }
 
 }
