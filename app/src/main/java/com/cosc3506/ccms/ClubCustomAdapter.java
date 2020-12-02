@@ -46,11 +46,11 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
 
     }
 
-    public ClubCustomAdapter(Context context, Intent intent, ArrayList dataSet) {
+    public ClubCustomAdapter(Context context, Intent intent, ArrayList dataSet,User user) {
         this.context = context;
         localDataSet = dataSet;
         nextActivity = intent;
-        user = (User) nextActivity.getSerializableExtra("key1");
+        this.user = user;
     }
 
     // Create new views (invoked by the layout manager)
@@ -74,8 +74,8 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         viewHolder.getLeaveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 user.leaveClub((String)localDataSet.get(position),user);
-                localDataSet.remove(position);
             }
         });
 

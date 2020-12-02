@@ -56,11 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        Intent intent = new Intent(this,ClubActivity.class);
-        intent.putExtra("key1",user);
-        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,intent,clubList);
+        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
         clubsView.setAdapter(clubCustomAdapter);
-
 
 
     }
