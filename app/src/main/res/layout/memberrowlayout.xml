@@ -12,10 +12,11 @@
 
     <TextView
         android:id="@+id/transaction_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:shadowColor="@color/Black"
-        android:textColor="#333"
+        android:textColor="#000000"
         android:textSize="20sp" />
 </LinearLayout>

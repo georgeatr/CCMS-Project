@@ -81,12 +81,12 @@ public class TransactionActivity extends AppCompatActivity {
         }
 
         if(Double.parseDouble(club.getBudget()) < 0){
+            budget.setText(club.getBudget());
             budget.setTextColor(Color.RED);
         }else{
+            budget.setText(club.getBudget());
             budget.setTextColor(Color.BLACK);
         }
-        
-        budget.setText(club.getBudget());
 
         transName.setText("");
         amount.setText("");
