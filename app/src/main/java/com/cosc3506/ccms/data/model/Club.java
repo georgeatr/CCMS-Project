@@ -20,7 +20,7 @@ public class Club implements Serializable {
     DatabaseReference reference;
 
     public Club(String ID, String budget, ArrayList<String> transactions, String room, String name,
-                ArrayList<Event> events, String description, ArrayList<String> managers) {
+                ArrayList<Event> events, String description, ArrayList<String> managers, ArrayList<String> members) {
         this.ID = ID;
         this.budget = budget;
         this.transactions = transactions;
@@ -29,6 +29,7 @@ public class Club implements Serializable {
         this.events = events;
         this.description = description;
         this.managers = managers;
+        this.members = members;
     }
 
     public Club(String ID, String budget, String room, String name, String description) {
@@ -148,5 +149,13 @@ public class Club implements Serializable {
 
     public void setManagers(ArrayList<String> managers) {
         this.managers = managers;
+    }
+
+    public ArrayList<String> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<String> members) {
+        this.members = members;
     }
 }
