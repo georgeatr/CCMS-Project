@@ -118,39 +118,43 @@ public class ClubActivity extends AppCompatActivity {
                     ArrayList<String> managers = new ArrayList<String>();
                     ArrayList<String> transactions = new ArrayList<>();
                     ArrayList<String> members = new ArrayList<>();
-
-                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Transactions").getValue();
-                    Object[] transactionsColl = transactionsMap.values().toArray();
-                    Object[] transactionKeys = transactionsMap.keySet().toArray();
-
-                    for (int j = 0; j < transactionKeys.length; j++) {
-                        transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
-                    }
-
                     Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
                     Collection<Object> managersColl = managersMap.values();
                     for (Object value : managersColl) {
                         managers.add(value.toString());
                     }
 
-                    Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Members").getValue();
-                    Collection<Object> membersColl = membersMap.values();
-                    for (Object value : membersColl) {
-                        members.add(value.toString());
+                    try {
+                        Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Transactions").getValue();
+                        Object[] transactionsColl = transactionsMap.values().toArray();
+                        Object[] transactionKeys = transactionsMap.keySet().toArray();
+
+                        for (int j = 0; j < transactionKeys.length; j++) {
+                            transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
+                        }
+
+                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Members").getValue();
+                        Collection<Object> membersColl = membersMap.values();
+                        for (Object value : membersColl) {
+                            members.add(value.toString());
+                        }
+
+                        Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
+                        Collection<Object> eventsColl = eventsMap.values();
+                        for (Object value : eventsColl) {
+                            String eventString = value.toString().replace("{address=","")
+                                    .replace("}","").replace(" description=", "")
+                                    .replace(" name=","").replace(" id=","")
+                                    .replace(" startDate=","").replace(" cost=","")
+                                    .replace(" endDate=","").replace(" capacity=","");
+                            String[] eventStringArray = eventString.split(",");
+                            events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
+                                    eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
+                        }
+                    }catch (NullPointerException e){
+
                     }
 
-                    Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
-                    Collection<Object> eventsColl = eventsMap.values();
-                    for (Object value : eventsColl) {
-                        String eventString = value.toString().replace("{address=","")
-                                .replace("}","").replace(" description=", "")
-                                .replace(" name=","").replace(" id=","")
-                                .replace(" startDate=","").replace(" cost=","")
-                                .replace(" endDate=","").replace(" capacity=","");
-                        String[] eventStringArray = eventString.split(",");
-                        events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
-                        eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
-                    }
                     club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
                 }
             }
