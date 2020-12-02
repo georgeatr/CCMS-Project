@@ -85,7 +85,7 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
             public void onClick(View view) {
                 //Start next activity with the information passed
                 nextActivity.putExtra("keyname",(String)localDataSet.get(position));
-                nextActivity.putExtra("name",user);
+                //nextActivity.putExtra("name",user);
                 context.startActivity(nextActivity);
             }
         });
