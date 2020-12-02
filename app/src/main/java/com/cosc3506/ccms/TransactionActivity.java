@@ -2,10 +2,13 @@ package com.cosc3506.ccms;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.Club;
 
@@ -18,7 +21,7 @@ public class TransactionActivity extends AppCompatActivity {
     TextView plus;
     TextView minus;
     TextView amount;
-    ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4","Transaction5","Transaction6"));
+    ArrayList transactionList = new ArrayList();
 
     Club club;
 
@@ -34,9 +37,17 @@ public class TransactionActivity extends AppCompatActivity {
 
         club = (Club) getIntent().getExtras().getSerializable("club");
 
-        //RecyclerView transactionsRV = findViewById(R.id.tran)
+        transactionList.addAll(club.getTransactions());
 
+        RecyclerView transactionsRV = findViewById(R.id.transactions_RV);
 
+        LinearLayoutManager transactionLayoutManager = new LinearLayoutManager(transactionsRV.getContext());
+
+        transactionsRV.setLayoutManager(transactionLayoutManager);
+
+        TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
+
+        transactionsRV.setAdapter(transactionsAdapter);
 
 
     }
