@@ -22,7 +22,8 @@ public class User implements Serializable {
     DatabaseReference reference;
 
 
-    public User(String studentNumber, String name, String phone, String email, ArrayList<String> enrolledClubs, String password, ArrayList<String> managedClubs) {
+    public User(String studentNumber, String name, String phone, String email,
+                ArrayList<String> enrolledClubs, String password, ArrayList<String> managedClubs) {
         this.studentNumber = studentNumber;
         this.name = name;
         this.phone = phone;
@@ -46,6 +47,8 @@ public class User implements Serializable {
         enrolledClubs.remove(clubID);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled" + clubID);
         reference.removeValue();
+        reference = rootNode.getReference("Clubs/"+ clubID + "/Members" + user.getStudentNumber());
+        reference.removeValue();
     }
 
     public void joinClub(String clubID, User user){
@@ -53,6 +56,8 @@ public class User implements Serializable {
         enrolledClubs.add(clubID);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled");
         reference.child(clubID).setValue(clubID);
+        reference = rootNode.getReference("Clubs/"+ clubID + "/Members");
+        reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
     }
 
     public void createClub(Club club, User user){
@@ -71,7 +76,8 @@ public class User implements Serializable {
         if (managers.size()>1) { //check if there are other managers for that club
             managers.remove(manager);
             club.setManagers(managers);
-            reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers/" + manager.getStudentNumber());
+            reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers/"
+                    + manager.getStudentNumber());
             reference.removeValue();
             return true;
         }

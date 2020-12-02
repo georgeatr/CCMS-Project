@@ -117,6 +117,8 @@ public class ClubActivity extends AppCompatActivity {
                     ArrayList<Event> events = new ArrayList<Event>();
                     ArrayList<String> managers = new ArrayList<String>();
                     ArrayList<String> transactions = new ArrayList<>();
+                    ArrayList<String> members = new ArrayList<>();
+
                     Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Transactions").getValue();
                     Object[] transactionsColl = transactionsMap.values().toArray();
                     Object[] transactionKeys = transactionsMap.keySet().toArray();
@@ -130,6 +132,13 @@ public class ClubActivity extends AppCompatActivity {
                     for (Object value : managersColl) {
                         managers.add(value.toString());
                     }
+
+                    Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Members").getValue();
+                    Collection<Object> membersColl = membersMap.values();
+                    for (Object value : membersColl) {
+                        members.add(value.toString());
+                    }
+
                     Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
                     Collection<Object> eventsColl = eventsMap.values();
                     for (Object value : eventsColl) {
@@ -142,7 +151,7 @@ public class ClubActivity extends AppCompatActivity {
                         events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                         eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                     }
-                    club = new Club(clubID, budget, transactions, room, name, events, description, managers);
+                    club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
                 }
             }
 
