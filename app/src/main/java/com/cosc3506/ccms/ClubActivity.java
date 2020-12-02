@@ -147,11 +147,12 @@ public class ClubActivity extends AppCompatActivity {
                             transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
                         }
 
-                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
-                        Collection<Object> membersColl = membersMap.values();
-                        for (Object value : membersColl) {
-                            members.add(value.toString());
-                        }
+                        ArrayList membersMap = (ArrayList) snapshot.child(clubID).child("members").getValue();
+//                        Collection<Object> membersColl = membersMap.values();
+//                        for (Object value : membersMap) {
+//                            members.add(value.toString());
+//                        }
+                        members = membersMap;
 
                         Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("events").getValue();
                         Collection<Object> eventsColl = eventsMap.values();
@@ -165,8 +166,8 @@ public class ClubActivity extends AppCompatActivity {
                             events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                                     eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                         }
-                    }catch (NullPointerException e){
-
+                    }catch (Exception e){
+                        Log.e("Club onData", String.valueOf(e));
                     }
 
                     club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
