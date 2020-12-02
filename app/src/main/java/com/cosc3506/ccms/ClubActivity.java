@@ -41,6 +41,7 @@ public class ClubActivity extends AppCompatActivity {
     ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>();
     FloatingActionButton checkTransactionsFB;
+    FloatingActionButton addEventFB2;
     User user;
 
 
@@ -60,6 +61,7 @@ public class ClubActivity extends AppCompatActivity {
 
         clubDescriptionTV = findViewById(R.id.clubDescription);
         checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
+        addEventFB2 = findViewById(R.id.addEventFB2);
 
         getClub(clubID);
         refresh(new View(this));
@@ -98,6 +100,7 @@ public class ClubActivity extends AppCompatActivity {
             int index = managed.indexOf(clubID);
             if (index != -1) //does not have club id
                 checkTransactionsFB.setVisibility(View.VISIBLE);
+                addEventFB2.setVisibility(View.VISIBLE);
         }
         x++;
     }
