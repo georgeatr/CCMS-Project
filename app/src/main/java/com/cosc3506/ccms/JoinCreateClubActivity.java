@@ -59,17 +59,18 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         String newClubDesc = nCD.getText().toString();
         String newClubID = nCID.getText().toString();
         String newClubRoom = nCR.getText().toString();
-        String newClubBudget = String.format("%.2f", Double.parseDouble(nCB.getText().toString()));
+        String newClubBudget = nCB.getText().toString();
 
         if (    newClubName.isEmpty() ||
                 newClubDesc.isEmpty() ||
                 newClubID.isEmpty() ||
                 newClubRoom.isEmpty() ||
                 newClubBudget.isEmpty()){
-            
+
             Toast.makeText(this, "Please Fill in All New Club Fields!", Toast.LENGTH_SHORT).show();
         }
         else {
+            newClubBudget = String.format("%.2f", Double.parseDouble(newClubBudget));
             club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
                     new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
             user.createClub(club, user, newClubBudget);
