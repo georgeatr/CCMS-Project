@@ -36,9 +36,8 @@ public class ClubActivity extends AppCompatActivity {
     TextView clubDescriptionTV;
     Club club;
     String clubID;
-    String clubDescription;
     ArrayList<Event> eventList = new ArrayList<>();
-    ArrayList<String> memberList = new ArrayList<>(Arrays.asList("Member1","Member2","Member3","Member4","Member5"));
+    ArrayList<String> memberList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +73,7 @@ public class ClubActivity extends AppCompatActivity {
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
             eventList.addAll(club.getEvents());
+            memberList.addAll(club.getMembers());
             clubDescriptionTV.setText("Club Description we will se if the things scroll to the next line of the club description text view:\n" + club.getDescription());
         }catch (Exception e){
         }
@@ -100,6 +100,14 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = new Intent(ClubActivity.this, TransactionActivity.class);
         intent.putExtra("club", club);
         startActivity(intent);
+    }
+
+    public void onClickPromoteMember(View view){
+
+    }
+
+    public void onClickRemoveMember(View view){
+
     }
 
     public void getClub(final String clubID){

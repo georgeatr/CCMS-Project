@@ -13,6 +13,7 @@
         android:layout_height="40dp"
         android:onClick="joinClub"
         android:text="Join Club"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/joinClubEditText"
         app:layout_constraintTop_toTopOf="@+id/joinClubEditText" />
 
@@ -23,6 +24,7 @@
         android:layout_marginBottom="128dp"
         android:onClick="createClub"
         android:text="Create Club"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,6 +37,7 @@
         android:ems="10"
         android:hint="New Club ID"
         android:inputType="number"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +51,7 @@
         android:ems="10"
         android:hint="Club ID"
         android:inputType="number"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +65,7 @@
         android:ems="10"
         android:hint="New Club Name"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/joinClubEditText" />
@@ -74,6 +79,7 @@
         android:gravity="start|top"
         android:hint="New Club Description"
         android:inputType="textMultiLine"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newClubNameEditText" />
@@ -85,6 +91,7 @@
         android:ems="10"
         android:hint="New Club Room"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/newClubIDEditText"
         app:layout_constraintTop_toTopOf="@+id/newClubIDEditText" />
@@ -96,6 +103,7 @@
         android:ems="10"
         android:hint="New Club Budget"
         android:inputType="numberDecimal"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/createClubButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
