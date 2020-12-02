@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                         String nameDB = snapshot.child("name").getValue(String.class);
                         String phoneDB = snapshot.child("phone").getValue(String.class);
                         String emailDB = snapshot.child("email").getValue(String.class);
-                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child("Enrolled").getValue();
+                        Map<String, Object> clubsMap = (HashMap<String, Object>) snapshot.child("enrolled").getValue();
                         Collection clubsColl = clubsMap.values();
                         ArrayList<String> clubs = new ArrayList<String>();
                         for (Object value : clubsColl){
@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         };
-        checkUser.addListenerForSingleValueEvent(eventListener);
+        checkUser.addValueEventListener(eventListener);
     }
 
 

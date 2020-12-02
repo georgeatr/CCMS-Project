@@ -126,13 +126,15 @@ public class ClubActivity extends AppCompatActivity {
                     ArrayList<String> managers = new ArrayList<String>();
                     ArrayList<String> transactions = new ArrayList<>();
                     ArrayList<String> members = new ArrayList<>();
-                    Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Managers").getValue();
-                    Collection<Object> managersColl = managersMap.values();
-                    for (Object value : managersColl) {
-                        managers.add(value.toString());
-                    }
+
 
                     try {
+                        Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("managers").getValue();
+                        Collection<Object> managersColl = managersMap.values();
+                        for (Object value : managersColl) {
+                            managers.add(value.toString());
+                        }
+
                         Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
                         Object[] transactionsColl = transactionsMap.values().toArray();
                         Object[] transactionKeys = transactionsMap.keySet().toArray();
@@ -141,13 +143,13 @@ public class ClubActivity extends AppCompatActivity {
                             transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
                         }
 
-                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("Members").getValue();
+                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
                         Collection<Object> membersColl = membersMap.values();
                         for (Object value : membersColl) {
                             members.add(value.toString());
                         }
 
-                        Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("Events").getValue();
+                        Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("events").getValue();
                         Collection<Object> eventsColl = eventsMap.values();
                         for (Object value : eventsColl) {
                             String eventString = value.toString().replace("{address=","")
