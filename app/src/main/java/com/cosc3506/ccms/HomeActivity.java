@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickRefresh(View view){
-        clubCustomAdapter.notifyDataSetChanged();
+        startActivity(new Intent(HomeActivity.this,LoginActivity.class));
     }
 
 //    public Club getClub(final String clubID){

@@ -76,6 +76,7 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
             public void onClick(View v) {
                 user.leaveClub(user.getEnrolledClubs().get(position),user);
                 localDataSet.remove(position);
+                notifyDataSetChanged();
             }
         });
 
