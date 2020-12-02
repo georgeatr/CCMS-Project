@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,8 @@ public class ClubActivity extends AppCompatActivity {
     String clubID;
     ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>();
+    FloatingActionButton checkTransactionsFB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +52,14 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
 
+
         TextView clubTitle = findViewById(R.id.clubNameTV);
         clubTitle.setText(clubID);
 
         clubDescriptionTV = findViewById(R.id.clubDescription);
-
+//        if (!user.getManaged()) //does not have club id
+//            checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
+//            checkTransactionsFB.setVisibility(View.INVISIBLE);
 
         getClub(clubID);
         refresh(new View(this));
