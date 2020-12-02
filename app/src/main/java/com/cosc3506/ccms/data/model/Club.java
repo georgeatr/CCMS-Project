@@ -97,7 +97,6 @@ public class Club implements Serializable {
 
     public void promoteToManager(String userStudentNumber){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-
         reference = rootNode.getReference("Users/"+ userStudentNumber + "/managed");
         reference.child(getID()).setValue(getID());
         reference = rootNode.getReference("Clubs/" + getID() + "/managers");

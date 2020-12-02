@@ -84,7 +84,7 @@ public class User implements Serializable {
         reference.child(club.getID()).setValue(club);
         club.addFunds(Double.parseDouble(newBudget), "Initial funds");
         //Make the creator a manager
-        club.promoteToManager(user);
+        club.promoteToManager(user.getStudentNumber());
     }
 
 
