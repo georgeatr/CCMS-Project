@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
     ClubCustomAdapter clubCustomAdapter;
+    RecyclerView clubsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         welcomeText.setText("Welcome " + user.getName());
 
         //Get the recycler view
-        RecyclerView clubsView = findViewById(R.id.club_list);
+        clubsView = findViewById(R.id.club_list);
 
         //Create the linear layout manager
         LinearLayoutManager manager = new LinearLayoutManager(clubsView.getContext());
@@ -75,7 +76,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickRefresh(View view){
-        startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+        clubList.addAll(user.getEnrolledClubs());
+        clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
+        clubCustomAdapter.notifyDataSetChanged();
+        clubsView.setAdapter(clubCustomAdapter);
+
     }
 
 //    public Club getClub(final String clubID){

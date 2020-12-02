@@ -2,6 +2,7 @@ package com.cosc3506.ccms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         final String userEnteredPassword = password.getText().toString().trim();
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users/" + userEnteredStudentNumber);
         Query checkUser = reference;
-        final ValueEventListener eventListener = new ValueEventListener() {
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -147,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e("login", error.toString());
             }
         };
         checkUser.addValueEventListener(eventListener);
