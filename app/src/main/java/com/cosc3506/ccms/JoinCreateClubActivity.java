@@ -41,7 +41,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
     }
 
     public void joinClub(View view){
-        String clubID = joinClubEditText.getText().toString().trim();
+        String clubID = joinClubEditText.getText().toString();
         user.joinClub(clubID, user);
     }
 
