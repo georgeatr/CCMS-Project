@@ -66,11 +66,12 @@ public class User implements Serializable {
         reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
     }
 
-    public void createClub(Club club, User user){
+    public void createClub(Club club, User user, String newBudget){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         club = joinCreatedClub(club, user);
         reference = rootNode.getReference("Clubs");
         reference.child(club.getID()).setValue(club);
+        club.addFunds(Double.parseDouble(newBudget), "Initial funds");
         //Make the creator a manager
         promoteToManager(club,user);
     }

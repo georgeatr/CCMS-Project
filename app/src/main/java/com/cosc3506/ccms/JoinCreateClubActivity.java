@@ -55,8 +55,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
 
         club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
                 new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
-        club.addFunds(Double.parseDouble(newClubBudget), "Initial Funds");
-        user.createClub(club, user);
+        user.createClub(club, user, newClubBudget);
 
     }
     /*

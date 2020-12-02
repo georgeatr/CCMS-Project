@@ -47,7 +47,7 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt + money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
         reference.child(transactionName).setValue("+ $" + money);
         transactions.add(transactionName + ": + $" + money);
         reference = rootNode.getReference("Clubs/" + ID );
@@ -59,7 +59,7 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt - money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
         reference.child(transactionName).setValue("- $" + money);
         transactions.add(transactionName + ": - $" + money);
         reference = rootNode.getReference("Clubs/" + ID );
