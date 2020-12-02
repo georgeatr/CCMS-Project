@@ -6,10 +6,13 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cosc3506.ccms.data.model.User;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,21 +22,25 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
     private ArrayList localDataSet;
     Context context;
     Intent nextActivity;
+    User user;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
         private final LinearLayout linearLayout;
+        private final Button leaveButton;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             textView = (TextView) view.findViewById(R.id.club_name);
             linearLayout = (LinearLayout) view.findViewById(R.id.rowLayout_linear);
+            leaveButton = (Button) view.findViewById(R.id.remove_club);
         }
 
         public TextView getTextView() {
             return textView;
         }
+        public Button getLeaveButton() { return leaveButton; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -42,6 +49,7 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         this.context = context;
         localDataSet = dataSet;
         nextActivity = intent;
+        user = (User) nextActivity.getSerializableExtra("key1");
     }
 
     // Create new views (invoked by the layout manager)
@@ -62,8 +70,12 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         // contents of the view with that element
         viewHolder.getTextView().setText((String)localDataSet.get(position));
 
-        //set background for the layout
-        //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
+        viewHolder.getLeaveButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.leaveClub((String)localDataSet.get(position),user);
+            }
+        });
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
