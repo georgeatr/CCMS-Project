@@ -28,7 +28,6 @@ public class CreateEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-        nEN = findViewById(R.id.newEventNameEditText);
         nEDesc = findViewById(R.id.newEventDescriptionEditText);
         nEID = findViewById(R.id.newEventIDEditText);
         nEC = findViewById(R.id.newEventCapacityEditText);
