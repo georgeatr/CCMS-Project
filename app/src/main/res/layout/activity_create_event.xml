@@ -91,7 +91,7 @@
 
     <EditText
         android:id="@+id/newEventIDEditText"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
         android:ems="10"
@@ -105,7 +105,7 @@
 
     <EditText
         android:id="@+id/newEventCapacityEditText"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
         android:ems="10"
