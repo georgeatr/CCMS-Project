@@ -52,7 +52,6 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventEndDateTime = nEET.getText().toString();
         String newEventLocation = nEL.getText().toString();
         String newEventBudget = nEB.getText().toString();
-
         if(     newEventName.isEmpty() ||
                 newEventDescription.isEmpty() ||
                 newEventID.isEmpty() ||
@@ -61,22 +60,14 @@ public class CreateEventActivity extends AppCompatActivity {
                 newEventEndDateTime.isEmpty() ||
                 newEventLocation.isEmpty() ||
                 newEventBudget.isEmpty()){
-
             Toast.makeText(this, "Please Fill in All the Fields!!!", Toast.LENGTH_SHORT).show();
-
         }
         else {
-
             Event e = new Event(newEventLocation, newEventDescription, newEventName, newEventID,
                     newEventStartDateTime, newEventBudget, newEventEndDateTime, newEventCapacity);
-
             club.newEvent(e);
-
             finish();
-
         }
-
-
     }
 
 }
