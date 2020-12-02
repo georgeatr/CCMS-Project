@@ -2,6 +2,7 @@ package com.cosc3506.ccms.data.model;
 
 import java.io.Serializable;
 
+
 public class Event implements Serializable {
         String ID;
         String name;

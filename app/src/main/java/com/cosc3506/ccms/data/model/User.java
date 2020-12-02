@@ -1,5 +1,9 @@
 package com.cosc3506.ccms.data.model;
 
+import android.os.Parcel;
+import android.widget.Toast;
+
+import com.cosc3506.ccms.ClubActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -80,7 +84,7 @@ public class User implements Serializable {
         reference = rootNode.getReference("Clubs/" + club.getID() + "/Managers");
         reference.child(String.valueOf(user.getStudentNumber())).setValue(user.getStudentNumber());
         ArrayList<String> managers = club.getManagers();
-        managers.add(user.studentNumber);
+        managers.add(user.getStudentNumber());
         club.setManagers(managers);
     }
 
