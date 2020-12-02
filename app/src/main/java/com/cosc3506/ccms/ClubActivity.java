@@ -57,7 +57,11 @@ public class ClubActivity extends AppCompatActivity {
         clubTitle.setText(clubID);
 
         clubDescriptionTV = findViewById(R.id.clubDescription);
-//        if (!user.getManaged()) //does not have club id
+
+
+        ArrayList<String> managed = user.getManaged();
+        int index = managed.indexOf(clubID);
+//        if (index != -1) //does not have club id
 //            checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
 //            checkTransactionsFB.setVisibility(View.INVISIBLE);
 
