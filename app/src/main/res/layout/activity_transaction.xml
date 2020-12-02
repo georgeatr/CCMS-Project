@@ -7,18 +7,19 @@
     android:background="@drawable/gradient_color"
     tools:context=".TransactionActivity">
 
+
     <Switch
         android:id="@+id/signSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:onClick="signChange"
         android:text="+/-"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="130dp" />
-
+        app:layout_constraintTop_toBottomOf="@+id/transactionNameEditText" />
 
     <Button
         android:id="@+id/submitChangesButton"
@@ -63,22 +64,28 @@
 
     <TextView
         android:id="@+id/minusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="12dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="24dp"
         android:text="-"
         android:textSize="20sp"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintEnd_toEndOf="@+id/plusTextView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/signSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/transactionNameEditText" />
 
     <TextView
         android:id="@+id/moneyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="$"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/submitChangesButton"
         app:layout_constraintEnd_toStartOf="@+id/amountEditText"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toEndOf="@+id/minusTextView" />
 
     <TextView
         android:id="@+id/transactionsTextView"
