@@ -3,7 +3,6 @@ package com.cosc3506.ccms;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Adapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cosc3506.ccms.data.model.Club;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TransactionActivity extends AppCompatActivity {
 
@@ -23,10 +21,7 @@ public class TransactionActivity extends AppCompatActivity {
     TextView minus;
     EditText transName;
     EditText amount;
-    ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4","Transaction5","Transaction6"));
-
-    //TextView amount;
-    //ArrayList transactionList = new ArrayList();
+    ArrayList transactionList = new ArrayList();
 
     Club club;
 
