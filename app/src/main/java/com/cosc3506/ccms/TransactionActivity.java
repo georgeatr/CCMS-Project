@@ -41,7 +41,7 @@ public class TransactionActivity extends AppCompatActivity {
 
         //Edit Budget
         budget = findViewById(R.id.budget_amount);
-        budget.setText(club.getBudget());
+
 
         transactionList.addAll(club.getTransactions());
 
@@ -76,7 +76,7 @@ public class TransactionActivity extends AppCompatActivity {
             //Add Funds
             club.addFunds(Double.parseDouble(amount.getText().toString()), transName.getText().toString());
         }
-
+        budget.setText(club.getBudget());
         transName.setText("");
         amount.setText("");
 
