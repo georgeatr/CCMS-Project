@@ -15,6 +15,7 @@ public class Club implements Serializable {
         ArrayList<Event> events;
         String description;
         ArrayList<String> managers;
+        ArrayList<String> members;
 
     DatabaseReference reference;
 
@@ -45,9 +46,11 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt + money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
         reference.child(transactionName).setValue("+ $" + money);
         transactions.add(transactionName + ": + $" + money);
+        reference = rootNode.getReference("Clubs/" + ID );
+        reference.child("budget").setValue(String.valueOf(budgetInt));
     }
 
     public void subtractFunds(double money, String transactionName) {
@@ -55,9 +58,11 @@ public class Club implements Serializable {
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt - money;
         setBudget(String.valueOf(budgetInt));
-        reference = rootNode.getReference("Clubs/" + ID + "/transactions");
+        reference = rootNode.getReference("Clubs/" + ID + "/Transactions");
         reference.child(transactionName).setValue("- $" + money);
         transactions.add(transactionName + ": - $" + money);
+        reference = rootNode.getReference("Clubs/" + ID );
+        reference.child("budget").setValue(String.valueOf(budgetInt));
     }
 
     public void newEvent(Event event){
