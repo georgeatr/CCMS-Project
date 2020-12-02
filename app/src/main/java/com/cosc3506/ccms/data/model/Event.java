@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 public class Event implements Serializable {
         String ID;
-        String name;
         String description;
         String address;
         String startDate;
@@ -14,10 +13,9 @@ public class Event implements Serializable {
         String capacity;
 
 
-    public Event(String address, String description,  String name, String ID, String startDate,
+    public Event(String address, String description,  String ID, String startDate,
                  String cost, String endDate, String capacity) {
         this.ID = ID;
-        this.name = name;
         this.description = description;
         this.address = address;
         this.startDate = startDate;
@@ -35,14 +33,6 @@ public class Event implements Serializable {
 
     public void setID(String ID) {
         this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
