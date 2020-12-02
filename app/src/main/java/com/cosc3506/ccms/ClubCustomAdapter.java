@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,11 +46,11 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
 
     }
 
-    public ClubCustomAdapter(Context context, Intent intent, ArrayList dataSet) {
+    public ClubCustomAdapter(Context context, Intent intent, ArrayList dataSet,User user) {
         this.context = context;
         localDataSet = dataSet;
         nextActivity = intent;
-        user = (User) nextActivity.getSerializableExtra("key1");
+        this.user = user;
     }
 
     // Create new views (invoked by the layout manager)
@@ -73,7 +74,9 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         viewHolder.getLeaveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.leaveClub((String)localDataSet.get(position),user);
+                
+                user.leaveClub(user.getEnrolledClubs().get(position),user);
+
             }
         });
 
