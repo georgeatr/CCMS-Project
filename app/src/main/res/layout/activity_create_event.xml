@@ -14,6 +14,7 @@
         android:layout_marginBottom="60dp"
         android:onClick="createEvent"
         android:text="Create New Event"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -26,6 +27,7 @@
         android:ems="10"
         android:hint="Event Name"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +42,7 @@
         android:gravity="start|top"
         android:hint="Event Description"
         android:inputType="textMultiLine"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +56,7 @@
         android:ems="10"
         android:hint="Event Budget"
         android:inputType="numberDecimal"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +71,7 @@
         android:ems="10"
         android:hint="Event Start"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventIDEditText" />
 
@@ -78,6 +83,7 @@
         android:ems="10"
         android:hint="Event End"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/newEventStartDateTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -92,6 +98,7 @@
         android:ems="10"
         android:hint="Event Location"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventStartDateTimeEditText" />
@@ -118,6 +125,7 @@
         android:ems="10"
         android:hint="Event ID"
         android:inputType="number"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEventDescriptionEditText" />
 
@@ -129,6 +137,7 @@
         android:ems="10"
         android:hint="Event Capacity"
         android:inputType="number"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toEndOf="@+id/newEventIDEditText"
@@ -139,6 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="To"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/newEventStartDateTimeEditText"
         app:layout_constraintEnd_toStartOf="@+id/newEventEndDateTimeEditText"
