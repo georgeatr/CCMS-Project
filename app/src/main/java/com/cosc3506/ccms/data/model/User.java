@@ -43,9 +43,9 @@ public class User implements Serializable {
     public void leaveClub(String clubID, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.remove(clubID);
-        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/enrolled" + clubID);
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/enrolled/" + clubID);
         reference.removeValue();
-        reference = rootNode.getReference("Clubs/"+ clubID + "/members" + user.getStudentNumber());
+        reference = rootNode.getReference("Clubs/"+ clubID + "/members/" + user.getStudentNumber());
         reference.removeValue();
     }
 

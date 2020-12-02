@@ -86,6 +86,15 @@ public class Club implements Serializable {
         reference.removeValue();
     }
 
+    public void kickUser(String userStudentNumber){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        members.remove(userStudentNumber);
+        reference = rootNode.getReference("Users/"+ userStudentNumber + "/enrolled/" + getID());
+        reference.removeValue();
+        reference = rootNode.getReference("Clubs/"+ getID() + "/members/" + userStudentNumber);
+        reference.removeValue();
+    }
+
     //-----------getters and setters
 
     public String getID() {
