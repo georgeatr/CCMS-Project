@@ -64,11 +64,11 @@ public class TransactionActivity extends AppCompatActivity {
     public void submitChanges(View view){
         if(sign.isChecked()){
             //Subtract Funds
-            club.subtractFunds(Double.parseDouble(amount.getText().toString()), transName.getText().toString());
+            //club.subtractFunds(Double.parseDouble(String.format("%.2f", amount.getText().toString())), transName.getText().toString());
         }
         else{
             //Add Funds
-            club.addFunds(Double.parseDouble(amount.getText().toString()), transName.getText().toString());
+            //club.addFunds(Double.parseDouble(String.format("%.2f", amount.getText().toString())), transName.getText().toString());
         }
 
         transName.setText("");
