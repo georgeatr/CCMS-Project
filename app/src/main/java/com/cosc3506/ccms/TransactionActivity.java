@@ -44,7 +44,9 @@ public class TransactionActivity extends AppCompatActivity {
         budget = findViewById(R.id.budget_amount);
         budget.setText(club.getBudget());
 
-        transactionList.addAll(club.getTransactions());
+        for(int i = club.getTransactions().size(); i >= 0; i--){
+            transactionList.add(club.getTransactions().get(i));
+        }
 
         //Set Everything for the recycler view of the transactions
         RecyclerView transactionsRV = findViewById(R.id.transactions_RV);
