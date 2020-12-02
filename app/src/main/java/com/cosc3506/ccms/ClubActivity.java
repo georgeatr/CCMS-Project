@@ -175,7 +175,7 @@ public class ClubActivity extends AppCompatActivity {
                         Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
                         Collection<Object> membersColl = membersMap.values();
                         for (Object value : membersColl) {
-90                            members.add(value.toString());
+                            members.add(value.toString());
                         }
                     }catch (ClassCastException c){
                         Log.e("Weird members", String.valueOf(c));
