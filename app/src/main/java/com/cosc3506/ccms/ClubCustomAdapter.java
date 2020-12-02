@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,6 +75,7 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
             @Override
             public void onClick(View v) {
                 user.leaveClub((String)localDataSet.get(position),user);
+                Toast.makeText(context,"The button is clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
