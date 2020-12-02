@@ -35,6 +35,7 @@ public class ClubActivity extends AppCompatActivity {
 
     int x = 0;
     Button refresh;
+    Button dropStatusButton;
     TextView clubDescriptionTV;
     Club club;
     String clubID;
@@ -51,6 +52,7 @@ public class ClubActivity extends AppCompatActivity {
         setContentView(R.layout.activity_club);
 
         refresh = findViewById(R.id.refreshButton);
+        dropStatusButton = findViewById(R.id.drop_manager);
 
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
@@ -65,6 +67,17 @@ public class ClubActivity extends AppCompatActivity {
 
         getClub(clubID);
         refresh(new View(this));
+
+        ArrayList<String> managed = user.getManagedClubs();
+        int index = managed.indexOf(clubID);
+        if (index != -1) { //checks if manager
+            dropStatusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    club.dropFromManager(user.getStudentNumber());
+                }
+            });
+        }
 
     }
 
