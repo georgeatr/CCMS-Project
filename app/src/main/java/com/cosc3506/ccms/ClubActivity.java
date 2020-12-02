@@ -1,16 +1,16 @@
 package com.cosc3506.ccms;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.Event;
@@ -97,7 +97,9 @@ public class ClubActivity extends AppCompatActivity {
     }
 
     public void onClickCheckTransactions(View view) {
-        startActivity(new Intent(ClubActivity.this,TransactionActivity.class));
+        Intent intent = new Intent(ClubActivity.this, TransactionActivity.class);
+        intent.putExtra("club", club);
+        startActivity(intent);
     }
 
     public void getClub(final String clubID){

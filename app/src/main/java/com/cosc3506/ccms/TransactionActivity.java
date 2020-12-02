@@ -7,7 +7,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+
+import com.cosc3506.ccms.data.model.Club;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +21,8 @@ public class TransactionActivity extends AppCompatActivity {
     EditText amount;
     ArrayList transactionList = new ArrayList(Arrays.asList("Transaction1","Transaction2","Transaction3","Transaction4","Transaction5","Transaction6"));
 
+    Club club;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,8 @@ public class TransactionActivity extends AppCompatActivity {
         plus = findViewById(R.id.plusTextView);
         minus = findViewById(R.id.minusTextView);
         amount = findViewById(R.id.amountEditText);
+
+        club = (Club) getIntent().getExtras().getSerializable("club");
 
         //RecyclerView transactionsRV = findViewById(R.id.tran)
 
@@ -52,9 +57,11 @@ public class TransactionActivity extends AppCompatActivity {
     public void submitChanges(View view){
         if(sign.isChecked()){
             //Subtract Funds
+            club.subtractFunds(Double.parseDouble(amount.getText().toString()), "Funds Gained");
         }
         else{
             //Add Funds
+            club.addFunds(Double.parseDouble(amount.getText().toString()), "Funds Lost");
         }
 
         amount.setText("");
