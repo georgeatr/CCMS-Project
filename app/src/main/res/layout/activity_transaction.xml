@@ -22,13 +22,13 @@
         android:id="@+id/submitChangesButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="16dp"
         android:onClick="submitChanges"
         android:text="Submit Changes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
 
     <TextView
         android:id="@+id/editFundsTextView"
@@ -47,13 +47,13 @@
         android:id="@+id/amountEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/transactionNameEditText" />
 
     <TextView
         android:id="@+id/minusTextView"
@@ -81,13 +81,13 @@
         android:id="@+id/transactionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="16dp"
         android:text="Transactions"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/submitChangesButton" />
 
     <TextView
         android:id="@+id/plusTextView"
@@ -102,11 +102,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transactions_RV"
-        android:layout_width="414dp"
-        android:layout_height="525dp"
-        android:layout_marginTop="204dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
+
+    <EditText
+        android:id="@+id/transactionNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Transaction Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

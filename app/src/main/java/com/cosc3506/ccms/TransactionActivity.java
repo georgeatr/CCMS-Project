@@ -2,7 +2,7 @@ package com.cosc3506.ccms;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cosc3506.ccms.data.model.Club;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TransactionActivity extends AppCompatActivity {
 
     Switch sign;
     TextView plus;
     TextView minus;
-    TextView amount;
+    EditText transName;
+    EditText amount;
     ArrayList transactionList = new ArrayList();
 
     Club club;
@@ -33,6 +33,7 @@ public class TransactionActivity extends AppCompatActivity {
         sign = findViewById(R.id.signSwitch);
         plus = findViewById(R.id.plusTextView);
         minus = findViewById(R.id.minusTextView);
+        transName = findViewById(R.id.transactionNameEditText);
         amount = findViewById(R.id.amountEditText);
 
         club = (Club) getIntent().getExtras().getSerializable("club");
@@ -63,13 +64,14 @@ public class TransactionActivity extends AppCompatActivity {
     public void submitChanges(View view){
         if(sign.isChecked()){
             //Subtract Funds
-            club.subtractFunds(Double.parseDouble(amount.getText().toString()), "Funds Gained");
+            club.subtractFunds(Double.parseDouble(amount.getText().toString()), transName.getText().toString());
         }
         else{
             //Add Funds
-            club.addFunds(Double.parseDouble(amount.getText().toString()), "Funds Lost");
+            club.addFunds(Double.parseDouble(amount.getText().toString()), transName.getText().toString());
         }
 
+        transName.setText("");
         amount.setText("");
 
 
