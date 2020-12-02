@@ -62,7 +62,7 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTransactionTextView().setText((String)localDataSet.get(position));
-        viewHolder.getAmountTextView().setText("$ 1,000,000");
+        //viewHolder.getAmountTextView().setText("$ 1,000,000");
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
