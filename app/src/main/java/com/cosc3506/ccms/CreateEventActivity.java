@@ -12,7 +12,7 @@ import com.cosc3506.ccms.data.model.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    EditText nEN;
+
     EditText nEDesc;
     EditText nEID;
     EditText nEC;
@@ -37,13 +37,11 @@ public class CreateEventActivity extends AppCompatActivity {
         nEB = findViewById(R.id.newEventBudgetEditTextDec);
 
         club = (Club) getIntent().getExtras().getSerializable("club");
-
     }
 
 
     public void createEvent(View view){
 
-        String newEventName = nEN.getText().toString();
         String newEventDescription = nEDesc.getText().toString();
         String newEventID = nEID.getText().toString();
         String newEventCapacity = nEC.getText().toString();
@@ -51,31 +49,21 @@ public class CreateEventActivity extends AppCompatActivity {
         String newEventEndDateTime = nEET.getText().toString();
         String newEventLocation = nEL.getText().toString();
         String newEventBudget = nEB.getText().toString();
-
-        if(     newEventName.isEmpty() ||
-                newEventDescription.isEmpty() ||
+        if(     newEventDescription.isEmpty() ||
                 newEventID.isEmpty() ||
                 newEventCapacity.isEmpty() ||
                 newEventStartDateTime.isEmpty() ||
                 newEventEndDateTime.isEmpty() ||
                 newEventLocation.isEmpty() ||
                 newEventBudget.isEmpty()){
-
             Toast.makeText(this, "Please Fill in All the Fields!!!", Toast.LENGTH_SHORT).show();
-
         }
         else {
-
             Event e = new Event(newEventLocation, newEventDescription, newEventID,
                     newEventStartDateTime, newEventBudget, newEventEndDateTime, newEventCapacity);
-
             club.newEvent(e);
-
             finish();
-
         }
-
-
     }
 
 }
