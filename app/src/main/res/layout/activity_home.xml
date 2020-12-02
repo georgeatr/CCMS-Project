@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="417dp"
-        android:layout_height="65dp"
+        android:layout_width="424dp"
+        android:layout_height="59dp"
         android:background="@color/black"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
