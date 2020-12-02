@@ -37,6 +37,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
             removeButton = (Button) view.findViewById(R.id.remove_member);
             promoteButton = (Button) view.findViewById(R.id.promote_member);
             linearLayout = (LinearLayout) view.findViewById(R.id.member_rowLayout_linear);
+
         }
 
         public TextView getTextView() {
@@ -75,7 +76,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                club.kickUser(user.getName());
+                club.kickUser((String)localDataSet.get(position));
                 localDataSet.remove(position);
                 notifyDataSetChanged();
             }
@@ -88,7 +89,12 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
             }
         });
 
-        //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
+        ArrayList<String> managed = user.getManagedClubs();
+        int index = managed.indexOf(club.getID());
+        if (index != -1) { //checks if manager
+            viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
+        }
 
     }
 

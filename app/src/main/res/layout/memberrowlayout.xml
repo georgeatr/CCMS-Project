@@ -33,7 +33,8 @@
             android:layout_weight="1"
             android:onClick="onClickPromoteMember"
             android:text="Promote"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/remove_member"
@@ -42,6 +43,7 @@
             android:layout_weight="1"
             android:onClick="onClickRemoveMember"
             android:text="Remove"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>
