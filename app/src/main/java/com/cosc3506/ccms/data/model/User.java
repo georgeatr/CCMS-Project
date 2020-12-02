@@ -17,7 +17,7 @@ public class User implements Serializable {
     ArrayList<String> enrolledClubs;
     ArrayList<String> managedClubs;
 
-    DatabaseReference reference;
+
 
 
     public User(String studentNumber, String name, String phone, String email,
@@ -41,6 +41,7 @@ public class User implements Serializable {
     }
 
     public void leaveClub(String clubID, User user){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.remove(clubID);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/enrolled/" + clubID);
@@ -50,6 +51,7 @@ public class User implements Serializable {
     }
 
     public void joinClub(String clubID, User user){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.add(clubID);
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/enrolled");
@@ -59,6 +61,7 @@ public class User implements Serializable {
     }
 
     public Club joinCreatedClub(Club club, User user){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.add(club.getID());
         reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/enrolled");
@@ -74,6 +77,7 @@ public class User implements Serializable {
 
 
     public void createClub(Club club, User user, String newBudget){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         club = joinCreatedClub(club, user);
         reference = rootNode.getReference("Clubs");
