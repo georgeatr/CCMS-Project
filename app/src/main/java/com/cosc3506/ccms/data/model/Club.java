@@ -73,7 +73,8 @@ public class Club implements Serializable {
         setEvents(events);
         reference = rootNode.getReference("Clubs/" + getID() + "/Events");
         reference.child(String.valueOf(event.getID())).setValue(event);
-        subtractFunds(Double.parseDouble(event.getCost()), "Event: " + event.getName());
+        String cost = String.format("%.2f", Double.parseDouble(event.getCost()));
+        subtractFunds(Double.parseDouble(cost), "Event: " + event.getName());
     }
 
     public void deleteEvent(Event event){
