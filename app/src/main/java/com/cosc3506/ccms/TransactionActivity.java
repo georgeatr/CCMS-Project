@@ -39,14 +39,11 @@ public class TransactionActivity extends AppCompatActivity {
 
         transactionList.addAll(club.getTransactions());
 
+        //Set Everything for the recycler view of the transactions
         RecyclerView transactionsRV = findViewById(R.id.transactions_RV);
-
         LinearLayoutManager transactionLayoutManager = new LinearLayoutManager(transactionsRV.getContext());
-
         transactionsRV.setLayoutManager(transactionLayoutManager);
-
         TransactionsCustomAdapter transactionsAdapter = new TransactionsCustomAdapter(this,transactionList);
-
         transactionsRV.setAdapter(transactionsAdapter);
 
     }

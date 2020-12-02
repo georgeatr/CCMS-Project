@@ -41,14 +41,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
         user = (User) getIntent().getExtras().getSerializable("user");
 
 
-//        for (int i = 0; i < user.getEnrolledClubs().size(); i++) {
-//            clubs.add(getClub(user.getEnrolledClubs().get(0)));
-//        }
 
         clubList.addAll(user.getEnrolledClubs());
 
