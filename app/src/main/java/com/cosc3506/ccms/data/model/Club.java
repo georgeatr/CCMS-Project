@@ -15,6 +15,7 @@ public class Club implements Serializable {
         ArrayList<Event> events;
         String description;
         ArrayList<String> managers;
+        ArrayList<String> members;
 
     DatabaseReference reference;
 
