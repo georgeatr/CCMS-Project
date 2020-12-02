@@ -36,7 +36,6 @@ public class ClubActivity extends AppCompatActivity {
     TextView clubDescriptionTV;
     Club club;
     String clubID;
-    String clubDescription;
     ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>();
 
@@ -101,6 +100,14 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = new Intent(ClubActivity.this, TransactionActivity.class);
         intent.putExtra("club", club);
         startActivity(intent);
+    }
+
+    public void onClickPromoteMember(View view){
+
+    }
+
+    public void onClickRemoveMember(View view){
+
     }
 
     public void getClub(final String clubID){
