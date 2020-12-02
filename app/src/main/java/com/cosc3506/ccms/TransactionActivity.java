@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -79,9 +80,16 @@ public class TransactionActivity extends AppCompatActivity {
             club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
         }
 
+        if(Double.parseDouble(club.getBudget()) < 0){
+            budget.setTextColor(Color.RED);
+        }else{
+            budget.setTextColor(Color.BLACK);
+        }
+        
+        budget.setText(club.getBudget());
+
         transName.setText("");
         amount.setText("");
-
 
     }
 

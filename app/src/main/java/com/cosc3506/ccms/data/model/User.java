@@ -1,9 +1,5 @@
 package com.cosc3506.ccms.data.model;
 
-import android.os.Parcel;
-import android.widget.Toast;
-
-import com.cosc3506.ccms.ClubActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -51,6 +47,16 @@ public class User implements Serializable {
         reference.removeValue();
     }
 
+    public Club joinCreatedClub(Club club, User user){
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        enrolledClubs.add(club.getID());
+        reference = rootNode.getReference("Users/"+ user.getStudentNumber() + "/Enrolled");
+        reference.child(club.getID()).setValue(club.getID());
+        reference = rootNode.getReference("Clubs/"+ club.getID() + "/Members");
+        reference.child(user.getStudentNumber()).setValue(user.getStudentNumber());
+        return club;
+    }
+
     public void joinClub(String clubID, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         enrolledClubs.add(clubID);
@@ -62,7 +68,7 @@ public class User implements Serializable {
 
     public void createClub(Club club, User user){
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        joinClub(club.getID(), user);
+        club = joinCreatedClub(club, user);
         reference = rootNode.getReference("Clubs");
         reference.child(club.getID()).setValue(club);
         //Make the creator a manager
