@@ -43,8 +43,6 @@ public class HomeActivity extends AppCompatActivity {
 
         user = (User) getIntent().getExtras().getSerializable("user");
 
-
-
         clubList.addAll(user.getEnrolledClubs());
 
         TextView welcomeText = findViewById(R.id.welcome_view);
