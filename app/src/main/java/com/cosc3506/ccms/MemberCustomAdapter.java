@@ -81,6 +81,13 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
             }
         });
 
+        viewHolder.getPromoteButton().setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                club.promoteToManager(user);
+            }
+        });
+
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
     }
