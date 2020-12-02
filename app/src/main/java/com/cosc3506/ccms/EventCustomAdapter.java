@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.Event;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -76,7 +74,7 @@ public class EventCustomAdapter extends RecyclerView.Adapter<EventCustomAdapter.
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getEventName().setText((String)localDataSet.get(position).getName());
+        viewHolder.getEventName().setText((String)localDataSet.get(position).getID());
         viewHolder.getEventAddress().setText("Location: " + (String)localDataSet.get(position).getAddress());
         viewHolder.getEventDescription().setText("Event Description: " + (String)localDataSet.get(position).getDescription());
         viewHolder.getEventStart().setText("Start: " + (String)localDataSet.get(position).getStartDate());

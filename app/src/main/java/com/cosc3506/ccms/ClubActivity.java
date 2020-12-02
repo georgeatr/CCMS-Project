@@ -161,7 +161,7 @@ public class ClubActivity extends AppCompatActivity {
                                     .replace(" endDate=","").replace(" capacity=","");
                             String[] eventStringArray = eventString.split(",");
                             events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
-                                    eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
+                                    eventStringArray[4],eventStringArray[5],eventStringArray[6]));
                         }
                     }catch (NullPointerException e){
                         Log.e("Club empty events", String.valueOf(e));
