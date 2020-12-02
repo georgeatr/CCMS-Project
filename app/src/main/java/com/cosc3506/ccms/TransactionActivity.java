@@ -42,7 +42,7 @@ public class TransactionActivity extends AppCompatActivity {
 
         //Edit Budget
         budget = findViewById(R.id.budget_amount);
-        budget.setText(club.getBudget());
+        budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
 
         transactionList.addAll(club.getTransactions());
 
@@ -81,10 +81,10 @@ public class TransactionActivity extends AppCompatActivity {
         }
 
         if(Double.parseDouble(club.getBudget()) < 0){
-            budget.setText(club.getBudget());
+            budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
             budget.setTextColor(Color.RED);
         }else{
-            budget.setText(club.getBudget());
+            budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
             budget.setTextColor(Color.BLACK);
         }
 
