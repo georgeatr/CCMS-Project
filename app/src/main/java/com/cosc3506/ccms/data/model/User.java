@@ -1,5 +1,7 @@
 package com.cosc3506.ccms.data.model;
 
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
