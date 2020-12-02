@@ -49,7 +49,6 @@ public class TransactionActivity extends AppCompatActivity {
 
         transactionsRV.setAdapter(transactionsAdapter);
 
-
     }
 
     public void signChange(View view){
@@ -75,6 +74,8 @@ public class TransactionActivity extends AppCompatActivity {
         }
 
         amount.setText("");
+
+
     }
 
 }
