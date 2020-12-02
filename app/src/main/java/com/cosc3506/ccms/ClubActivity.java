@@ -141,29 +141,21 @@ public class ClubActivity extends AppCompatActivity {
                     ArrayList<String> transactions = new ArrayList<>();
                     ArrayList<String> members = new ArrayList<>();
 
+                    Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("managers").getValue();
+                    Collection<Object> managersColl = managersMap.values();
+                    for (Object value : managersColl) {
+                        managers.add(value.toString());
+                    }
+
+                    Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
+                    Object[] transactionsColl = transactionsMap.values().toArray();
+                    Object[] transactionKeys = transactionsMap.keySet().toArray();
+
+                    for (int j = 0; j < transactionKeys.length; j++) {
+                        transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
+                    }
 
                     try {
-                        Map<String, Object> managersMap = (HashMap<String, Object>) snapshot.child(clubID).child("managers").getValue();
-                        Collection<Object> managersColl = managersMap.values();
-                        for (Object value : managersColl) {
-                            managers.add(value.toString());
-                        }
-
-                        Map<String, Object> transactionsMap = (HashMap<String, Object>) snapshot.child(clubID).child("transactions").getValue();
-                        Object[] transactionsColl = transactionsMap.values().toArray();
-                        Object[] transactionKeys = transactionsMap.keySet().toArray();
-
-                        for (int j = 0; j < transactionKeys.length; j++) {
-                            transactions.add(transactionKeys[j].toString() + "\n" + transactionsColl[j]);
-                        }
-
-                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
-                        Collection<Object> membersColl = membersMap.values();
-                        for (Object value : membersColl) {
-                            members.add(value.toString());
-                        }
-                        //members = membersMap;
-
                         Map<String, Object> eventsMap = (HashMap<String, Object>) snapshot.child(clubID).child("events").getValue();
                         Collection<Object> eventsColl = eventsMap.values();
                         for (Object value : eventsColl) {
@@ -176,8 +168,19 @@ public class ClubActivity extends AppCompatActivity {
                             events.add(new Event(eventStringArray[0],eventStringArray[1],eventStringArray[2],eventStringArray[3],
                                     eventStringArray[4],eventStringArray[5],eventStringArray[6],eventStringArray[7]));
                         }
-                    }catch (Exception e){
-                        Log.e("Club onData", String.valueOf(e));
+                    }catch (NullPointerException e){
+                        Log.e("Club empty events", String.valueOf(e));
+
+                    }try{
+                        Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
+                        Collection<Object> membersColl = membersMap.values();
+                        for (Object value : membersColl) {
+90                            members.add(value.toString());
+                        }
+                    }catch (ClassCastException c){
+                        Log.e("Weird members", String.valueOf(c));
+                        ArrayList membersMap = (ArrayList) snapshot.child(clubID).child("members").getValue();
+                        members = membersMap;
                     }
 
                     club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
