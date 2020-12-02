@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
+    ClubCustomAdapter clubCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         clubsView.setLayoutManager(manager);
 
         //Create and apply Adapter
-        ClubCustomAdapter clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
+        clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
         clubsView.setAdapter(clubCustomAdapter);
 
 
@@ -71,6 +72,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this, JoinCreateClubActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
+    }
+
+    public void onClickRefresh(View view){
+        clubCustomAdapter.notifyDataSetChanged();
     }
 
 //    public Club getClub(final String clubID){
