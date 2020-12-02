@@ -87,7 +87,7 @@ public class ClubActivity extends AppCompatActivity {
         }
 
         //Create Adapters
-        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList);
+        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList,user,club);
         EventCustomAdapter eventAdapter = new EventCustomAdapter(this,eventList);
 
         //Set Adapters
@@ -115,14 +115,6 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = new Intent(ClubActivity.this, TransactionActivity.class);
         intent.putExtra("club", club);
         startActivity(intent);
-    }
-
-    public void onClickPromoteMember(View view){
-
-    }
-
-    public void onClickRemoveMember(View view){
-
     }
 
     public void getClub(final String clubID){

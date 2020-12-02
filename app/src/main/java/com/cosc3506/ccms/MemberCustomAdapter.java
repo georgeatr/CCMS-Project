@@ -5,10 +5,14 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cosc3506.ccms.data.model.Club;
+import com.cosc3506.ccms.data.model.User;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,28 +21,38 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
     private ArrayList localDataSet;
     Context context;
+    User user;
+    Club club;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private final Button removeButton;
+        private final Button promoteButton;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             textView = (TextView) view.findViewById(R.id.member_name);
+            removeButton = (Button) view.findViewById(R.id.remove_member);
+            promoteButton = (Button) view.findViewById(R.id.promote_member);
             linearLayout = (LinearLayout) view.findViewById(R.id.member_rowLayout_linear);
         }
 
         public TextView getTextView() {
             return textView;
         }
+        public Button getRemoveButton() { return removeButton;}
+        public Button getPromoteButton() { return promoteButton; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
 
-    public MemberCustomAdapter(Context context, ArrayList dataSet) {
+    public MemberCustomAdapter(Context context, ArrayList dataSet, User user, Club club) {
         this.context = context;
         localDataSet = dataSet;
+        this.user = user;
+        this.club = club;
     }
 
     // Create new views (invoked by the layout manager)
@@ -58,6 +72,21 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText((String)localDataSet.get(position));
+        viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                club.kickUser(user.getName());
+                localDataSet.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        viewHolder.getPromoteButton().setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                club.promoteToManager(user);
+            }
+        });
 
         //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 

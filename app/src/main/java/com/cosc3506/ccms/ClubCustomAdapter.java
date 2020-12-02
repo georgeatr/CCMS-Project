@@ -3,6 +3,7 @@ package com.cosc3506.ccms;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cosc3506.ccms.data.model.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -74,7 +76,7 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         viewHolder.getLeaveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.leaveClub(user.getEnrolledClubs().get(position),user);
+                user.leaveClub((String)localDataSet.get(position),user);
                 localDataSet.remove(position);
                 notifyDataSetChanged();
             }
