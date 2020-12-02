@@ -66,7 +66,7 @@ public class JoinCreateClubActivity extends AppCompatActivity {
                 newClubID.isEmpty() ||
                 newClubRoom.isEmpty() ||
                 newClubBudget.isEmpty()){
-
+            
             Toast.makeText(this, "Please Fill in All New Club Fields!", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -75,5 +75,6 @@ public class JoinCreateClubActivity extends AppCompatActivity {
             user.createClub(club, user, newClubBudget);
             finish();
         }
+
     }
 }
