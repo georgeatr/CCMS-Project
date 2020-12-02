@@ -24,14 +24,4 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/club_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="italic" />
-
 </LinearLayout>

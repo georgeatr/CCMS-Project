@@ -20,7 +20,6 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView transactionTextView;
-        private final TextView amountTextView;
         private final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
@@ -28,14 +27,12 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
             // Define click listener for the ViewHolder's View
 
             transactionTextView = (TextView) view.findViewById(R.id.transaction_number);
-            amountTextView = (TextView) view.findViewById(R.id.transaction_amount);
             linearLayout = (LinearLayout) view.findViewById(R.id.transaction_rowLayout_linear);
         }
 
         public TextView getTransactionTextView() {
             return transactionTextView;
         }
-        public TextView getAmountTextView(){ return amountTextView; }
         public LinearLayout getLinearLayout() { return linearLayout; }
 
     }
@@ -62,9 +59,7 @@ public class TransactionsCustomAdapter extends RecyclerView.Adapter<Transactions
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTransactionTextView().setText((String)localDataSet.get(position));
-        //viewHolder.getAmountTextView().setText("$ 1,000,000");
 
-        //viewHolder.getLinearLayout().setBackgroundColor(getRandomColor());
 
     }
 
