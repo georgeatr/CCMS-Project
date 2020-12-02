@@ -87,7 +87,7 @@ public class ClubActivity extends AppCompatActivity {
         }
 
         //Create Adapters
-        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList);
+        MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList,user,club);
         EventCustomAdapter eventAdapter = new EventCustomAdapter(this,eventList);
 
         //Set Adapters
@@ -115,14 +115,6 @@ public class ClubActivity extends AppCompatActivity {
         Intent intent = new Intent(ClubActivity.this, TransactionActivity.class);
         intent.putExtra("club", club);
         startActivity(intent);
-    }
-
-    public void onClickPromoteMember(View view){
-
-    }
-
-    public void onClickRemoveMember(View view){
-
     }
 
     public void getClub(final String clubID){
@@ -176,7 +168,7 @@ public class ClubActivity extends AppCompatActivity {
                         Map<String, Object> membersMap = (HashMap<String, Object>) snapshot.child(clubID).child("members").getValue();
                         Collection<Object> membersColl = membersMap.values();
                         for (Object value : membersColl) {
-90                            members.add(value.toString());
+                            members.add(value.toString());
                         }
                     }catch (ClassCastException c){
                         Log.e("Weird members", String.valueOf(c));
