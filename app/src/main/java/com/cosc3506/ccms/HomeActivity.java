@@ -37,15 +37,12 @@ public class HomeActivity extends AppCompatActivity {
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
     ClubCustomAdapter clubCustomAdapter;
-    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView clubsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        swipeRefreshLayout = findViewById(R.id.swiperLayout);
 
         user = (User) getIntent().getExtras().getSerializable("user");
 
@@ -64,16 +61,6 @@ public class HomeActivity extends AppCompatActivity {
         //Create and apply Adapter
         clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
         clubsView.setAdapter(clubCustomAdapter);
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                clubList = new ArrayList<>();
-                clubList = user.getEnrolledClubs();
-                clubCustomAdapter.updateList(clubList);
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
 
     }
 
