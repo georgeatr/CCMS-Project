@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -62,6 +63,9 @@ public class CreateEventActivity extends AppCompatActivity {
             Event e = new Event(newEventLocation, newEventDescription, newEventID,
                     newEventStartDateTime, newEventBudget, newEventEndDateTime, newEventCapacity);
             club.newEvent(e);
+            Intent intent = new Intent(CreateEventActivity.this, HomeActivity.class);
+            intent.putExtra("club", club);
+            startActivity(intent);
             finish();
         }
     }

@@ -58,6 +58,7 @@ public class ClubActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         clubID = intent.getStringExtra("keyname");
+        club = (Club) intent.getExtras().getSerializable("club");
         user = (User) intent.getExtras().getSerializable("name");
 
         clubName = findViewById(R.id.clubNameTV);
@@ -65,8 +66,13 @@ public class ClubActivity extends AppCompatActivity {
         checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
         addEventFB2 = findViewById(R.id.addEventFB2);
 
-        getClub(clubID);
-        getNames();
+        if (club == null) {
+            getClub(clubID);
+            getNames();
+        }
+            refresh(new View(this));
+
+
 
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(clubID);

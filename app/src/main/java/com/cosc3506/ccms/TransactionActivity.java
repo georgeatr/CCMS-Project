@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -88,8 +89,10 @@ public class TransactionActivity extends AppCompatActivity {
             budget.setTextColor(Color.BLACK);
         }
 
-        transName.setText("");
-        amount.setText("");
+        Intent intent = new Intent(TransactionActivity.this, Club.class);
+        intent.putExtra("club", club);
+        startActivity(intent);
+        finish();
 
     }
 
