@@ -115,8 +115,11 @@ public class ClubActivity extends AppCompatActivity {
         //Set Adapters
         memberListRV.setAdapter(memberAdapter);
         eventListRV.setAdapter(eventAdapter);
+        
+        refresh.setVisibility(View.INVISIBLE);
+
         if (x != 0) {
-            refresh.setVisibility(View.INVISIBLE);
+
 
             ArrayList<String> managed = user.getManagedClubs();
             int index = managed.indexOf(clubID);
