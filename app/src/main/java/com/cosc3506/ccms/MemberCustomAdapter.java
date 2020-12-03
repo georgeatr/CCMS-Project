@@ -76,6 +76,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText((String)nameList.get(position));
+
         viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +104,6 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
                 if(manager.equals(temp)){
                     viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
                     viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
-                    break;
                 }
             }
         }
