@@ -112,6 +112,9 @@ public class Club implements Serializable {
         if (managers.size()>1) { //check if there are other managers for that club
             managers.remove(managerStudentNumber);
             setManagers(managers);
+            reference = rootNode.getReference("Users/" + managerStudentNumber + "/managed/"
+                    + ID);
+            reference.removeValue();
             reference = rootNode.getReference("Clubs/" + getID() + "/managers/"
                     + managerStudentNumber);
             reference.removeValue();
