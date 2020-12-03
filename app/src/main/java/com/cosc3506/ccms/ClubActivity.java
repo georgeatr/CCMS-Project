@@ -207,7 +207,7 @@ public class ClubActivity extends AppCompatActivity {
                         members = membersMap;
                     }
 
-                    memberList.addAll(members);
+                    memberList= members;
                     club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
                 }
             }
