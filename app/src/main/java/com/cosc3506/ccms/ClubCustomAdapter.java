@@ -99,6 +99,11 @@ public class ClubCustomAdapter extends RecyclerView.Adapter<ClubCustomAdapter.Vi
         return localDataSet.size();
     }
 
+    public void updateList(ArrayList newList){
+        localDataSet = newList;
+        notifyDataSetChanged();
+    }
+
     public int getRandomColor(){
         Random rnd = new Random();
         return Color.argb(255,rnd.nextInt(256),rnd.nextInt(256),rnd.nextInt(256));

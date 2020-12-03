@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cosc3506.ccms.data.model.Club;
 import com.cosc3506.ccms.data.model.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -114,7 +115,6 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
     public int getItemCount() {
         return localDataSet.size();
     }
-
 
     public int getRandomColor(){
         Random rnd = new Random();
