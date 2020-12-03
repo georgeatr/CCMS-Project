@@ -17,7 +17,7 @@ public class Club implements Serializable {
         ArrayList<String> managers;
         ArrayList<String> members;
 
-    DatabaseReference reference;
+
 
     public Club(String ID, String budget, ArrayList<String> transactions, String room, String name,
                 ArrayList<Event> events, String description, ArrayList<String> managers, ArrayList<String> members) {
@@ -43,6 +43,7 @@ public class Club implements Serializable {
     }
 
     public void addFunds(double money, String transactionName) {
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt + money;
@@ -55,6 +56,7 @@ public class Club implements Serializable {
     }
 
     public void subtractFunds(double money, String transactionName) {
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         double budgetInt = Double.parseDouble(budget);
         budgetInt = budgetInt - money;
@@ -67,6 +69,7 @@ public class Club implements Serializable {
     }
 
     public void newEvent(Event event){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         ArrayList<Event> events = getEvents();
         events.add(event);
@@ -78,6 +81,7 @@ public class Club implements Serializable {
     }
 
     public void deleteEvent(Event event){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         ArrayList<Event> events = getEvents();
         events.remove(event);
@@ -87,6 +91,7 @@ public class Club implements Serializable {
     }
 
     public void kickUser(String userStudentNumber){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         members.remove(userStudentNumber);
         reference = rootNode.getReference("Users/"+ userStudentNumber + "/enrolled/" + getID());
@@ -96,6 +101,7 @@ public class Club implements Serializable {
     }
 
     public void promoteToManager(String userStudentNumber){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Users/"+ userStudentNumber + "/managed");
         reference.child(getID()).setValue(getID());
@@ -107,6 +113,7 @@ public class Club implements Serializable {
     }
 
     public boolean dropFromManager(String managerStudentNumber){
+        DatabaseReference reference;
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         ArrayList<String> managers = getManagers();
         if (managers.size()>1) { //check if there are other managers for that club
