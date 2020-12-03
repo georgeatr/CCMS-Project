@@ -67,7 +67,6 @@ public class ClubActivity extends AppCompatActivity {
 
         getClub(clubID);
         getNames();
-        refresh(new View(this));
 
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(clubID);
@@ -80,6 +79,13 @@ public class ClubActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getClub(clubID);
+        getNames();
     }
 
     public void refresh(View view){
