@@ -96,10 +96,11 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         if (index != -1) { //checks if manager
             viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
             viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
+
             for (int i = 0; i < club.getManagers().size(); i++) {
                 if(club.getManagers().get(i) != localDataSet.get(position)){
-                    viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
-                    viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
+                    viewHolder.getRemoveButton().setVisibility(View.GONE);
+                    viewHolder.getPromoteButton().setVisibility(View.GONE);
                 }
             }
         }
