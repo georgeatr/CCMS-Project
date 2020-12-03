@@ -1,12 +1,12 @@
 package com.cosc3506.ccms;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,7 +43,7 @@ public class TransactionActivity extends AppCompatActivity {
 
         //Edit Budget
         budget = findViewById(R.id.budget_amount);
-        budget.setText(club.getBudget());
+        budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
 
         transactionList.addAll(club.getTransactions());
 
@@ -70,25 +70,33 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     public void submitChanges(View view){
-        if(sign.isChecked()){
-            //Subtract Funds
-            String subAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
-            club.subtractFunds(Double.parseDouble(subAmount), transName.getText().toString());
+        if (transName.getText().toString().isEmpty()||
+            amount.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please Complete Both Feilds!", Toast.LENGTH_SHORT).show();
         }
         else{
-            //Add Funds
-            String addAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
-            club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
-        }
+            if(sign.isChecked()){
+                //Subtract Funds
+                String subAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
+                club.subtractFunds(Double.parseDouble(subAmount), transName.getText().toString());
+            }
+            else{
+                //Add Funds
+                String addAmount = String.format("%.2f", Double.parseDouble(amount.getText().toString()));
+                club.addFunds(Double.parseDouble(addAmount), transName.getText().toString());
+            }
 
-        if(Double.parseDouble(club.getBudget()) < 0){
-            budget.setText(club.getBudget());
-            budget.setTextColor(Color.RED);
-        }else{
-            budget.setText(club.getBudget());
-            budget.setTextColor(Color.BLACK);
+            if(Double.parseDouble(club.getBudget()) < 0){
+                //budget.setText(club.getBudget());
+                budget.setTextColor(Color.RED);
+            }else{
+               // budget.setText(club.getBudget());
+                budget.setTextColor(Color.BLACK);
+            }
+            budget.setText(String.format("%.2f", Double.parseDouble(club.getBudget())));
+            transName.setText("");
+            amount.setText("");
         }
-
 
     }
 
