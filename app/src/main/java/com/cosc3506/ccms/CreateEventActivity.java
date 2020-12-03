@@ -63,6 +63,9 @@ public class CreateEventActivity extends AppCompatActivity {
             Event e = new Event(newEventLocation, newEventDescription, newEventID,
                     newEventStartDateTime, newEventBudget, newEventEndDateTime, newEventCapacity);
             club.newEvent(e);
+            Intent intent = new Intent(CreateEventActivity.this, HomeActivity.class);
+            intent.putExtra("club", club);
+            startActivity(intent);
             finish();
         }
     }

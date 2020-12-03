@@ -89,6 +89,10 @@ public class TransactionActivity extends AppCompatActivity {
             budget.setTextColor(Color.BLACK);
         }
 
+        Intent intent = new Intent(TransactionActivity.this, Club.class);
+        intent.putExtra("club", club);
+        startActivity(intent);
+        finish();
 
     }
 

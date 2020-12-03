@@ -79,7 +79,8 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                club.kickUser((String)localDataSet.remove(position));
+                club.kickUser((String)localDataSet.get(position));
+                localDataSet.remove(position);
                 notifyDataSetChanged();
             }
         });
