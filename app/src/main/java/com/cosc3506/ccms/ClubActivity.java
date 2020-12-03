@@ -26,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +36,7 @@ public class ClubActivity extends AppCompatActivity {
     Button refresh;
     Button dropStatusButton;
     TextView clubDescriptionTV;
+    TextView clubName;
     Club club;
     String clubID;
     ArrayList<Event> eventList = new ArrayList<>();
@@ -58,9 +58,7 @@ public class ClubActivity extends AppCompatActivity {
         clubID = intent.getStringExtra("keyname");
         user = (User) intent.getExtras().getSerializable("name");
 
-        TextView clubTitle = findViewById(R.id.clubNameTV);
-        clubTitle.setText(clubID);
-
+        clubName = findViewById(R.id.clubNameTV);
         clubDescriptionTV = findViewById(R.id.clubDescription);
         checkTransactionsFB = findViewById(R.id.checkTransactionsFB);
         addEventFB2 = findViewById(R.id.addEventFB2);
@@ -93,6 +91,7 @@ public class ClubActivity extends AppCompatActivity {
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
         try {
+            clubName.setText(club.getName());
             eventList.addAll(club.getEvents());
             memberList.addAll(club.getMembers());
             clubDescriptionTV.setText("Club Description:\n" + club.getDescription());
