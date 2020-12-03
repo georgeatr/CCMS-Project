@@ -74,7 +74,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText((String)localDataSet.get(position));
+        viewHolder.getTextView().setText((String)nameList.get(position));
         viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,21 +87,19 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         viewHolder.getPromoteButton().setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                club.promoteToManager((String) nameList.get(position));
+                club.promoteToManager((String) localDataSet.get(position));
             }
         });
 
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(club.getID());
         if (index != -1) { //checks if manager
-
             viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
             viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
-
             for (int i = 0; i < club.getManagers().size(); i++) {
                 if(club.getManagers().get(i) != localDataSet.get(position)){
                     viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
-                    viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
+                    viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
                 }
             }
         }
