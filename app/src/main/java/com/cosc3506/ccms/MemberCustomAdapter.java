@@ -20,6 +20,7 @@ import java.util.Random;
 public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapter.ViewHolder> {
 
     private ArrayList localDataSet;
+    private ArrayList nameList;
     Context context;
     User user;
     Club club;
@@ -49,9 +50,10 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
     }
 
-    public MemberCustomAdapter(Context context, ArrayList dataSet, User user, Club club) {
+    public MemberCustomAdapter(Context context, ArrayList dataSet, User user, Club club,ArrayList names) {
         this.context = context;
         localDataSet = dataSet;
+        nameList = names;
         this.user = user;
         this.club = club;
     }
@@ -72,7 +74,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText((String)localDataSet.get(position));
+        viewHolder.getTextView().setText((String)nameList.get(position));
         viewHolder.getRemoveButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,13 +94,14 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(club.getID());
         if (index != -1) { //checks if manager
+            viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
             for (int i = 0; i < club.getManagers().size(); i++) {
                 if(club.getManagers().get(i) != localDataSet.get(position)){
-                    viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+                    viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
+                    viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
                 }
             }
-
-            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
         }
 
     }
