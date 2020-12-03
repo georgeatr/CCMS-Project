@@ -72,11 +72,11 @@ public class ClubActivity extends AppCompatActivity {
             dropStatusButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dropStatusButton.setVisibility(View.VISIBLE);
                     club.dropFromManager(user.getStudentNumber());
                 }
             });
         }
+
     }
 
     public void refresh(View view){

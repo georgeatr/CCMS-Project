@@ -92,9 +92,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(club.getID());
         if (index != -1) { //checks if manager
-            if(club.getManagers().get(position) != localDataSet.get(position)){
-                viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
-            }
+            viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
             viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
         }
 
