@@ -41,9 +41,11 @@ public class ClubActivity extends AppCompatActivity {
     String clubID;
     ArrayList<Event> eventList = new ArrayList<>();
     ArrayList<String> memberList = new ArrayList<>();
+    ArrayList<String> memberNameList = new ArrayList<>();
     FloatingActionButton checkTransactionsFB;
     FloatingActionButton addEventFB2;
     User user;
+    String name;
 
 
     @Override
@@ -94,6 +96,7 @@ public class ClubActivity extends AppCompatActivity {
             clubName.setText(club.getName());
             eventList.addAll(club.getEvents());
             memberList.addAll(club.getMembers());
+            getNames();
             clubDescriptionTV.setText("Club Description:\n" + club.getDescription());
         }catch (Exception e){
         }
@@ -201,6 +204,29 @@ public class ClubActivity extends AppCompatActivity {
             }
         };
         checkClub.addValueEventListener(eventListener);
+    }
+
+
+    public void getNames(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference userRef = rootRef.child("Users");
+        Query checkUser = userRef;
+        checkUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for (int i = 0; i < memberList.size(); i++) {
+                        name = snapshot.child(memberList.get(i)).child("name").getValue(String.class);
+                        memberNameList.add(name);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
