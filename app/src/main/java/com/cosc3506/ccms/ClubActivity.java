@@ -72,10 +72,10 @@ public class ClubActivity extends AppCompatActivity {
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(clubID);
         if (index != -1) { //checks if manager
+            dropStatusButton.setVisibility(View.VISIBLE);
             dropStatusButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dropStatusButton.setVisibility(View.VISIBLE);
                     club.dropFromManager(user.getStudentNumber());
                 }
             });
