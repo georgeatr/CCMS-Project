@@ -92,20 +92,24 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
             }
         });
 
-        ArrayList<String> managed = user.getManagedClubs();
-        int index = managed.indexOf(club.getID());
-        if (index != -1) { //checks if manager
-            viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
-            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
-            String temp = (String) localDataSet.get(position);
-            for (int i = 0; i < club.getManagers().size(); i++) {
-                String manager = club.getManagers().get(i);
-                if(manager.equals(temp)){
-                    viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
-                    viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
-                    break;
+        try{
+            ArrayList<String> managed = user.getManagedClubs();
+            int index = managed.indexOf(club.getID());
+            if (index != -1) { //checks if manager
+                viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+                viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
+                String temp = (String) localDataSet.get(position);
+                for (int i = 0; i < club.getManagers().size(); i++) {
+                    String manager = club.getManagers().get(i);
+                    if (manager.equals(temp)) {
+                        viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
+                        viewHolder.getPromoteButton().setVisibility(View.INVISIBLE);
+                        break;
+                    }
                 }
             }
+        }catch (NullPointerException e){
+
         }
     }
 
