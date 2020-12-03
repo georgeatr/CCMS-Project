@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.cosc3506.ccms.data.model.Club;
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     User user;
     ArrayList<String> clubList = new ArrayList<String>();
     ClubCustomAdapter clubCustomAdapter;
+    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView clubsView;
 
     @Override
@@ -43,18 +45,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        user = (User) getIntent().getExtras().getSerializable("user");
+        swipeRefreshLayout = findViewById(R.id.swiperLayout);
 
-        clubList.addAll(user.getEnrolledClubs());
+        user = (User) getIntent().getExtras().getSerializable("user");
 
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
 
-        refresh(new View(this));
-
-    }
-
-    public void refresh(View view){
+        clubList.addAll(user.getEnrolledClubs());
 
         //Get the recycler view
         clubsView = findViewById(R.id.club_list);
@@ -67,7 +65,16 @@ public class HomeActivity extends AppCompatActivity {
         clubCustomAdapter = new ClubCustomAdapter(this,new Intent(this,ClubActivity.class),clubList,user);
         clubsView.setAdapter(clubCustomAdapter);
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                clubCustomAdapter.updateList(clubList);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
     }
+
 
     public void onClickLogout(View view) {
         startActivity(new Intent(HomeActivity.this,LoginActivity.class));
