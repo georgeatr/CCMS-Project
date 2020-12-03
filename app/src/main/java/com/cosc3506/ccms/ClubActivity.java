@@ -67,18 +67,6 @@ public class ClubActivity extends AppCompatActivity {
 
         getClub(clubID);
         getNames();
-
-        ArrayList<String> managed = user.getManagedClubs();
-        int index = managed.indexOf(clubID);
-        if (index != -1) { //checks if manager
-            dropStatusButton.setVisibility(View.VISIBLE);
-            dropStatusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    club.dropFromManager(user.getStudentNumber());
-                }
-            });
-        }
     }
 
     @Override
@@ -123,6 +111,13 @@ public class ClubActivity extends AppCompatActivity {
             if (index != -1) { //checks if manager
                 checkTransactionsFB.setVisibility(View.VISIBLE);
                 addEventFB2.setVisibility(View.VISIBLE);
+                dropStatusButton.setVisibility(View.VISIBLE);
+                dropStatusButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        club.dropFromManager(user.getStudentNumber());
+                    }
+                });
             }
         }
         x++;
