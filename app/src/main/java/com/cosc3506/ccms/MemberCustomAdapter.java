@@ -101,6 +101,7 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
                 if(club.getManagers().get(i) != localDataSet.get(position)){
                     viewHolder.getRemoveButton().setVisibility(View.GONE);
                     viewHolder.getPromoteButton().setVisibility(View.GONE);
+                    break;
                 }
             }
         }
