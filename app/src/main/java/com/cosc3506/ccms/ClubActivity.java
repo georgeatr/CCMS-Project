@@ -66,6 +66,7 @@ public class ClubActivity extends AppCompatActivity {
         addEventFB2 = findViewById(R.id.addEventFB2);
 
         getClub(clubID);
+        getNames();
         refresh(new View(this));
 
         ArrayList<String> managed = user.getManagedClubs();
@@ -82,6 +83,14 @@ public class ClubActivity extends AppCompatActivity {
     }
 
     public void refresh(View view){
+
+        try {
+            clubName.setText(club.getName());
+            eventList.addAll(club.getEvents());
+            clubDescriptionTV.setText("Club Description:\n" + club.getDescription());
+        }catch (Exception e){
+
+        }
         //Fetch RecyclerViews
         RecyclerView memberListRV = findViewById(R.id.memberListRV);
         RecyclerView eventListRV = findViewById(R.id.eventListRV);
@@ -92,14 +101,6 @@ public class ClubActivity extends AppCompatActivity {
         //Apply layout managers
         memberListRV.setLayoutManager(memberLayoutManager);
         eventListRV.setLayoutManager(eventLayoutManager);
-        try {
-            clubName.setText(club.getName());
-            eventList.addAll(club.getEvents());
-            memberList.addAll(club.getMembers());
-            getNames();
-            clubDescriptionTV.setText("Club Description:\n" + club.getDescription());
-        }catch (Exception e){
-        }
 
         //Create Adapters
         MemberCustomAdapter memberAdapter = new MemberCustomAdapter(this,memberList,user,club);
@@ -194,6 +195,7 @@ public class ClubActivity extends AppCompatActivity {
                         members = membersMap;
                     }
 
+                    memberList.addAll(members);
                     club = new Club(clubID, budget, transactions, room, name, events, description, managers, members);
                 }
             }
