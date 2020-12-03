@@ -1,5 +1,6 @@
 package com.cosc3506.ccms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -49,6 +50,9 @@ public class JoinCreateClubActivity extends AppCompatActivity {
         }
         else {
             user.joinClub(clubID, user);
+            Intent intent = new Intent(JoinCreateClubActivity.this, HomeActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
             finish();
         }
     }
@@ -74,6 +78,9 @@ public class JoinCreateClubActivity extends AppCompatActivity {
             club = new Club(newClubID, "0", new ArrayList<String>(), newClubRoom, newClubName,
                     new ArrayList<Event>(), newClubDesc, new ArrayList<String>(), new ArrayList<String>());
             user.createClub(club, user, newClubBudget);
+            Intent intent = new Intent(JoinCreateClubActivity.this, HomeActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
             finish();
         }
 
