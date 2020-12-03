@@ -69,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 clubCustomAdapter.updateList(clubList);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
