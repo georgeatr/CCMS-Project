@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView welcomeText = findViewById(R.id.welcome_view);
         welcomeText.setText("Welcome " + user.getName());
-
+        
         refresh(new View(this));
 
     }
