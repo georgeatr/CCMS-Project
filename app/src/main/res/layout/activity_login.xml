@@ -185,13 +185,4 @@
         app:layout_constraintStart_toEndOf="@+id/loginButton"
         app:layout_constraintTop_toTopOf="@+id/loginButton" />
 
-    <TextView
-        android:id="@+id/clickme"
-        android:layout_width="81dp"
-        android:layout_height="17dp"
-        android:text="dontClick ME"
-        app:layout_constraintBottom_toTopOf="@+id/studentNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

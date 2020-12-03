@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText newPhoneNumber;
     EditText newPassword;
     Button register;
-    TextView clickme;
+    User user;
 
     private static final String TAG = "Login";
 
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        clickme = findViewById(R.id.clickme);
         createAccount = findViewById(R.id.createNewAccountButton);
         newStudentNumber = findViewById(R.id.newStudentNumberEditText);
         newName = findViewById(R.id.newNameEditText);
@@ -65,13 +65,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //FOR TESTING
-        clickme.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                goHome(new User("","","","",""));
-            }
-        });
 
     }
 
@@ -111,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         final String userEnteredPassword = password.getText().toString().trim();
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users/" + userEnteredStudentNumber);
         Query checkUser = reference;
-        ValueEventListener eventListener = new ValueEventListener() {
+        checkUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -135,11 +128,9 @@ public class LoginActivity extends AppCompatActivity {
                             for (Object value : managedColl){
                                 managed.add(value.toString());
                             }
-                        }catch (NullPointerException e){
-
+                        }catch (NullPointerException e) {
                         }
-
-                        User user = new User(studentNumberDB,nameDB,phoneDB,emailDB,clubs,passwordDB,managed);
+                        user = new User(studentNumberDB,nameDB,phoneDB,emailDB,clubs,passwordDB,managed);
                         reference.removeEventListener(this);
                         goHome(user);
                     }
@@ -150,8 +141,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("login", error.toString());
             }
-        };
-        checkUser.addValueEventListener(eventListener);
+        });
+
     }
 
 
