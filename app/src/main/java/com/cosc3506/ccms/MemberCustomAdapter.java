@@ -107,7 +107,6 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
                 }
             }
         }
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
