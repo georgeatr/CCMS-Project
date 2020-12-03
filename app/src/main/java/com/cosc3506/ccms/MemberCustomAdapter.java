@@ -20,6 +20,7 @@ import java.util.Random;
 public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapter.ViewHolder> {
 
     private ArrayList localDataSet;
+    private ArrayList nameList;
     Context context;
     User user;
     Club club;
@@ -49,9 +50,10 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
 
     }
 
-    public MemberCustomAdapter(Context context, ArrayList dataSet, User user, Club club) {
+    public MemberCustomAdapter(Context context, ArrayList dataSet, User user, Club club,ArrayList names) {
         this.context = context;
         localDataSet = dataSet;
+        nameList = names;
         this.user = user;
         this.club = club;
     }
@@ -85,20 +87,23 @@ public class MemberCustomAdapter extends RecyclerView.Adapter<MemberCustomAdapte
         viewHolder.getPromoteButton().setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                club.promoteToManager((String) localDataSet.get(position));
+                club.promoteToManager((String) nameList.get(position));
             }
         });
 
         ArrayList<String> managed = user.getManagedClubs();
         int index = managed.indexOf(club.getID());
         if (index != -1) { //checks if manager
+
+            viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
+
             for (int i = 0; i < club.getManagers().size(); i++) {
                 if(club.getManagers().get(i) != localDataSet.get(position)){
-                    viewHolder.getRemoveButton().setVisibility(View.VISIBLE);
+                    viewHolder.getRemoveButton().setVisibility(View.INVISIBLE);
+                    viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
                 }
             }
-
-            viewHolder.getPromoteButton().setVisibility(View.VISIBLE);
         }
 
     }
